@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  Project Group 1
+//  project group 1
 //
-//  Created by Ordo on 9/20/18.
+//  Created by Ordo on 9/21/18.
 //  Copyright © 2018 Group1. All rights reserved.
 //
 
@@ -53,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          application to it. This property is optional since there are legitimate
          error conditions that could cause the creation of the store to fail.
         */
-        let container = NSPersistentContainer(name: "Project_Group_1")
+        let container = NSPersistentContainer(name: "project_group_1")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 // Replace this implementation with code to handle the error appropriately.
