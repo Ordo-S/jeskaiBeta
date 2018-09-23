@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AreYouFree.ipa</key>
+	<array>
+		<dict>
+			<key>architectures</key>
+			<array>
+				<string>arm64</string>
+			</array>
+			<key>certificate</key>
+			<dict>
+				<key>SHA1</key>
+				<string>7F97CF95CC94A462B7D9033808FF8739A6C0E96B</string>
+				<key>dateExpires</key>
+				<string>8/25/19</string>
+				<key>type</key>
+				<string>iOS Development</string>
+			</dict>
+			<key>embeddedBinaries</key>
+			<array>
+				<dict>
+					<key>architectures</key>
+					<array>
+						<string>arm64</string>
+					</array>
+					<key>certificate</key>
+					<dict>
+						<key>SHA1</key>
+						<string>7F97CF95CC94A462B7D9033808FF8739A6C0E96B</string>
+						<key>dateExpires</key>
+						<string>8/25/19</string>
+						<key>type</key>
+						<string>iOS Development</string>
+					</dict>
+					<key>name</key>
+					<string>GoogleUtilities.framework</string>
+					<key>team</key>
+					<dict>
+						<key>id</key>
+						<string>6WA6Y7KBQJ</string>
+						<key>name</key>
+						<string>THE WINDOW SPECIALISTS</string>
+					</dict>
+				</dict>
+				<dict>
+					<key>architectures</key>
+					<array>
+						<string>arm64</string>
+					</array>
+					<key>certificate</key>
+					<dict>
+						<key>SHA1</key>
+						<string>7F97CF95CC94A462B7D9033808FF8739A6C0E96B</string>
+						<key>dateExpires</key>
+						<string>8/25/19</string>
+						<key>type</key>
+						<string>iOS Development</string>
+					</dict>
+					<key>name</key>
+					<string>leveldb.framework</string>
+					<key>team</key>
+					<dict>
+						<key>id</key>
+						<string>6WA6Y7KBQJ</string>
+						<key>name</key>
+						<string>THE WINDOW SPECIALISTS</string>
+					</dict>
+				</dict>
+				<dict>
+					<key>architectures</key>
+					<array>
+						<string>arm64</string>
+					</array>
+					<key>certificate</key>
+					<dict>
+						<key>SHA1</key>
+						<string>7F97CF95CC94A462B7D9033808FF8739A6C0E96B</string>
+						<key>dateExpires</key>
+						<string>8/25/19</string>
+						<key>type</key>
+						<string>iOS Development</string>
+					</dict>
+					<key>name</key>
+					<string>nanopb.framework</string>
+					<key>team</key>
+					<dict>
+						<key>id</key>
+						<string>6WA6Y7KBQJ</string>
+						<key>name</key>
+						<string>THE WINDOW SPECIALISTS</string>
+					</dict>
+				</dict>
+			</array>
+			<key>entitlements</key>
+			<dict>
+				<key>application-identifier</key>
+				<string>6WA6Y7KBQJ.edu.sjsu.cmpe137.AreYouFree</string>
+				<key>com.apple.developer.team-identifier</key>
+				<string>6WA6Y7KBQJ</string>
+				<key>get-task-allow</key>
+				<true/>
+				<key>keychain-access-groups</key>
+				<array>
+					<string>6WA6Y7KBQJ.edu.sjsu.cmpe137.AreYouFree</string>
+				</array>
+			</dict>
+			<key>name</key>
+			<string>AreYouFree.app</string>
+			<key>profile</key>
+			<dict>
+				<key>UUID</key>
+				<string>f232d7ce-7a29-4050-a7da-1df1dacafb8b</string>
+				<key>name</key>
+				<string>iOS Team Provisioning Profile: *</string>
+			</dict>
+			<key>team</key>
+			<dict>
+				<key>id</key>
+				<string>6WA6Y7KBQJ</string>
+				<key>name</key>
+				<string>THE WINDOW SPECIALISTS</string>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>
