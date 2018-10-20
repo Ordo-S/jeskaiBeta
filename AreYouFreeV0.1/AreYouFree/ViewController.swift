@@ -56,6 +56,7 @@ class ViewController: UIViewController {
         default:
             print("Somehow you chose a button in the selector that doesn't exist!")
         }
+        resetMenu()
     }
     
     @IBAction func signInClicked(_ sender: UIButton) {
@@ -89,8 +90,13 @@ class ViewController: UIViewController {
             default:
                 print("Somehow you chose a button in the selector that doesn't exist!")
             }
+            resetMenu()
         }
     }
     
+    private func resetMenu() {
+        emailTextField.text = ""
+        passwordTextField.text = ""
+    }
 }
 
