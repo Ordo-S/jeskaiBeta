@@ -10,10 +10,13 @@ import UIKit
 
 class HomepageViewController: UIViewController {
 
+    @IBOutlet var signOutButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
+        signOutButton.layer.cornerRadius = CGFloat(25)
     }
     
     @IBAction func signOutClicked(_ sender: UIButton) {
@@ -23,7 +26,7 @@ class HomepageViewController: UIViewController {
 
     /*
     // MARK: - Navigation
-
+b
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.

@@ -23,10 +23,24 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         ref = Database.database().reference()
+        setUpUI()
     }
     
-    func updateViewFromModel() {
+    private func setUpUI() {
+        let cornerRad = CGFloat(25)
+        let borderWidth = CGFloat(1)
+        let borderColor = UIColor.gray.cgColor
+        emailTextField.layer.cornerRadius = cornerRad
+        emailTextField.layer.borderWidth = borderWidth
+        emailTextField.layer.borderColor = borderColor
+        emailTextField.clipsToBounds = true
         
+        passwordTextField.layer.cornerRadius = cornerRad
+        passwordTextField.layer.borderWidth = borderWidth
+        passwordTextField.layer.borderColor = borderColor
+        passwordTextField.clipsToBounds = true
+        
+        signInButton.layer.cornerRadius = cornerRad
     }
     
     //Activates when you change the value of the selector
