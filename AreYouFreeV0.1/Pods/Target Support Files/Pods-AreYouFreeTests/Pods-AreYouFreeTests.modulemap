@@ -1,0 +1,6 @@
+framework module Pods_AreYouFreeTests {
+  umbrella header "Pods-AreYouFreeTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
