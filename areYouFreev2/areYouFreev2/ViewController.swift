@@ -16,7 +16,20 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        // Handle the text field’s user input through delegate callbacks.
+        eventTextField.delegate = (self as? UITextFieldDelegate)
     }
+    ////MARK: UITextFieldDelegate
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        //hide keyboard
+        textField.resignFirstResponder()
+        return true
+    }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        eventNameLabel.text = textField.text
+    }
+    
     //Actions of View
     @IBAction func setDefualtLabelText(_ sender: UIButton) {
         eventNameLabel.text = "Default Text"
