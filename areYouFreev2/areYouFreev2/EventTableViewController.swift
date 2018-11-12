@@ -8,12 +8,15 @@
 
 import UIKit
 
-class MealTableViewController: UITableViewController {
+class EventTableViewController: UITableViewController {
     //Mark: Properties
     var Event = [event]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Load Sample Events
+        loadSampleEvent()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -25,24 +28,35 @@ class MealTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        
+        return Event.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        
+        // Table view cells are reused and should be dequeued using a cell identifier.
+        let cellIdentifier = "EventTableViewCell"
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? EventTableViewCell  else {
+            fatalError("The dequeued cell is not an instance of EventTableViewCell.")
+        }
+        
+        // Fetches the appropriate meal for the data source layout.
+        let Events = Event[indexPath.row]
+        
+        cell.eventLabel.text = Events.name
+        cell.photoImageView.image = Events.photo
+        
         return cell
+        
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.

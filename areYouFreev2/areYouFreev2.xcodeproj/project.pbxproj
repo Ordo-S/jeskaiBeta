@@ -16,7 +16,7 @@
 		272AD1DD21936DEF001B0F28 /* areYouFreev2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272AD1DC21936DEF001B0F28 /* areYouFreev2UITests.swift */; };
 		272AD1EB21938E37001B0F28 /* event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272AD1EA21938E37001B0F28 /* event.swift */; };
 		272AD1F0219395CE001B0F28 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272AD1EF219395CE001B0F28 /* EventTableViewCell.swift */; };
-		275AF60B2198EFD2003BF915 /* MealTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275AF60A2198EFD2003BF915 /* MealTableViewController.swift */; };
+		275AF60B2198EFD2003BF915 /* EventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275AF60A2198EFD2003BF915 /* EventTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,7 +52,7 @@
 		272AD1DE21936DEF001B0F28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		272AD1EA21938E37001B0F28 /* event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = event.swift; sourceTree = "<group>"; };
 		272AD1EF219395CE001B0F28 /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
-		275AF60A2198EFD2003BF915 /* MealTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealTableViewController.swift; sourceTree = "<group>"; };
+		275AF60A2198EFD2003BF915 /* EventTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,7 +107,7 @@
 				272AD1BC21936DED001B0F28 /* AppDelegate.swift */,
 				272AD1BE21936DED001B0F28 /* ViewController.swift */,
 				272AD1C021936DED001B0F28 /* Main.storyboard */,
-				275AF60A2198EFD2003BF915 /* MealTableViewController.swift */,
+				275AF60A2198EFD2003BF915 /* EventTableViewController.swift */,
 				272AD1EF219395CE001B0F28 /* EventTableViewCell.swift */,
 				272AD1C321936DEF001B0F28 /* Assets.xcassets */,
 				272AD1C521936DEF001B0F28 /* LaunchScreen.storyboard */,
@@ -273,7 +273,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				275AF60B2198EFD2003BF915 /* MealTableViewController.swift in Sources */,
+				275AF60B2198EFD2003BF915 /* EventTableViewController.swift in Sources */,
 				272AD1F0219395CE001B0F28 /* EventTableViewCell.swift in Sources */,
 				272AD1BF21936DED001B0F28 /* ViewController.swift in Sources */,
 				272AD1BD21936DED001B0F28 /* AppDelegate.swift in Sources */,
