@@ -102,14 +102,14 @@
                         <outlet property="loginSelector" destination="SvI-O1-pQq" id="6CE-cE-uiO"/>
                         <outlet property="passwordTextField" destination="ypa-5j-13P" id="cEX-bo-PUs"/>
                         <outlet property="signInButton" destination="6d5-XT-cjm" id="P1X-jh-0RN"/>
-                        <segue destination="Zmt-Oc-s1b" kind="show" identifier="goToHome" id="nbd-KW-5tC"/>
+                        <segue destination="gHB-2E-5tk" kind="show" identifier="goToHome" id="hkE-Nn-FMX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="139.13043478260872" y="133.25892857142856"/>
+            <point key="canvasLocation" x="-339" y="149"/>
         </scene>
-        <!--Homepage View Controller-->
+        <!--Settings-->
         <scene sceneID="aI0-vu-BCA">
             <objects>
                 <viewController id="Zmt-Oc-s1b" customClass="HomepageViewController" customModule="AreYouFree" customModuleProvider="target" sceneMemberID="viewController">
@@ -152,6 +152,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="f0B-8T-zRh"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Settings" image="settings" id="EcZ-cw-n7C"/>
                     <connections>
                         <outlet property="signOutButton" destination="brZ-aR-nzs" id="5pd-qb-Xwp"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="goToLogin" id="fpH-W0-d7H"/>
@@ -159,10 +160,64 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xCk-cj-py0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="844.92753623188412" y="137.94642857142856"/>
+            <point key="canvasLocation" x="1558" y="1049"/>
+        </scene>
+        <!--Contacts-->
+        <scene sceneID="QUV-JG-BMZ">
+            <objects>
+                <viewController id="avi-jS-ric" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="X0y-z7-Zxu">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="WTe-fT-xAH"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Contacts" image="сontacts" id="LD3-pC-4Hx"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3eE-s8-eXr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1558" y="354"/>
+        </scene>
+        <!--Events-->
+        <scene sceneID="ltj-Ag-cfu">
+            <objects>
+                <viewController id="ZXF-R6-QGW" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="iZM-Ej-KJD">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Prb-Yg-y81"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Events" image="planner" id="dvg-vc-LvO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Sqe-Zz-swy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1558" y="-315"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="7hV-kQ-4xB">
+            <objects>
+                <tabBarController id="gHB-2E-5tk" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="NCu-sR-1zL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="ZXF-R6-QGW" kind="relationship" relationship="viewControllers" id="uFG-iU-Zbt"/>
+                        <segue destination="avi-jS-ric" kind="relationship" relationship="viewControllers" id="lEX-tC-5Eo"/>
+                        <segue destination="Zmt-Oc-s1b" kind="relationship" relationship="viewControllers" id="Wyt-iX-yJz"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XGj-1o-RDL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="546" y="149"/>
         </scene>
     </scenes>
     <resources>
         <image name="AreYouFreeLogo" width="360" height="72"/>
+        <image name="planner" width="30" height="30"/>
+        <image name="settings" width="30" height="30"/>
+        <image name="сontacts" width="30" height="30"/>
     </resources>
 </document>
