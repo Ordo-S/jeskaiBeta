@@ -75,10 +75,18 @@ class LoginViewController: UIViewController {
                         //Handle error
                         if let errCode = AuthErrorCode(rawValue: error!._code) {
                             switch errCode {
+                            case .userNotFound:
+                                self.loginLabel.text = "User email not found."
                             case .invalidEmail:
-                                self.loginLabel.text = "Invalid email."
+                                self.loginLabel.text = "Invalid email format."
                             case .wrongPassword:
                                 self.loginLabel.text = "Incorrect password."
+                            case .tooManyRequests:
+                                self.loginLabel.text = "Too many requests. Please wait before retrying."
+                            case .networkError:
+                                self.loginLabel.text = "Network error. Please reconnect to internet."
+                            case .userTokenExpired:
+                                self.loginLabel.text = "User token has expired. Please retry."
                             default:
                                 print("User Error: \(error!)")
                             }
@@ -99,11 +107,15 @@ class LoginViewController: UIViewController {
                         if let errCode = AuthErrorCode(rawValue: error!._code) {
                             switch errCode {
                             case .invalidEmail:
-                                self.loginLabel.text = "Invalid email."
+                                self.loginLabel.text = "Invalid email format."
                             case .emailAlreadyInUse:
                                 self.loginLabel.text = "Email account already exists."
                             case .weakPassword:
                                 self.loginLabel.text = "Password is too weak."
+                            case .tooManyRequests:
+                                self.loginLabel.text = "Too many requests. Please wait before retrying."
+                            case .networkError:
+                                self.loginLabel.text = "Network error. Please reconnect to internet."
                             default:
                                 print("User Error: \(error!)")
                             }
