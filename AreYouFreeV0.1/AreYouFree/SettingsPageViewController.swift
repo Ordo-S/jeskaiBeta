@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import Firebase
 
-class HomepageViewController: UIViewController {
+class SettingsPageViewController: UIViewController {
 
     @IBOutlet var signOutButton: UIButton!
     
@@ -20,6 +21,12 @@ class HomepageViewController: UIViewController {
     }
     
     @IBAction func signOutClicked(_ sender: UIButton) {
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
         performSegue(withIdentifier: "goToLogin", sender: self)
     }
     

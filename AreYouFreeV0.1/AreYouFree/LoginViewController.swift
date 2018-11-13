@@ -40,6 +40,7 @@ class LoginViewController: UIViewController {
         let cornerRad = CGFloat(25)
         let borderWidth = CGFloat(1)
         let borderColor = UIColor.gray.cgColor
+        
         emailTextField.layer.cornerRadius = cornerRad
         emailTextField.layer.borderWidth = borderWidth
         emailTextField.layer.borderColor = borderColor
@@ -60,11 +61,11 @@ class LoginViewController: UIViewController {
         let selectedIndex = loginSelector.selectedSegmentIndex //finds the index of selector
         switch selectedIndex {
         case 0: //0 means sign in
-            loginLabel.text = "Please Sign In."
-            signInButton.setTitle("Sign In", for: .normal)
+            loginLabel.text = LoginButtonMsg.signIn.rawValue
+            signInButton.setLoginButtonTitleToSignIn(signIn: true)
         case 1: //1 means register
-            loginLabel.text = "Please Register."
-            signInButton.setTitle("Register", for: .normal)
+            loginLabel.text = LoginButtonMsg.register.rawValue
+            signInButton.setLoginButtonTitleToSignIn(signIn: false)
         default:
             print("Somehow you chose a button in the selector that doesn't exist!")
         }
@@ -82,26 +83,26 @@ class LoginViewController: UIViewController {
                 Auth.auth().signIn(withEmail: email, password: pass) { (user, error) in
                     //Validation begins here
                     if (email.count == 0 || pass.count == 0){
-                        self.loginLabel.text = "Email/password fields can't be empty."
+                        self.loginLabel.text = ErrorMsg.emptyFields.rawValue
                     } else if error != nil {
                         //Handle error
                         if let errCode = AuthErrorCode(rawValue: error!._code) {
                             switch errCode {
                             case .userNotFound:
-                                self.loginLabel.text = "User email not found."
+                                self.loginLabel.text = ErrorMsg.userNotFound.rawValue
                             case .invalidEmail:
-                                self.loginLabel.text = "Invalid email format."
+                                self.loginLabel.text = ErrorMsg.invalidEmail.rawValue
                             case .wrongPassword:
-                                self.loginLabel.text = "Incorrect password."
+                                self.loginLabel.text = ErrorMsg.wrongPassword.rawValue
                                 self.failedLoginAttempt()
                             case .tooManyRequests:
-                                self.loginLabel.text = "Too many requests. Please wait before retrying."
+                                self.loginLabel.text = ErrorMsg.tooManyRequests.rawValue
                             case .networkError:
-                                self.loginLabel.text = "Network error. Please reconnect to internet."
+                                self.loginLabel.text = ErrorMsg.networkError.rawValue
                             case .userTokenExpired:
-                                self.loginLabel.text = "User token has expired. Please retry."
+                                self.loginLabel.text = ErrorMsg.userTokenExpired.rawValue
                             default:
-                                print("User Error: \(error!)")
+                                print("Uncommon User Error: \(error!)")
                             }
                         }
                     } else {
@@ -114,23 +115,23 @@ class LoginViewController: UIViewController {
                 Auth.auth().createUser(withEmail: email, password: pass) { (user, error) in
                     //Validation begins here
                     if (email.count == 0 || pass.count == 0){
-                        self.loginLabel.text = "Email/password fields can't be empty."
+                        self.loginLabel.text = ErrorMsg.emptyFields.rawValue
                     } else if error != nil {
                         //Handle error
                         if let errCode = AuthErrorCode(rawValue: error!._code) {
                             switch errCode {
                             case .invalidEmail:
-                                self.loginLabel.text = "Invalid email format."
+                                self.loginLabel.text = ErrorMsg.invalidEmail.rawValue
                             case .emailAlreadyInUse:
-                                self.loginLabel.text = "Email account already exists."
+                                self.loginLabel.text = ErrorMsg.emailAlreadyInUse.rawValue
                             case .weakPassword:
-                                self.loginLabel.text = "Password is too weak."
+                                self.loginLabel.text = ErrorMsg.weakPassword.rawValue
                             case .tooManyRequests:
-                                self.loginLabel.text = "Too many requests. Please wait before retrying."
+                                self.loginLabel.text = ErrorMsg.tooManyRequests.rawValue
                             case .networkError:
-                                self.loginLabel.text = "Network error. Please reconnect to internet."
+                                self.loginLabel.text = ErrorMsg.networkError.rawValue
                             default:
-                                print("User Error: \(error!)")
+                                print("Uncommon User Error: \(error!)")
                             }
                         }
                     } else {
@@ -146,10 +147,10 @@ class LoginViewController: UIViewController {
         }
     }
     
+    //Used for clearing the text fields when user switches from register and sign in
     private func resetMenu(){
         emailTextField.text = ""
         passwordTextField.text = ""
-        failedLoginAttempts = 0
     }
     
     private func failedLoginAttempt(){
@@ -159,12 +160,9 @@ class LoginViewController: UIViewController {
             //Disable widgets first
             failedLoginAttempts = 0
             loginSelector.isEnabled = false
-            signInButton.isEnabled = false
-            signInButton.backgroundColor = #colorLiteral(red: 0, green: 0.9866840243, blue: 0, alpha: 0.5)
-            emailTextField.isEnabled = false
-            emailTextField.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-            passwordTextField.isEnabled = false
-            passwordTextField.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+            signInButton.disableLoginButton()
+            emailTextField.disableLoginTextField()
+            passwordTextField.disableLoginTextField()
             
             //Begin timer
             startTimer()
@@ -179,22 +177,39 @@ class LoginViewController: UIViewController {
     }
     
     @objc private func updateTimer(){
+        //If we're done locking out...
         if timerSeconds < 1 {
             //Turn off timer and re-enable widgets
             timer.invalidate()
-            loginLabel.text = "Please Sign In."
+            loginLabel.text = LoginButtonMsg.signIn.rawValue
             loginSelector.isEnabled = true
-            signInButton.isEnabled = true
-            signInButton.backgroundColor = #colorLiteral(red: 0, green: 0.9866840243, blue: 0, alpha: 1)
-            emailTextField.isEnabled = true
-            emailTextField.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-            passwordTextField.isEnabled = true
-            passwordTextField.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+            signInButton.enableLoginButton()
+            emailTextField.enableLoginTextfield()
+            passwordTextField.enableLoginTextfield()
             
         } else {
+            //Otherwise keep counting down and updating the message
             timerSeconds -= 1
             loginLabel.text = "Too many failed logins. Retry in \(timerSeconds) seconds."
         }
     }
 }
 
+//This enum contains all the strings used for the error messages
+private enum ErrorMsg: String {
+    case invalidEmail = "Invalid email format."
+    case emailAlreadyInUse = "Email account already exists."
+    case weakPassword = "Password is too weak."
+    case tooManyRequests = "Too many requests. Please wait before retrying."
+    case networkError = "Network error. Please reconnect to internet."
+    case userNotFound = "User email not found."
+    case wrongPassword = "Incorrect password."
+    case userTokenExpired = "User token has expired. Please retry."
+    case emptyFields = "Email/password fields can't be empty."
+}
+
+//This enum contains all the strings used for the login prompt messages
+private enum LoginButtonMsg: String {
+    case signIn = "Please Sign In."
+    case register = "Please Register."
+}
