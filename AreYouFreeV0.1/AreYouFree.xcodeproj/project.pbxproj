@@ -10,7 +10,7 @@
 		9B4D767A1078764B0D5C2815 /* Pods_AreYouFreeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 484BC0E57818539CB4137710 /* Pods_AreYouFreeUITests.framework */; };
 		C35B4E950033367F0EBC9634 /* Pods_AreYouFreeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0032E0292705E14BDA48AACE /* Pods_AreYouFreeTests.framework */; };
 		DE690B6D215454AC00D3B2DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE690B6C215454AC00D3B2DE /* AppDelegate.swift */; };
-		DE690B6F215454AC00D3B2DE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE690B6E215454AC00D3B2DE /* ViewController.swift */; };
+		DE690B6F215454AC00D3B2DE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE690B6E215454AC00D3B2DE /* LoginViewController.swift */; };
 		DE690B72215454AC00D3B2DE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE690B70215454AC00D3B2DE /* Main.storyboard */; };
 		DE690B74215454AD00D3B2DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE690B73215454AD00D3B2DE /* Assets.xcassets */; };
 		DE690B77215454AD00D3B2DE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE690B75215454AD00D3B2DE /* LaunchScreen.storyboard */; };
@@ -50,7 +50,7 @@
 		D2BF94985AF95E438518A7CC /* Pods-AreYouFree.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AreYouFree.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AreYouFree/Pods-AreYouFree.debug.xcconfig"; sourceTree = "<group>"; };
 		DE690B69215454AC00D3B2DE /* AreYouFree.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AreYouFree.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE690B6C215454AC00D3B2DE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		DE690B6E215454AC00D3B2DE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		DE690B6E215454AC00D3B2DE /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		DE690B71215454AC00D3B2DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DE690B73215454AD00D3B2DE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DE690B76215454AD00D3B2DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -142,7 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				DE690B6C215454AC00D3B2DE /* AppDelegate.swift */,
-				DE690B6E215454AC00D3B2DE /* ViewController.swift */,
+				DE690B6E215454AC00D3B2DE /* LoginViewController.swift */,
 				DE690B70215454AC00D3B2DE /* Main.storyboard */,
 				DE690B73215454AD00D3B2DE /* Assets.xcassets */,
 				DE690B75215454AD00D3B2DE /* LaunchScreen.storyboard */,
@@ -404,7 +404,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DE690B6F215454AC00D3B2DE /* ViewController.swift in Sources */,
+				DE690B6F215454AC00D3B2DE /* LoginViewController.swift in Sources */,
 				DE690B6D215454AC00D3B2DE /* AppDelegate.swift in Sources */,
 				DEE16F57217BD7BD000D553A /* HomepageViewController.swift in Sources */,
 			);
