@@ -35,6 +35,8 @@ class LoginViewController: UIViewController {
     }
     
     private func setUpUI() {
+        self.hideKeyboardWhenTappedAround()
+        
         let cornerRad = CGFloat(25)
         let borderWidth = CGFloat(1)
         let borderColor = UIColor.gray.cgColor
@@ -42,11 +44,13 @@ class LoginViewController: UIViewController {
         emailTextField.layer.borderWidth = borderWidth
         emailTextField.layer.borderColor = borderColor
         emailTextField.clipsToBounds = true
+        emailTextField.keyboardType = .emailAddress
         
         passwordTextField.layer.cornerRadius = cornerRad
         passwordTextField.layer.borderWidth = borderWidth
         passwordTextField.layer.borderColor = borderColor
         passwordTextField.clipsToBounds = true
+        passwordTextField.keyboardType = .default
         
         signInButton.layer.cornerRadius = cornerRad
     }
