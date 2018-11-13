@@ -83,21 +83,25 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         }
         
         //Firebase errors here
-        let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
-        Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
-            if let error = error {
-                //TODO: Add error handling
-                return
+        if FBSDKAccessToken.current() != nil {
+            let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+            Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
+                if let error = error {
+                    //TODO: Add error handling
+                    return
+                }
+                // User is signed in
+                self.loginLabel.text = "Facebook login Success!"
+                self.performSegue(withIdentifier: "goToHome", sender: self) //we use self. because this is inside a closure
             }
-            // User is signed in
-            self.loginLabel.text = "Facebook Login Success!"
-            self.performSegue(withIdentifier: "goToHome", sender: self) //we use self. because this is inside a closure
+        } else {
+            self.loginLabel.text = "Facebook login failed."
         }
     }
     
     //Might not even need this.
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
-        loginLabel.text = "Facebook Logout Success!"
+        loginLabel.text = "Facebook logout success!"
     }
     
     //Activates when you change the value of the selector
