@@ -9,8 +9,9 @@
 import UIKit
 import FirebaseDatabase
 import Firebase
+import FBSDKLoginKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
 
     //Firebase and widget properties
     var ref: DatabaseReference!
@@ -19,6 +20,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var signInButton: UIButton!
+    @IBOutlet weak var facebookLoginButton: FBSDKLoginButton!
     
     //Login lockout properties
     private var failedLoginAttempts = 0
@@ -32,6 +34,7 @@ class LoginViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         ref = Database.database().reference()
         setUpUI()
+        facebookLoginButton.delegate = self
     }
     
     private func setUpUI() {
@@ -54,6 +57,16 @@ class LoginViewController: UIViewController {
         passwordTextField.keyboardType = .default
         
         signInButton.layer.cornerRadius = cornerRad
+    }
+    
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+        loginLabel.text = "FB Login Success!"
+        //TODO: Segue???
+    }
+    
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+        loginLabel.text = "FB Logout Success!"
+        //TODO: ???
     }
     
     //Activates when you change the value of the selector

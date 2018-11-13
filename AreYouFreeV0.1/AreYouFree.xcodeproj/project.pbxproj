@@ -50,6 +50,7 @@
 		A5E8DE0C0ED1F07A34F2672D /* Pods-AreYouFreeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AreYouFreeUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AreYouFreeUITests/Pods-AreYouFreeUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		B4C1E82594434CAECDFAC824 /* Pods_AreYouFree.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AreYouFree.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2BF94985AF95E438518A7CC /* Pods-AreYouFree.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AreYouFree.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AreYouFree/Pods-AreYouFree.debug.xcconfig"; sourceTree = "<group>"; };
+		DE358079219AB079009D3864 /* AreYouFree.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AreYouFree.entitlements; sourceTree = "<group>"; };
 		DE690B69215454AC00D3B2DE /* AreYouFree.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AreYouFree.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE690B6C215454AC00D3B2DE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE690B6E215454AC00D3B2DE /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -145,6 +146,7 @@
 		DE690B6B215454AC00D3B2DE /* AreYouFree */ = {
 			isa = PBXGroup;
 			children = (
+				DE358079219AB079009D3864 /* AreYouFree.entitlements */,
 				DE690B6C215454AC00D3B2DE /* AppDelegate.swift */,
 				DE690B6E215454AC00D3B2DE /* LoginViewController.swift */,
 				DE690B70215454AC00D3B2DE /* Main.storyboard */,
@@ -249,6 +251,11 @@
 				TargetAttributes = {
 					DE690B68215454AC00D3B2DE = {
 						CreatedOnToolsVersion = 10.0;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 					DE690B7C215454AE00D3B2DE = {
 						CreatedOnToolsVersion = 10.0;
@@ -362,6 +369,9 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-AreYouFree/Pods-AreYouFree-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
@@ -371,6 +381,9 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
@@ -590,6 +603,7 @@
 			baseConfigurationReference = D2BF94985AF95E438518A7CC /* Pods-AreYouFree.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = AreYouFree/AreYouFree.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6WA6Y7KBQJ;
 				INFOPLIST_FILE = AreYouFree/Info.plist;
@@ -609,6 +623,7 @@
 			baseConfigurationReference = 347AAD725CD919098C3B07A2 /* Pods-AreYouFree.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = AreYouFree/AreYouFree.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6WA6Y7KBQJ;
 				INFOPLIST_FILE = AreYouFree/Info.plist;

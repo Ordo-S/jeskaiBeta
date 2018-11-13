@@ -91,6 +91,14 @@
                                     <constraint firstAttribute="height" constant="60" id="keN-4Z-nn6"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LdE-Vt-Z2d" customClass="FBSDKLoginButton">
+                                <rect key="frame" x="20" y="832" width="374" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Facebook Login">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -106,6 +114,7 @@
                     </view>
                     <connections>
                         <outlet property="emailTextField" destination="N3j-b8-ot5" id="e68-6Q-Oie"/>
+                        <outlet property="facebookLoginButton" destination="LdE-Vt-Z2d" id="kWR-ir-yoF"/>
                         <outlet property="loginLabel" destination="DB5-Tu-vFw" id="bf2-dj-wba"/>
                         <outlet property="loginSelector" destination="SvI-O1-pQq" id="6CE-cE-uiO"/>
                         <outlet property="passwordTextField" destination="ypa-5j-13P" id="cEX-bo-PUs"/>
@@ -115,7 +124,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-339" y="149"/>
+            <point key="canvasLocation" x="-339.13043478260875" y="148.66071428571428"/>
         </scene>
         <!--Settings-->
         <scene sceneID="aI0-vu-BCA">
