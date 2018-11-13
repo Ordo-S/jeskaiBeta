@@ -18,6 +18,7 @@
 		DE690B8D215454AE00D3B2DE /* AreYouFreeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE690B8C215454AE00D3B2DE /* AreYouFreeUITests.swift */; };
 		DE690B9B215454DA00D3B2DE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DE690B9A215454DA00D3B2DE /* GoogleService-Info.plist */; };
 		DE7BC6CD219A7FC400E899E2 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7BC6CC219A7FC400E899E2 /* Extensions.swift */; };
+		DE7BC6CF219A8F4500E899E2 /* AppUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7BC6CE219A8F4500E899E2 /* AppUtility.swift */; };
 		DEE16F57217BD7BD000D553A /* SettingsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE16F56217BD7BD000D553A /* SettingsPageViewController.swift */; };
 		EB5BDA0D67521EDD4F7DF0AA /* Pods_AreYouFree.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4C1E82594434CAECDFAC824 /* Pods_AreYouFree.framework */; };
 /* End PBXBuildFile section */
@@ -64,6 +65,7 @@
 		DE690B8E215454AE00D3B2DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DE690B9A215454DA00D3B2DE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DE7BC6CC219A7FC400E899E2 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		DE7BC6CE219A8F4500E899E2 /* AppUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtility.swift; sourceTree = "<group>"; };
 		DEE16F56217BD7BD000D553A /* SettingsPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPageViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -152,6 +154,7 @@
 				DE690B9A215454DA00D3B2DE /* GoogleService-Info.plist */,
 				DEE16F56217BD7BD000D553A /* SettingsPageViewController.swift */,
 				DE7BC6CC219A7FC400E899E2 /* Extensions.swift */,
+				DE7BC6CE219A8F4500E899E2 /* AppUtility.swift */,
 			);
 			path = AreYouFree;
 			sourceTree = "<group>";
@@ -409,6 +412,7 @@
 			files = (
 				DE690B6F215454AC00D3B2DE /* LoginViewController.swift in Sources */,
 				DE690B6D215454AC00D3B2DE /* AppDelegate.swift in Sources */,
+				DE7BC6CF219A8F4500E899E2 /* AppUtility.swift in Sources */,
 				DEE16F57217BD7BD000D553A /* SettingsPageViewController.swift in Sources */,
 				DE7BC6CD219A7FC400E899E2 /* Extensions.swift in Sources */,
 			);
