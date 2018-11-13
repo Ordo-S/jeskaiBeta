@@ -143,7 +143,6 @@ class LoginViewController: UIViewController {
             default:
                 print("Somehow you chose a button in the selector that doesn't exist!")
             }
-            //resetMenu()
         }
     }
     
