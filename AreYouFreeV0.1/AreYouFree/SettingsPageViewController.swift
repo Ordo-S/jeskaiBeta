@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FBSDKCoreKit
 
 class SettingsPageViewController: UIViewController {
 
@@ -21,12 +22,18 @@ class SettingsPageViewController: UIViewController {
     }
     
     @IBAction func signOutClicked(_ sender: UIButton) {
+        //Log out of Firebase
         let firebaseAuth = Auth.auth()
         do {
             try firebaseAuth.signOut()
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
         }
+        
+        //Log out of Facebook
+        FBSDKAccessToken.setCurrent(nil)
+        
+        //Segue
         performSegue(withIdentifier: "goToLogin", sender: self)
     }
     

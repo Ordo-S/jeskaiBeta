@@ -37,6 +37,20 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         facebookLoginButton.delegate = self
     }
     
+    //TODO: Normally should be in ViewDidLoad but it doesn't work if I put it there
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        //Check if user is signed in via Facebook login
+        if Auth.auth().currentUser != nil {
+            // User is signed in.
+            let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
+            let homeViewController = mainStoryBoard.instantiateViewController(withIdentifier: "HomeView")
+            self.present(homeViewController, animated: true, completion: nil)
+        } else {
+            // No user is signed in.
+        }
+    }
+    
     private func setUpUI() {
         self.hideKeyboardWhenTappedAround()
         
@@ -59,14 +73,31 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         signInButton.layer.cornerRadius = cornerRad
     }
     
+    //Facebook login button
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
-        loginLabel.text = "FB Login Success!"
-        //TODO: Segue???
+        //Facebook errors here
+        loginLabel.text = "Logging in to Facebook..."
+        if let error = error {
+            loginLabel.text = error.localizedDescription
+            return
+        }
+        
+        //Firebase errors here
+        let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+        Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
+            if let error = error {
+                //TODO: Add error handling
+                return
+            }
+            // User is signed in
+            self.loginLabel.text = "Facebook Login Success!"
+            self.performSegue(withIdentifier: "goToHome", sender: self) //we use self. because this is inside a closure
+        }
     }
     
+    //Might not even need this.
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
-        loginLabel.text = "FB Logout Success!"
-        //TODO: ???
+        loginLabel.text = "Facebook Logout Success!"
     }
     
     //Activates when you change the value of the selector

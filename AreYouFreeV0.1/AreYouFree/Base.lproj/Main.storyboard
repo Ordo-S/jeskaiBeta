@@ -91,9 +91,8 @@
                                     <constraint firstAttribute="height" constant="60" id="keN-4Z-nn6"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LdE-Vt-Z2d" customClass="FBSDKLoginButton">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LdE-Vt-Z2d" customClass="FBSDKLoginButton">
                                 <rect key="frame" x="20" y="832" width="374" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Facebook Login">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -103,12 +102,15 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="jsg-09-UgV" secondAttribute="trailing" constant="10" id="9nt-kt-usf"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="LdE-Vt-Z2d" secondAttribute="trailing" constant="20" id="DzI-1w-0Wd"/>
                             <constraint firstItem="jsg-09-UgV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="JPS-kz-HV8"/>
                             <constraint firstItem="U6E-R3-Ssr" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="UdQ-Sp-nar"/>
                             <constraint firstItem="jsg-09-UgV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="oFv-Hd-kAb"/>
+                            <constraint firstItem="LdE-Vt-Z2d" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="rFa-mI-ZMB"/>
                             <constraint firstItem="U6E-R3-Ssr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="uDb-J4-bAD"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="U6E-R3-Ssr" secondAttribute="trailing" constant="10" id="we9-Up-48V"/>
                             <constraint firstItem="U6E-R3-Ssr" firstAttribute="top" secondItem="jsg-09-UgV" secondAttribute="bottom" constant="10" id="wfj-LN-hly"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="LdE-Vt-Z2d" secondAttribute="bottom" id="yFi-Sl-75D"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -129,7 +131,7 @@
         <!--Settings-->
         <scene sceneID="aI0-vu-BCA">
             <objects>
-                <viewController id="Zmt-Oc-s1b" customClass="SettingsPageViewController" customModule="AreYouFree" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SettingsPageView" id="Zmt-Oc-s1b" customClass="SettingsPageViewController" customModule="AreYouFree" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WaC-TR-Uon" customClass="Home">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -240,7 +242,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="7hV-kQ-4xB">
             <objects>
-                <tabBarController id="gHB-2E-5tk" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="HomeView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="gHB-2E-5tk" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="NCu-sR-1zL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
