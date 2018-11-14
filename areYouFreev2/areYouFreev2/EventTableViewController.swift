@@ -10,13 +10,13 @@ import UIKit
 
 class EventTableViewController: UITableViewController {
     //Mark: Properties
-    var Event = [event]()
+    var Events = [event]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //Load Sample Events
-        loadSampleEvent()
+        //Load Sample Events, for testing 
+       // loadSampleEvent()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -34,7 +34,7 @@ class EventTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return Event.count
+        return Events.count
     }
 
     
@@ -48,10 +48,10 @@ class EventTableViewController: UITableViewController {
         }
         
         // Fetches the appropriate meal for the data source layout.
-        let Events = Event[indexPath.row]
+        let Event = Events[indexPath.row]
         
-        cell.eventLabel.text = Events.name
-        cell.photoImageView.image = Events.photo
+        cell.eventLabel.text = Event.name
+        cell.photoImageView.image = Event.photo
         
         return cell
         
@@ -102,8 +102,20 @@ class EventTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    //MARK: Actions
+    @IBAction func unwindTEventList(sender: UIStoryboardSegue) {
+        if let sourceViewController = sender.source as? EventViewController, let Event = sourceViewController.Event {
+            //Events is Local
+            //Event is from EventView super confusing I know
+            
+            let newIndexPath = IndexPath(row: Events.count, section: 0)
+            
+            Events.append(Event)
+            tableView.insertRows(at: [newIndexPath], with: .automatic)
+        }
+    }
     //MARK: Private Methods
-    
+    /*Used for testing
     private func loadSampleEvent() {
         //setting up sample photos
         let photo1 = UIImage(named: "event1")
@@ -124,4 +136,6 @@ class EventTableViewController: UITableViewController {
         
     }
 
+}
+*/
 }

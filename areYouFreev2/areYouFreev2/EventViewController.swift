@@ -7,12 +7,21 @@
 //
 
 import UIKit
+import os.log
 
-class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
+class EventViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
     //Properties of View
     @IBOutlet weak var eventTextField: UITextField!
     @IBOutlet weak var eventNameLabel: UILabel!
     @IBOutlet weak var photoImageView: UIImageView!
+    @IBOutlet weak var saveButton: UIBarButtonItem!
+    
+    /*
+     This value is either passed by `EventTableViewContoller` in `prepare(for:sender:)`
+     or constructed as part of adding a new event
+     Tanken from apples docs.
+     */
+    var Event: event?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +30,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
         // Handle the text field’s user input through delegate callbacks.
         eventTextField.delegate = self
     }
-    ////MARK: UITextFieldDelegate
+    //MARK: UITextFieldDelegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         //hide keyboard
         textField.resignFirstResponder()
@@ -45,6 +54,24 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
         photoImageView.image = selectedImage
         // Dismiss the picker.
         dismiss(animated: true, completion: nil)
+    }
+    //MARK: Navigation
+    // This method lets you configure a view controller before it's presented.
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        // Configure the destination view controller only when the save button is pressed.
+        guard let button = sender as? UIBarButtonItem, button === saveButton else {
+            os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
+            return
+        }
+        
+        let name = eventTextField.text ?? ""
+        let photo = photoImageView.image
+        
+        
+        // Set the meal to be passed to MealTableViewController after the unwind segue.
+        Event = event(name: name, photo: photo!)
     }
     
     //Actions of View

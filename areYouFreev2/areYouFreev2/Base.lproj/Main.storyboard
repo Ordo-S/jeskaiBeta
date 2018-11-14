@@ -110,11 +110,15 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Add Event" id="ypJ-XU-WE5"/>
+                    <navigationItem key="navigationItem" title="Add Event" id="ypJ-XU-WE5">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="TvJ-y2-Oj9"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="gFs-iq-h9b"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="eventNameLabel" destination="gNJ-qM-3Lp" id="7nx-c3-Tpu"/>
                         <outlet property="eventTextField" destination="XcH-eA-XlH" id="8OU-WE-O1q"/>
                         <outlet property="photoImageView" destination="ma5-DV-r85" id="3CD-Zn-TYj"/>
+                        <outlet property="saveButton" destination="gFs-iq-h9b" id="Kdh-i8-awn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
