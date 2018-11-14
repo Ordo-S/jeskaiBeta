@@ -114,12 +114,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                 self.loginLabel.text = "Facebook login Success!"
                 self.performSegue(withIdentifier: "goToHome", sender: self) //we use self. because this is inside a closure
                 
-                //For debugging purposes
-                let user = Auth.auth().currentUser
-                if let user = user {
-                    print(user.displayName ?? "Couldn't get display name.")
-                    print(user.email ?? "Couldn't get email.")
-                }
+                printUserInfo()
             }
         } else {
             self.loginLabel.text = ErrorMsg.fbLoginDefault.rawValue
@@ -182,13 +177,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                         }
                     } else {
                         //Validation successful
-                        
-                        //Debugging purposes
-                        let user = Auth.auth().currentUser
-                        if let user = user {
-                            print(user.displayName ?? "Couldn't get display name.")
-                            print(user.email ?? "Couldn't get email.")
-                        }
+                        printUserInfo()
                         
                         self.performSegue(withIdentifier: "goToHome", sender: self) //we use self. because this is inside a closure
                     }
@@ -315,4 +304,13 @@ private enum ErrorMsg: String {
 private enum LoginButtonMsg: String {
     case signIn = "Please Sign In."
     case register = "Please Register."
+}
+
+private func printUserInfo() {
+    //Debugging purposes
+    let user = Auth.auth().currentUser
+    if let user = user {
+        print(user.displayName ?? "Couldn't get display name.")
+        print(user.email ?? "Couldn't get email.")
+    }
 }
