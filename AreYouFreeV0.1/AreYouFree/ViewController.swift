@@ -10,7 +10,7 @@ import UIKit
 import FirebaseDatabase
 import Firebase
 
-class ViewController: UIViewController {
+class LoginViewController: UIViewController {
 
     var ref: DatabaseReference!
     @IBOutlet weak var loginSelector : UISegmentedControl!
@@ -56,6 +56,7 @@ class ViewController: UIViewController {
         default:
             print("Somehow you chose a button in the selector that doesn't exist!")
         }
+        resetMenu()
     }
     
     @IBAction func signInClicked(_ sender: UIButton) {
@@ -72,7 +73,7 @@ class ViewController: UIViewController {
                         self.performSegue(withIdentifier: "goToHome", sender: self) //we use self. because this is inside a closure
                     } else {
                         //Show error
-                        self.loginLabel.text = "Sorry, login failed."
+                        self.loginLabel.text = error?.localizedDescription
                     }
                 }
             case 1: //1 means register
@@ -83,14 +84,21 @@ class ViewController: UIViewController {
                         self.performSegue(withIdentifier: "goToHome", sender: self) //we use self. because this is inside a closure
                     } else {
                         //Show error
-                        self.loginLabel.text = "Sorry, registration failed."
+                        self.loginLabel.text = "Invalid email and password combination."
                     }
                 }
             default:
                 print("Somehow you chose a button in the selector that doesn't exist!")
             }
+            resetMenu()
+        } else {
+            loginLabel.text = "Email/password can't be empty"
         }
     }
     
+    private func resetMenu() {
+        emailTextField.text = ""
+        passwordTextField.text = ""
+    }
 }
 
