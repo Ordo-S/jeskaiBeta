@@ -121,6 +121,24 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		DE100A8D219BADFF006E6EB1 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				DEE16F56217BD7BD000D553A /* SettingsPageViewController.swift */,
+				DE690B6E215454AC00D3B2DE /* LoginViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		DE100A8E219BAE30006E6EB1 /* UtilityScripts */ = {
+			isa = PBXGroup;
+			children = (
+				DE7BC6CE219A8F4500E899E2 /* AppUtility.swift */,
+				DE7BC6CC219A7FC400E899E2 /* Extensions.swift */,
+			);
+			path = UtilityScripts;
+			sourceTree = "<group>";
+		};
 		DE690B60215454AC00D3B2DE = {
 			isa = PBXGroup;
 			children = (
@@ -146,17 +164,15 @@
 		DE690B6B215454AC00D3B2DE /* AreYouFree */ = {
 			isa = PBXGroup;
 			children = (
+				DE100A8E219BAE30006E6EB1 /* UtilityScripts */,
+				DE100A8D219BADFF006E6EB1 /* Controllers */,
 				DE358079219AB079009D3864 /* AreYouFree.entitlements */,
 				DE690B6C215454AC00D3B2DE /* AppDelegate.swift */,
-				DE690B6E215454AC00D3B2DE /* LoginViewController.swift */,
 				DE690B70215454AC00D3B2DE /* Main.storyboard */,
 				DE690B73215454AD00D3B2DE /* Assets.xcassets */,
 				DE690B75215454AD00D3B2DE /* LaunchScreen.storyboard */,
 				DE690B78215454AD00D3B2DE /* Info.plist */,
 				DE690B9A215454DA00D3B2DE /* GoogleService-Info.plist */,
-				DEE16F56217BD7BD000D553A /* SettingsPageViewController.swift */,
-				DE7BC6CC219A7FC400E899E2 /* Extensions.swift */,
-				DE7BC6CE219A8F4500E899E2 /* AppUtility.swift */,
 			);
 			path = AreYouFree;
 			sourceTree = "<group>";
