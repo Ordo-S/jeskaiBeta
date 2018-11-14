@@ -51,6 +51,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         }
     }
     
+    //Initial setup of UI
     private func setUpUI() {
         self.hideKeyboardWhenTappedAround()
         
@@ -87,7 +88,26 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
             Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
                 if let error = error {
-                    //TODO: Add error handling
+                    if let errCode = AuthErrorCode(rawValue: error._code) {
+                        switch errCode {
+                        case .invalidCredential:
+                            self.loginLabel.text = ErrorMsg.invalidCredential.rawValue
+                        case .invalidEmail:
+                            self.loginLabel.text = ErrorMsg.invalidEmail.rawValue
+                        case .emailAlreadyInUse:
+                            self.loginLabel.text = ErrorMsg.emailAlreadyInUse.rawValue
+                        case .wrongPassword:
+                            self.loginLabel.text = ErrorMsg.wrongPassword.rawValue
+                        case .tooManyRequests:
+                            self.loginLabel.text = ErrorMsg.tooManyRequests.rawValue
+                        case .networkError:
+                            self.loginLabel.text = ErrorMsg.networkError.rawValue
+                        case .userTokenExpired:
+                            self.loginLabel.text = ErrorMsg.userTokenExpired.rawValue
+                        default:
+                            self.loginLabel.text = ErrorMsg.fbLoginDefault.rawValue
+                        }
+                    }
                     return
                 }
                 // User is signed in
@@ -95,7 +115,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                 self.performSegue(withIdentifier: "goToHome", sender: self) //we use self. because this is inside a closure
             }
         } else {
-            self.loginLabel.text = "Facebook login failed."
+            self.loginLabel.text = ErrorMsg.fbLoginDefault.rawValue
         }
     }
     
@@ -150,7 +170,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                             case .userTokenExpired:
                                 self.loginLabel.text = ErrorMsg.userTokenExpired.rawValue
                             default:
-                                print("Uncommon User Error: \(error!)")
+                                self.loginLabel.text = ErrorMsg.loginDefault.rawValue
                             }
                         }
                     } else {
@@ -179,7 +199,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                             case .networkError:
                                 self.loginLabel.text = ErrorMsg.networkError.rawValue
                             default:
-                                print("Uncommon User Error: \(error!)")
+                                self.loginLabel.text = ErrorMsg.registerDefault.rawValue
                             }
                         }
                     } else {
@@ -200,6 +220,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         passwordTextField.text = ""
     }
     
+    //Called when the user places an mismatched credential
     private func failedLoginAttempt(){
         //Count up all the failed attempts and check if it passed the limit
         failedLoginAttempts += 1
@@ -269,6 +290,10 @@ private enum ErrorMsg: String {
     case wrongPassword = "Incorrect password."
     case userTokenExpired = "User token has expired. Please retry."
     case emptyFields = "Email/password fields can't be empty."
+    case invalidCredential = "Invalid credentials."
+    case fbLoginDefault = "Facebook login failed."
+    case loginDefault = "Login failed."
+    case registerDefault = "Regisration failed."
 }
 
 //This enum contains all the strings used for the login prompt messages
