@@ -104,7 +104,7 @@ class EventTableViewController: UITableViewController {
     */
     //MARK: Actions
     @IBAction func unwindTEventList(sender: UIStoryboardSegue) {
-        if let sourceViewController = sender.source as? EventViewController, let Event = sourceViewController.Event {
+        if let sourceViewController = sender.source as? ViewController, let Event = sourceViewController.Event {
             //Events is Local
             //Event is from EventView super confusing I know
             
@@ -137,5 +137,6 @@ class EventTableViewController: UITableViewController {
     }
 
 }
-*/
+
+}*/
 }

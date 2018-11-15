@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="eventTableViewCell" rowHeight="90" id="WSW-2i-hAv" customClass="EventTableViewCell" customModule="areYouFreev2" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="EventTableViewCell" rowHeight="90" id="WSW-2i-hAv" customClass="EventTableViewCell" customModule="areYouFreev2" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WSW-2i-hAv" id="2Jf-nu-m5I" customClass="EventTableViewCell" customModule="areYouFreev2" customModuleProvider="target">
@@ -40,7 +40,6 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="eventImage" destination="NC9-ds-eeQ" id="kYR-tW-br5"/>
                                     <outlet property="eventLabel" destination="igx-xG-2h8" id="pNn-fK-m8I"/>
                                     <outlet property="photoImageView" destination="NC9-ds-eeQ" id="CAg-Lq-Af3"/>
                                 </connections>
@@ -112,7 +111,11 @@
                     </view>
                     <navigationItem key="navigationItem" title="Add Event" id="ypJ-XU-WE5">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="TvJ-y2-Oj9"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="gFs-iq-h9b"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="gFs-iq-h9b">
+                            <connections>
+                                <segue destination="K7z-gi-Q4i" kind="unwind" unwindAction="unwindTEventListWithSender:" id="pSZ-fq-W03"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="eventNameLabel" destination="gNJ-qM-3Lp" id="7nx-c3-Tpu"/>
@@ -122,6 +125,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <exit id="K7z-gi-Q4i" userLabel="Exit" sceneMemberID="exit"/>
                 <tapGestureRecognizer id="aHV-Vp-4VI">
                     <connections>
                         <action selector="selectImageFromPhotoLibrary:" destination="BYZ-38-t0r" id="bG1-SM-VxN"/>

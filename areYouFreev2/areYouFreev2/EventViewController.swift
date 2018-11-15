@@ -9,7 +9,7 @@
 import UIKit
 import os.log
 
-class EventViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
+class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
     //Properties of View
     @IBOutlet weak var eventTextField: UITextField!
     @IBOutlet weak var eventNameLabel: UILabel!
