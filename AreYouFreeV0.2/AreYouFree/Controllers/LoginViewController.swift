@@ -10,8 +10,7 @@ import UIKit
 import FirebaseDatabase
 import Firebase
 import FBSDKLoginKit
-
-class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
+class LoginViewController: UIViewController {
 
     //Firebase and widget properties
     var ref: DatabaseReference!
@@ -20,7 +19,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var signInButton: UIButton!
-    @IBOutlet weak var facebookLoginButton: FBSDKLoginButton!
+    @IBOutlet weak var facebookLoginButton: UIButton!
     
     //Login lockout properties
     private var failedLoginAttempts = 0
@@ -34,7 +33,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         // Do any additional setup after loading the view, typically from a nib.
         ref = Database.database().reference()
         setUpUI()
-        facebookLoginButton.delegate = self
     }
     
     //TODO: Normally should be in ViewDidLoad but it doesn't work if I put it there
@@ -72,58 +70,56 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         passwordTextField.keyboardType = .default
         
         signInButton.layer.cornerRadius = cornerRad
-    }
-    
-    //Facebook login button
-    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
-        //Facebook errors here
-        loginLabel.text = "Logging in to Facebook..."
-        if let error = error {
-            loginLabel.text = error.localizedDescription
-            return
-        }
         
-        //Firebase errors here
-        if FBSDKAccessToken.current() != nil {
-            let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
-            Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
-                if let error = error {
-                    if let errCode = AuthErrorCode(rawValue: error._code) {
-                        switch errCode {
-                        case .invalidCredential:
-                            self.loginLabel.text = ErrorMsg.invalidCredential.rawValue
-                        case .invalidEmail:
-                            self.loginLabel.text = ErrorMsg.invalidEmail.rawValue
-                        case .emailAlreadyInUse:
-                            self.loginLabel.text = ErrorMsg.emailAlreadyInUse.rawValue
-                        case .wrongPassword:
-                            self.loginLabel.text = ErrorMsg.wrongPassword.rawValue
-                        case .tooManyRequests:
-                            self.loginLabel.text = ErrorMsg.tooManyRequests.rawValue
-                        case .networkError:
-                            self.loginLabel.text = ErrorMsg.networkError.rawValue
-                        case .userTokenExpired:
-                            self.loginLabel.text = ErrorMsg.userTokenExpired.rawValue
-                        default:
-                            self.loginLabel.text = ErrorMsg.fbLoginDefault.rawValue
-                        }
-                    }
-                    return
-                }
-                // User is signed in
-                self.loginLabel.text = "Facebook login Success!"
-                self.performSegue(withIdentifier: "goToHome", sender: self) //we use self. because this is inside a closure
-                
-                printUserInfo()
-            }
-        } else {
-            self.loginLabel.text = ErrorMsg.fbLoginDefault.rawValue
-        }
+        facebookLoginButton.addTarget(self, action: #selector(handleCustomFBLogin), for: .touchUpInside)
     }
     
-    //Might not even need this.
-    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
-        loginLabel.text = "Facebook logout success!"
+    @objc private func handleCustomFBLogin() {
+        loginLabel.text = "Logging in to Facebook..."
+        FBSDKLoginManager().logIn(withReadPermissions: ["email","public_profile"], from: self) { (result, error) in
+            //Facebook errors checked here
+            if error != nil {
+                self.loginLabel.text = error!.localizedDescription
+                return
+            }
+            
+            //Firebase errors here
+            if FBSDKAccessToken.current() != nil {
+                let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+                Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
+                    if let error = error {
+                        if let errCode = AuthErrorCode(rawValue: error._code) {
+                            switch errCode {
+                            case .invalidCredential:
+                                self.loginLabel.text = ErrorMsg.invalidCredential.rawValue
+                            case .invalidEmail:
+                                self.loginLabel.text = ErrorMsg.invalidEmail.rawValue
+                            case .emailAlreadyInUse:
+                                self.loginLabel.text = ErrorMsg.emailAlreadyInUse.rawValue
+                            case .wrongPassword:
+                                self.loginLabel.text = ErrorMsg.wrongPassword.rawValue
+                            case .tooManyRequests:
+                                self.loginLabel.text = ErrorMsg.tooManyRequests.rawValue
+                            case .networkError:
+                                self.loginLabel.text = ErrorMsg.networkError.rawValue
+                            case .userTokenExpired:
+                                self.loginLabel.text = ErrorMsg.userTokenExpired.rawValue
+                            default:
+                                self.loginLabel.text = ErrorMsg.fbLoginDefault.rawValue
+                            }
+                        }
+                        return
+                    }
+                    // User is signed in
+                    self.loginLabel.text = "Facebook login Success!"
+                    self.performSegue(withIdentifier: "goToHome", sender: self) //we use self. because this is inside a closure
+                    
+                    printUserInfo()
+                }
+            } else {
+                self.loginLabel.text = ErrorMsg.fbLoginDefault.rawValue
+            }
+        }
     }
     
     //Activates when you change the value of the selector

@@ -92,22 +92,25 @@
                                     <constraint firstAttribute="height" constant="60" id="keN-4Z-nn6"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LdE-Vt-Z2d" customClass="FBSDKLoginButton">
-                                <rect key="frame" x="20" y="832" width="374" height="30"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LdE-Vt-Z2d">
+                                <rect key="frame" x="146.66666666666666" y="832" width="120.99999999999997" height="30"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="qi3-ZZ-z68"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Facebook Login">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" red="0.17708319459999999" green="0.96940380329999998" blue="0.171721505" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.23137254901960785" green="0.25882352941176467" blue="0.32156862745098036" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="jsg-09-UgV" secondAttribute="trailing" constant="10" id="9nt-kt-usf"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="LdE-Vt-Z2d" secondAttribute="trailing" constant="20" id="DzI-1w-0Wd"/>
+                            <constraint firstItem="LdE-Vt-Z2d" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="F2W-Ip-qnD"/>
                             <constraint firstItem="jsg-09-UgV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="JPS-kz-HV8"/>
                             <constraint firstItem="U6E-R3-Ssr" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="UdQ-Sp-nar"/>
                             <constraint firstItem="jsg-09-UgV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="oFv-Hd-kAb"/>
-                            <constraint firstItem="LdE-Vt-Z2d" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="rFa-mI-ZMB"/>
                             <constraint firstItem="U6E-R3-Ssr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="uDb-J4-bAD"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="U6E-R3-Ssr" secondAttribute="trailing" constant="10" id="we9-Up-48V"/>
                             <constraint firstItem="U6E-R3-Ssr" firstAttribute="top" secondItem="jsg-09-UgV" secondAttribute="bottom" constant="10" id="wfj-LN-hly"/>
@@ -153,7 +156,7 @@
                                             <constraint firstAttribute="height" constant="50" id="QLh-uN-M3d"/>
                                         </constraints>
                                         <state key="normal" title="Sign out">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="titleColor" red="0.23137254900000001" green="0.25882352939999997" blue="0.32156862749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="signInClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="G9J-MC-77l"/>
