@@ -430,7 +430,7 @@
                                             <constraint firstAttribute="height" constant="50" id="n8K-QM-DFf"/>
                                         </constraints>
                                         <state key="normal" title="Delete Contact">
-                                            <color key="titleColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                            <color key="titleColor" red="0.23137254900000001" green="0.25882352939999997" blue="0.32156862749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="deleteContact:" destination="jSU-Nf-9K4" eventType="touchUpInside" id="LgV-EP-awf"/>
