@@ -20,11 +20,11 @@ class ContactsViewController: UITableViewController {
         super.viewDidLoad()
         
         // Luke's code is starting here
-        let currentUsername = Singleton.shared.currentUsername
+        let currentUsername = Singleton.shared.currentUserID
         ref = Database.database().reference()
         databaseHandle = ref.child(currentUsername + "/Contacts").observe(.childAdded, with: { (snapshot) in
             let username: String = (snapshot.value as? String)!
-            let name: String = (snapshot.key as? String)!
+            let name: String = snapshot.key
             let newGuy = Contact(name: name, username: username)
             self.contacts.append(newGuy)
             self.tableView.reloadData()
@@ -67,7 +67,7 @@ class ContactsViewController: UITableViewController {
     @IBAction func unwindToContactList(segue: UIStoryboardSegue){
     
     // We want it to cast as the AddContactViewController as it has text fields!
-        let currentUsername = Singleton.shared.currentUsername
+        let currentUsername = Singleton.shared.currentUserID
         if let viewController = segue.source as? AddContactViewController {
         
         // If both text fields are filled (name and username) and it came from AddContactViewController, make a contact!
