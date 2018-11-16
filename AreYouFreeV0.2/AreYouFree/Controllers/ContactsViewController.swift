@@ -48,7 +48,6 @@ class ContactsViewController: UITableViewController {
     }
     
     // Number of cells we are going to use.
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ContactCell", for: indexPath)
         
