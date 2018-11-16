@@ -7,13 +7,47 @@
 //
 
 import UIKit
+import FirebaseDatabase
+
+// The Firebase DB uses key-value pairs
 
 class ContactsViewController: UITableViewController {
     
     var contacts: [Contact] = []
+    var databaseHandle:DatabaseHandle?
+    //.var name: String!
+    //var value: String!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Luke's code is starting here
+        
+        let ref = Database.database().reference()
+        
+        
+        // ref.child("Luke/Contacts").child("New name").setValue("der")
+        
+        
+        databaseHandle = ref.child("Luke/Contacts").observe(.childAdded, with: { (snapshot) in
+            let username: String = (snapshot.value as? String)!
+            let name: String = (snapshot.key as? String)!
+            debugPrint(name)
+            let newGuy = Contact(name: name, username: username)
+            self.contacts.append(newGuy)
+            self.tableView.reloadData()
+        })
+        
+        ref.child("Luke/Contacts").observe(.childRemoved, with: { (snapshot) in
+            // if child is removed, refresh the screen
+            self.tableView.reloadData()
+            
+        })
+        
+        
+        
+        
+        // hardcoded names
         
         let michael = Contact(name: "Michael", username: "mwmichaelwang")
         contacts.append(michael)
@@ -72,7 +106,10 @@ class ContactsViewController: UITableViewController {
                 if let IndexPath = viewController.indexPathForContact {
                     contacts[IndexPath.row] = contact
                 } else {
-                    contacts.append(contact)
+                    // contacts.append(contact)
+                    // here I am adding a new contact to the DB
+                    let ref = Database.database().reference()
+                    ref.child("Luke/Contacts").child(contact.name).setValue(username)
                 }
             }
         tableView.reloadData()
@@ -80,7 +117,11 @@ class ContactsViewController: UITableViewController {
         } else if let viewController = segue.source as? ContactDetailViewController {
             if viewController.isDeleted{
                 guard let indexPath: IndexPath = viewController.indexPath else { return }
+                let tempContact = contacts[indexPath.row].name  // tempContact is holding the name of the contact we are about to delete
                 contacts.remove(at: indexPath.row)
+                let ref = Database.database().reference()
+                ref.child("Luke/Contacts").child(tempContact).removeValue() // this removes the contact from our DB
+                
                 tableView.reloadData()
             }
         }
