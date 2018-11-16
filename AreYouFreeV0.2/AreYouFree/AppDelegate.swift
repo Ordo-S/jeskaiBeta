@@ -21,8 +21,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         
         //This is for setting the color theme to the TabBar Controller
+        let color1 = #colorLiteral(red: 0, green: 0.9866840243, blue: 0, alpha: 1)
         UITabBar.appearance().barTintColor = .black
-        UITabBar.appearance().tintColor = #colorLiteral(red: 0, green: 0.9866840243, blue: 0, alpha: 1)
+        UITabBar.appearance().tintColor = color1
+        //This is for setting the color theme to the Nav Controller
+        var navigationBarAppearace = UINavigationBar.appearance()
+        navigationBarAppearace.barTintColor = .black
+        navigationBarAppearace.tintColor = color1
+        navigationBarAppearace.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
         
         //Facebook Login
         FBSDKApplicationDelegate.sharedInstance()?.application(application, didFinishLaunchingWithOptions: launchOptions)
