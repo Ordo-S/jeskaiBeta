@@ -25,6 +25,9 @@ class ContactDetailViewController: UIViewController {
         nameLabel.text = contact?.name
         usernameLabel.text = contact?.username
     
+        let cornerRad = CGFloat(25)
+        deleteButton.layer.cornerRadius = cornerRad
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -34,6 +37,7 @@ class ContactDetailViewController: UIViewController {
 
     @IBOutlet weak var nameLabel: UILabel!
     
+    @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var usernameLabel: UILabel!
 
 

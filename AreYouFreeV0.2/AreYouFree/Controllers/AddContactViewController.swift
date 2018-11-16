@@ -26,6 +26,29 @@ class AddContactViewController: UIViewController {
         
         
         // Do any additional setup after loading the view.
+        setUpUI()
+    }
+    
+    //Initial setup of UI
+    private func setUpUI() {
+        self.hideKeyboardWhenTappedAround()
+        
+        let cornerRad = CGFloat(25)
+        let borderWidth = CGFloat(1)
+        let borderColor = UIColor.gray.cgColor
+        
+        nameTextField.layer.cornerRadius = cornerRad
+        nameTextField.layer.borderWidth = borderWidth
+        nameTextField.layer.borderColor = borderColor
+        nameTextField.clipsToBounds = true
+        
+        usernameTextField.layer.cornerRadius = cornerRad
+        usernameTextField.layer.borderWidth = borderWidth
+        usernameTextField.layer.borderColor = borderColor
+        usernameTextField.clipsToBounds = true
+        
+        cancelButton.layer.cornerRadius = cornerRad
+        saveButton.layer.cornerRadius = cornerRad
     }
     
     override func didReceiveMemoryWarning() {
@@ -38,6 +61,8 @@ class AddContactViewController: UIViewController {
     @IBOutlet weak var nameTextField: UITextField!
     
     @IBOutlet weak var usernameTextField: UITextField!
+    @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var saveButton: UIButton!
     
     // Navigation
     
