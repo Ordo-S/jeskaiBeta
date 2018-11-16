@@ -281,6 +281,11 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         // Don't forget to reset when view is being removed
         AppUtility.lockOrientation(.all)
     }
+    
+    //Set status bar to white icons
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
 }
 
 //This enum contains all the strings used for the error messages

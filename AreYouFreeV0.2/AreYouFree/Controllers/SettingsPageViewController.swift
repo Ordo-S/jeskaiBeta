@@ -52,15 +52,9 @@ class SettingsPageViewController: UIViewController {
         // Don't forget to reset when view is being removed
         AppUtility.lockOrientation(.all)
     }
-
-    /*
-    // MARK: - Navigation
-b
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    //Set status bar to white icons
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
-    */
-
 }

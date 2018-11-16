@@ -22,17 +22,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //This is for setting the color theme to the TabBar Controller
         let color1 = #colorLiteral(red: 0, green: 0.9866840243, blue: 0, alpha: 1)
-        UITabBar.appearance().barTintColor = .black
-        UITabBar.appearance().tintColor = color1
+        let tabBarAppearance = UITabBar.appearance()
+        tabBarAppearance.barTintColor = .black
+        tabBarAppearance.tintColor = color1
+        tabBarAppearance.barStyle = .blackOpaque
+        
         //This is for setting the color theme to the Nav Controller
-        var navigationBarAppearace = UINavigationBar.appearance()
+        let navigationBarAppearace = UINavigationBar.appearance()
         navigationBarAppearace.barTintColor = .black
         navigationBarAppearace.tintColor = color1
         navigationBarAppearace.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
+        navigationBarAppearace.barStyle = .blackOpaque
         
         //Facebook Login
         FBSDKApplicationDelegate.sharedInstance()?.application(application, didFinishLaunchingWithOptions: launchOptions)
-        
         
         return true
     }

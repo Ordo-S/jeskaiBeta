@@ -81,4 +81,8 @@ class AddContactViewController: UIViewController {
 
     }
     
+    //Set status bar to white icons
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
 }
