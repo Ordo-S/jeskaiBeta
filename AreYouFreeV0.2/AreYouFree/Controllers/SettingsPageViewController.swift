@@ -13,12 +13,18 @@ import FBSDKCoreKit
 class SettingsPageViewController: UIViewController {
 
     @IBOutlet var signOutButton: UIButton!
+    @IBOutlet weak var editAccountButton: UIButton!
+    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
         signOutButton.layer.cornerRadius = CGFloat(25)
+        editAccountButton.layer.cornerRadius = CGFloat(25)
+        usernameLabel.text = "Username: " + Singleton.shared.currentUsername
+        emailLabel.text = "Email: " + Singleton.shared.currentUserEmail
     }
     
     @IBAction func signOutClicked(_ sender: UIButton) {
@@ -35,6 +41,10 @@ class SettingsPageViewController: UIViewController {
         
         //Segue
         performSegue(withIdentifier: "goToLogin", sender: self)
+    }
+    
+    @IBAction func editClicked(_ sender: UIButton) {
+        
     }
     
     //Orientation lock purposes
