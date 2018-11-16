@@ -10,60 +10,33 @@ import UIKit
 import FirebaseDatabase
 
 // The Firebase DB uses key-value pairs
-
 class ContactsViewController: UITableViewController {
     
     var contacts: [Contact] = []
     var databaseHandle:DatabaseHandle?
-    //.var name: String!
-    //var value: String!
+    var ref: DatabaseReference!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Luke's code is starting here
-        
-        let ref = Database.database().reference()
-        
-        
-        // ref.child("Luke/Contacts").child("New name").setValue("der")
-        
-        
-        databaseHandle = ref.child("Luke/Contacts").observe(.childAdded, with: { (snapshot) in
+        let currentUsername = Singleton.shared.currentUsername
+        ref = Database.database().reference()
+        databaseHandle = ref.child(currentUsername + "/Contacts").observe(.childAdded, with: { (snapshot) in
             let username: String = (snapshot.value as? String)!
             let name: String = (snapshot.key as? String)!
-            debugPrint(name)
             let newGuy = Contact(name: name, username: username)
             self.contacts.append(newGuy)
             self.tableView.reloadData()
         })
         
-        ref.child("Luke/Contacts").observe(.childRemoved, with: { (snapshot) in
+        ref.child(currentUsername + "/Contacts").observe(.childRemoved, with: { (snapshot) in
             // if child is removed, refresh the screen
             self.tableView.reloadData()
-            
         })
-        
-        
-        
-        
-        // hardcoded names
-        
-        let michael = Contact(name: "Michael", username: "mwmichaelwang")
-        contacts.append(michael)
-        
-        let mark = Contact(name: "Mark", username: "FiNalStaR")
-        contacts.append(mark)
-        
-        let matt = Contact(name: "Matt", username: "Ordo")
-        contacts.append(matt)
-        
-        let luke = Contact(name: "Luke", username: "lastjediluke")
-        contacts.append(luke)
     }
 
     // MARK: - Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
@@ -95,6 +68,7 @@ class ContactsViewController: UITableViewController {
     @IBAction func unwindToContactList(segue: UIStoryboardSegue){
     
     // We want it to cast as the AddContactViewController as it has text fields!
+        let currentUsername = Singleton.shared.currentUsername
         if let viewController = segue.source as? AddContactViewController {
         
         // If both text fields are filled (name and username) and it came from AddContactViewController, make a contact!
@@ -108,8 +82,7 @@ class ContactsViewController: UITableViewController {
                 } else {
                     // contacts.append(contact)
                     // here I am adding a new contact to the DB
-                    let ref = Database.database().reference()
-                    ref.child("Luke/Contacts").child(contact.name).setValue(username)
+                    ref.child(currentUsername + "/Contacts").child(contact.name).setValue(username)
                 }
             }
         tableView.reloadData()
@@ -119,8 +92,7 @@ class ContactsViewController: UITableViewController {
                 guard let indexPath: IndexPath = viewController.indexPath else { return }
                 let tempContact = contacts[indexPath.row].name  // tempContact is holding the name of the contact we are about to delete
                 contacts.remove(at: indexPath.row)
-                let ref = Database.database().reference()
-                ref.child("Luke/Contacts").child(tempContact).removeValue() // this removes the contact from our DB
+                ref.child(currentUsername + "/Contacts").child(tempContact).removeValue() // this removes the contact from our DB
                 
                 tableView.reloadData()
             }

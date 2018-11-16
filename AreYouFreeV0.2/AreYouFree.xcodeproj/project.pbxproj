@@ -27,6 +27,7 @@
 		DE690B9B215454DA00D3B2DE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DE690B9A215454DA00D3B2DE /* GoogleService-Info.plist */; };
 		DE7BC6CD219A7FC400E899E2 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7BC6CC219A7FC400E899E2 /* Extensions.swift */; };
 		DE7BC6CF219A8F4500E899E2 /* AppUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7BC6CE219A8F4500E899E2 /* AppUtility.swift */; };
+		DEDBC9F9219E4C4900C8C207 /* Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDBC9F8219E4C4900C8C207 /* Singleton.swift */; };
 		DEE16F57217BD7BD000D553A /* SettingsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE16F56217BD7BD000D553A /* SettingsPageViewController.swift */; };
 		EB5BDA0D67521EDD4F7DF0AA /* Pods_AreYouFree.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4C1E82594434CAECDFAC824 /* Pods_AreYouFree.framework */; };
 /* End PBXBuildFile section */
@@ -83,6 +84,7 @@
 		DE690B9A215454DA00D3B2DE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DE7BC6CC219A7FC400E899E2 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		DE7BC6CE219A8F4500E899E2 /* AppUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtility.swift; sourceTree = "<group>"; };
+		DEDBC9F8219E4C4900C8C207 /* Singleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Singleton.swift; sourceTree = "<group>"; };
 		DEE16F56217BD7BD000D553A /* SettingsPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPageViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -142,6 +144,7 @@
 			children = (
 				27C2DDCD219D035500F229A3 /* event.swift */,
 				941F33DA219CDE6600C1BEE4 /* Contact.swift */,
+				DEDBC9F8219E4C4900C8C207 /* Singleton.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -472,6 +475,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				941F33DE219CDE6600C1BEE4 /* Contact.swift in Sources */,
+				DEDBC9F9219E4C4900C8C207 /* Singleton.swift in Sources */,
 				27C2DDD2219D036300F229A3 /* EventTableViewCell.swift in Sources */,
 				27C2DDD4219D036300F229A3 /* EventViewController.swift in Sources */,
 				DE690B6F215454AC00D3B2DE /* LoginViewController.swift in Sources */,
