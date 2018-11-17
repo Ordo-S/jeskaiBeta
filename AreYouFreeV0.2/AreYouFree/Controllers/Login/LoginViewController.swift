@@ -20,6 +20,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var signInButton: UIButton!
     @IBOutlet weak var facebookLoginButton: UIButton!
+    @IBOutlet weak var recoveryButton: UIButton!
     
     //Login lockout properties
     private var failedLoginAttempts = 0
@@ -120,6 +121,10 @@ class LoginViewController: UIViewController {
                 self.loginLabel.text = ErrorMsg.fbLoginDefault.rawValue
             }
         }
+    }
+    
+    @IBAction func recoveryClicked(_ sender: Any) {
+        performSegue(withIdentifier: "goToRecovery", sender: self)
     }
     
     //Activates when you change the value of the selector
