@@ -43,8 +43,13 @@ class SettingsPageViewController: UIViewController {
         performSegue(withIdentifier: "goToLogin", sender: self)
     }
     
+    @IBAction func unwindToSettings(segue: UIStoryboardSegue){
+        usernameLabel.text = "Username: " + Singleton.shared.currentUsername
+        emailLabel.text = "Email: " + Singleton.shared.currentUserEmail
+    }
+    
     @IBAction func editClicked(_ sender: UIButton) {
-        
+        performSegue(withIdentifier: "goToEditAccount", sender: self)
     }
     
     //Orientation lock purposes

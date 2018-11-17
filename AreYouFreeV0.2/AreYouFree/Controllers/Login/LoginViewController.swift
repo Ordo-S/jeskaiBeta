@@ -149,7 +149,7 @@ class LoginViewController: UIViewController {
                 Auth.auth().signIn(withEmail: email, password: pass) { (user, error) in
                     //Validation begins here
                     if (email.count == 0 || pass.count == 0){
-                        self.loginLabel.text = ErrorMsg.emptyFields.rawValue
+                        self.loginLabel.text = ErrorMsg.emptyLoginFields.rawValue
                     } else if error != nil {
                         //Handle error
                         if let errCode = AuthErrorCode(rawValue: error!._code) {
@@ -183,7 +183,7 @@ class LoginViewController: UIViewController {
                 Auth.auth().createUser(withEmail: email, password: pass) { (user, error) in
                     //Validation begins here
                     if (email.count == 0 || pass.count == 0){
-                        self.loginLabel.text = ErrorMsg.emptyFields.rawValue
+                        self.loginLabel.text = ErrorMsg.emptyLoginFields.rawValue
                     } else if error != nil {
                         //Handle error
                         if let errCode = AuthErrorCode(rawValue: error!._code) {
@@ -285,20 +285,24 @@ class LoginViewController: UIViewController {
 }
 
 //This enum contains all the strings used for the error messages
-private enum ErrorMsg: String {
+enum ErrorMsg: String {
     case invalidEmail = "Invalid email format."
     case emailAlreadyInUse = "Email account already exists."
     case weakPassword = "Password is too weak."
     case tooManyRequests = "Too many requests. Please wait before retrying."
     case networkError = "Network error. Please reconnect to internet."
-    case userNotFound = "User email not found."
+    case userNotFound = "User not found."
     case wrongPassword = "Incorrect password."
-    case userTokenExpired = "User token has expired. Please retry."
-    case emptyFields = "Email/password fields can't be empty."
+    case userTokenExpired = "User token has expired."
+    case emptyLoginFields = "Email/password fields can't be empty."
+    case emptyEditFields = "User fields can't be empty."
     case invalidCredential = "Invalid credentials."
+    case requiresRecentLogin = "Updating email requires recent log in."
     case fbLoginDefault = "Facebook login failed."
     case loginDefault = "Login failed."
     case registerDefault = "Regisration failed."
+    case deleteAccountDefault = "Account deletion failed."
+    case updateAccountDefault = "Account update failed."
 }
 
 //This enum contains all the strings used for the login prompt messages
