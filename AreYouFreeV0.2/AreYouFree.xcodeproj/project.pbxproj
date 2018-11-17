@@ -146,7 +146,6 @@
 			children = (
 				27C2DDCD219D035500F229A3 /* event.swift */,
 				941F33DA219CDE6600C1BEE4 /* Contact.swift */,
-				DEDBC9F8219E4C4900C8C207 /* Singleton.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -165,6 +164,7 @@
 		DE100A8E219BAE30006E6EB1 /* UtilityScripts */ = {
 			isa = PBXGroup;
 			children = (
+				DEDBC9F8219E4C4900C8C207 /* Singleton.swift */,
 				DE7BC6CE219A8F4500E899E2 /* AppUtility.swift */,
 				DE7BC6CC219A7FC400E899E2 /* Extensions.swift */,
 			);

@@ -231,6 +231,7 @@ class LoginViewController: UIViewController {
             signInButton.disableLoginButton()
             emailTextField.disableLoginTextField()
             passwordTextField.disableLoginTextField()
+            facebookLoginButton.disableFBButton()
             
             //Begin timer
             startTimer()
@@ -254,6 +255,7 @@ class LoginViewController: UIViewController {
             signInButton.enableLoginButton()
             emailTextField.enableLoginTextfield()
             passwordTextField.enableLoginTextfield()
+            facebookLoginButton.enableFBButton()
             
         } else {
             //Otherwise keep counting down and updating the message

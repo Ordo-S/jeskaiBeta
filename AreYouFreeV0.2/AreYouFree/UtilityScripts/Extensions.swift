@@ -39,6 +39,14 @@ extension UIButton {
             self.setTitle("Register", for: .normal)
         }
     }
+    func disableFBButton(){
+        self.isEnabled = false
+        self.setTitleColor(#colorLiteral(red: 0, green: 0.9866840243, blue: 0, alpha: 0.5), for: .normal)
+    }
+    func enableFBButton(){
+        self.isEnabled = true
+        self.setTitleColor(#colorLiteral(red: 0, green: 0.9866840243, blue: 0, alpha: 1), for: .normal)
+    }
 }
 
 extension UITextField {
