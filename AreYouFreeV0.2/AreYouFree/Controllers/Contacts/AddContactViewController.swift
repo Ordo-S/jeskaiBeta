@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class AddContactViewController: UIViewController {
 
@@ -14,9 +15,11 @@ class AddContactViewController: UIViewController {
     var contact: Contact? = nil
     // Used only for editing to make sure we don't duplicate contacts. 
     var indexPathForContact: IndexPath? = nil
+    var ref: DatabaseReference!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        ref = Database.database().reference()
         titleLabel.text = titleText 
         // Used to populate data
         if let contact = contact {
@@ -65,8 +68,12 @@ class AddContactViewController: UIViewController {
     @IBOutlet weak var saveButton: UIButton!
     
     // Navigation
-    
     @IBAction func save(_ sender: Any) {
+        //Mark's fix
+        if nameTextField.text != nil && usernameTextField.text != nil {
+            ref.child(Singleton.shared.currentUserID + "/Contacts").child(nameTextField.text!).setValue(usernameTextField.text)
+        }
+        
         performSegue(withIdentifier: "unwindToContactList", sender: self)
     }
     
@@ -81,4 +88,8 @@ class AddContactViewController: UIViewController {
 
     }
     
+    //Set status bar to white icons
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
 }

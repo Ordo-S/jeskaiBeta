@@ -63,6 +63,11 @@ class ContactDetailViewController: UIViewController {
             viewController.indexPathForContact = self.indexPath!
         }
     }
+    
+    //Set status bar to white icons
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
 }
 
 

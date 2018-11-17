@@ -20,17 +20,17 @@ class ContactsViewController: UITableViewController {
         super.viewDidLoad()
         
         // Luke's code is starting here
-        let currentUsername = Singleton.shared.currentUsername
+        let currentUserID = Singleton.shared.currentUserID
         ref = Database.database().reference()
-        databaseHandle = ref.child(currentUsername + "/Contacts").observe(.childAdded, with: { (snapshot) in
+        databaseHandle = ref.child(currentUserID + "/Contacts").observe(.childAdded, with: { (snapshot) in
             let username: String = (snapshot.value as? String)!
-            let name: String = (snapshot.key as? String)!
+            let name: String = snapshot.key
             let newGuy = Contact(name: name, username: username)
             self.contacts.append(newGuy)
             self.tableView.reloadData()
         })
         
-        ref.child(currentUsername + "/Contacts").observe(.childRemoved, with: { (snapshot) in
+        ref.child(currentUserID + "/Contacts").observe(.childRemoved, with: { (snapshot) in
             // if child is removed, refresh the screen
             self.tableView.reloadData()
         })
@@ -67,10 +67,10 @@ class ContactsViewController: UITableViewController {
     @IBAction func unwindToContactList(segue: UIStoryboardSegue){
     
     // We want it to cast as the AddContactViewController as it has text fields!
-        let currentUsername = Singleton.shared.currentUsername
-        if let viewController = segue.source as? AddContactViewController {
+        let currentUserID = Singleton.shared.currentUserID
         
         // If both text fields are filled (name and username) and it came from AddContactViewController, make a contact!
+        if let viewController = segue.source as? AddContactViewController {
         guard let name = viewController.nameTextField.text else { return }
         guard let username = viewController.usernameTextField.text else { return }
         let contact = Contact(name: name, username: username)
@@ -81,7 +81,7 @@ class ContactsViewController: UITableViewController {
                 } else {
                     // contacts.append(contact)
                     // here I am adding a new contact to the DB
-                    ref.child(currentUsername + "/Contacts").child(contact.name).setValue(username)
+                    ref.child(currentUserID + "/Contacts").child(contact.name).setValue(username)
                 }
             }
         tableView.reloadData()
@@ -91,7 +91,7 @@ class ContactsViewController: UITableViewController {
                 guard let indexPath: IndexPath = viewController.indexPath else { return }
                 let tempContact = contacts[indexPath.row].name  // tempContact is holding the name of the contact we are about to delete
                 contacts.remove(at: indexPath.row)
-                ref.child(currentUsername + "/Contacts").child(tempContact).removeValue() // this removes the contact from our DB
+                ref.child(currentUserID + "/Contacts").child(tempContact).removeValue() // this removes the contact from our DB
                 
                 tableView.reloadData()
             }

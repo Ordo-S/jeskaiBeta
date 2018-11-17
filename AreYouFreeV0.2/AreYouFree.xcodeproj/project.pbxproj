@@ -28,6 +28,7 @@
 		DE7BC6CD219A7FC400E899E2 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7BC6CC219A7FC400E899E2 /* Extensions.swift */; };
 		DE7BC6CF219A8F4500E899E2 /* AppUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7BC6CE219A8F4500E899E2 /* AppUtility.swift */; };
 		DEDBC9F9219E4C4900C8C207 /* Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDBC9F8219E4C4900C8C207 /* Singleton.swift */; };
+		DEDBC9FB219F8D8400C8C207 /* EditAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDBC9FA219F8D8400C8C207 /* EditAccountViewController.swift */; };
 		DEE16F57217BD7BD000D553A /* SettingsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE16F56217BD7BD000D553A /* SettingsPageViewController.swift */; };
 		EB5BDA0D67521EDD4F7DF0AA /* Pods_AreYouFree.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4C1E82594434CAECDFAC824 /* Pods_AreYouFree.framework */; };
 /* End PBXBuildFile section */
@@ -85,6 +86,7 @@
 		DE7BC6CC219A7FC400E899E2 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		DE7BC6CE219A8F4500E899E2 /* AppUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtility.swift; sourceTree = "<group>"; };
 		DEDBC9F8219E4C4900C8C207 /* Singleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Singleton.swift; sourceTree = "<group>"; };
+		DEDBC9FA219F8D8400C8C207 /* EditAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountViewController.swift; sourceTree = "<group>"; };
 		DEE16F56217BD7BD000D553A /* SettingsPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPageViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -152,14 +154,10 @@
 		DE100A8D219BADFF006E6EB1 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				27C2DDCF219D036300F229A3 /* EventTableViewCell.swift */,
-				27C2DDD0219D036300F229A3 /* EventTableViewController.swift */,
-				27C2DDD1219D036300F229A3 /* EventViewController.swift */,
-				941F33D7219CDE6600C1BEE4 /* AddContactViewController.swift */,
-				941F33D8219CDE6600C1BEE4 /* ContactDetailViewController.swift */,
-				941F33D9219CDE6600C1BEE4 /* ContactsViewController.swift */,
-				DEE16F56217BD7BD000D553A /* SettingsPageViewController.swift */,
-				DE690B6E215454AC00D3B2DE /* LoginViewController.swift */,
+				DEDBCA00219FA42C00C8C207 /* Settings */,
+				DEDBC9FE219FA40A00C8C207 /* Contacts */,
+				DEDBC9FD219FA3F900C8C207 /* Events */,
+				DEDBC9FC219FA3E200C8C207 /* Login */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -228,6 +226,43 @@
 				DE690B8E215454AE00D3B2DE /* Info.plist */,
 			);
 			path = AreYouFreeUITests;
+			sourceTree = "<group>";
+		};
+		DEDBC9FC219FA3E200C8C207 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				DE690B6E215454AC00D3B2DE /* LoginViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		DEDBC9FD219FA3F900C8C207 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				27C2DDCF219D036300F229A3 /* EventTableViewCell.swift */,
+				27C2DDD0219D036300F229A3 /* EventTableViewController.swift */,
+				27C2DDD1219D036300F229A3 /* EventViewController.swift */,
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
+		DEDBC9FE219FA40A00C8C207 /* Contacts */ = {
+			isa = PBXGroup;
+			children = (
+				941F33D7219CDE6600C1BEE4 /* AddContactViewController.swift */,
+				941F33D8219CDE6600C1BEE4 /* ContactDetailViewController.swift */,
+				941F33D9219CDE6600C1BEE4 /* ContactsViewController.swift */,
+			);
+			path = Contacts;
+			sourceTree = "<group>";
+		};
+		DEDBCA00219FA42C00C8C207 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				DEE16F56217BD7BD000D553A /* SettingsPageViewController.swift */,
+				DEDBC9FA219F8D8400C8C207 /* EditAccountViewController.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -486,6 +521,7 @@
 				941F33DB219CDE6600C1BEE4 /* AddContactViewController.swift in Sources */,
 				941F33DD219CDE6600C1BEE4 /* ContactsViewController.swift in Sources */,
 				DEE16F57217BD7BD000D553A /* SettingsPageViewController.swift in Sources */,
+				DEDBC9FB219F8D8400C8C207 /* EditAccountViewController.swift in Sources */,
 				27C2DDD3219D036300F229A3 /* EventTableViewController.swift in Sources */,
 				DE7BC6CD219A7FC400E899E2 /* Extensions.swift in Sources */,
 			);

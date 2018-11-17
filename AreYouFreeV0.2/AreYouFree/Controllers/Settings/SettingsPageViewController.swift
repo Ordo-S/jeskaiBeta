@@ -13,12 +13,18 @@ import FBSDKCoreKit
 class SettingsPageViewController: UIViewController {
 
     @IBOutlet var signOutButton: UIButton!
+    @IBOutlet weak var editAccountButton: UIButton!
+    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
         signOutButton.layer.cornerRadius = CGFloat(25)
+        editAccountButton.layer.cornerRadius = CGFloat(25)
+        usernameLabel.text = "Username: " + Singleton.shared.currentUsername
+        emailLabel.text = "Email: " + Singleton.shared.currentUserEmail
     }
     
     @IBAction func signOutClicked(_ sender: UIButton) {
@@ -27,7 +33,7 @@ class SettingsPageViewController: UIViewController {
         do {
             try firebaseAuth.signOut()
         } catch let signOutError as NSError {
-            print ("Error signing out: %@", signOutError)
+            print("Error signing out: %@", signOutError)
         }
         
         //Log out of Facebook
@@ -35,6 +41,15 @@ class SettingsPageViewController: UIViewController {
         
         //Segue
         performSegue(withIdentifier: "goToLogin", sender: self)
+    }
+    
+    @IBAction func unwindToSettings(segue: UIStoryboardSegue){
+        usernameLabel.text = "Username: " + Singleton.shared.currentUsername
+        emailLabel.text = "Email: " + Singleton.shared.currentUserEmail
+    }
+    
+    @IBAction func editClicked(_ sender: UIButton) {
+        performSegue(withIdentifier: "goToEditAccount", sender: self)
     }
     
     //Orientation lock purposes
@@ -52,15 +67,9 @@ class SettingsPageViewController: UIViewController {
         // Don't forget to reset when view is being removed
         AppUtility.lockOrientation(.all)
     }
-
-    /*
-    // MARK: - Navigation
-b
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    //Set status bar to white icons
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
-    */
-
 }
