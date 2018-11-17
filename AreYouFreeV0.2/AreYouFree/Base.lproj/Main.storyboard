@@ -341,6 +341,7 @@
                         <outlet property="resultLabel" destination="SxV-F7-Be3" id="69r-YM-fLh"/>
                         <outlet property="usernameTextField" destination="wJ4-mg-kNE" id="N1V-XM-O1U"/>
                         <segue destination="oi0-Ps-WYi" kind="unwind" identifier="unwindToSettings" unwindAction="unwindToSettingsWithSegue:" id="gl6-Mp-eWf"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="goToLogin" id="FNs-ve-mgs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NDh-tx-Rpf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -801,5 +802,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Yrg-hC-ybp"/>
+        <segue reference="FNs-ve-mgs"/>
     </inferredMetricsTieBreakers>
 </document>

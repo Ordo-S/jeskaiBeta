@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FBSDKLoginKit
 
 class EditAccountViewController: UIViewController {
 
@@ -122,7 +123,46 @@ class EditAccountViewController: UIViewController {
     }
     
     @IBAction func clickedDeleteAccount(_ sender: Any) {
+        //Code credits based on https://stackoverflow.com/questions/25511945/swift-alert-view-ios8-with-ok-and-cancel-button-which-button-tapped
+        let refreshAlert = UIAlertController(title: "Delete Account", message: "Are you sure you want to delete your account? You won't be able to get it back.", preferredStyle: UIAlertController.Style.alert)
         
+        //When they click yes
+        refreshAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
+            self.resultLabel.text = "Deleting account..."
+            let user = Auth.auth().currentUser
+            user?.delete { error in
+                if let error = error {
+                    // An error happened.
+                    if let errCode = AuthErrorCode(rawValue: error._code) {
+                        switch errCode {
+                        case .requiresRecentLogin:
+                            self.resultLabel.text = ErrorMsg.requiresRecentLogin.rawValue
+                        case .tooManyRequests:
+                            self.resultLabel.text = ErrorMsg.tooManyRequests.rawValue
+                        case .networkError:
+                            self.resultLabel.text = ErrorMsg.networkError.rawValue
+                        case .userTokenExpired:
+                            self.resultLabel.text = ErrorMsg.userTokenExpired.rawValue
+                        default:
+                            self.resultLabel.text = ErrorMsg.deleteAccountDefault.rawValue
+                        }
+                    }
+                } else {
+                    // Account deleted.
+                    //Log out of Facebook
+                    FBSDKAccessToken.setCurrent(nil)
+                    //Segue
+                    self.performSegue(withIdentifier: "goToLogin", sender: self)
+                }
+            }
+        }))
+        
+        //When they click no
+        refreshAlert.addAction(UIAlertAction(title: "No", style: .cancel, handler: { (action: UIAlertAction!) in
+           //Do nothing
+        }))
+        
+        present(refreshAlert, animated: true, completion: nil)
     }
     
     @IBAction func clickedCancel(_ sender: Any) {
