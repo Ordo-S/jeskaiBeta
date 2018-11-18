@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class RecoveryViewController: UIViewController {
     
@@ -44,7 +45,31 @@ class RecoveryViewController: UIViewController {
     }
     
     @IBAction func confirmClicked(_ sender: Any) {
-        resultLabel.text = "Email successfully sent."
+        guard let email = emailTextField.text, emailTextField.text?.count != 0 else {
+            resultLabel.text = ErrorMsg.emptyEditFields.rawValue
+            return
+        }
+        
+        Auth.auth().sendPasswordReset(withEmail: email) { (error) in
+            if let error = error {
+                //error
+                if let errCode = AuthErrorCode(rawValue: error._code) {
+                    switch errCode {
+                    case .tooManyRequests:
+                        self.resultLabel.text = ErrorMsg.tooManyRequests.rawValue
+                    case .networkError:
+                        self.resultLabel.text = ErrorMsg.networkError.rawValue
+                    case .userTokenExpired:
+                        self.resultLabel.text = ErrorMsg.userTokenExpired.rawValue
+                    default:
+                        self.resultLabel.text = ErrorMsg.recoverAccountDefault.rawValue
+                    }
+                }
+            } else {
+                //email successful
+                self.resultLabel.text = "Email successfully sent."
+            }
+        }
     }
     
     //Orientation lock purposes

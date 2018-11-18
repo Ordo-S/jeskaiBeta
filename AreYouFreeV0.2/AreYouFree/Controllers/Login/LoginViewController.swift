@@ -237,6 +237,7 @@ class LoginViewController: UIViewController {
             emailTextField.disableLoginTextField()
             passwordTextField.disableLoginTextField()
             facebookLoginButton.disableFBButton()
+            recoveryButton.disableRecoveryButton()
             
             //Begin timer
             startTimer()
@@ -261,6 +262,7 @@ class LoginViewController: UIViewController {
             emailTextField.enableLoginTextfield()
             passwordTextField.enableLoginTextfield()
             facebookLoginButton.enableFBButton()
+            recoveryButton.enableRecoveryButton()
             
         } else {
             //Otherwise keep counting down and updating the message
@@ -310,6 +312,7 @@ enum ErrorMsg: String {
     case registerDefault = "Regisration failed."
     case deleteAccountDefault = "Account deletion failed."
     case updateAccountDefault = "Account update failed."
+    case recoverAccountDefault = "Account recovery email failed."
 }
 
 //This enum contains all the strings used for the login prompt messages

@@ -47,6 +47,14 @@ extension UIButton {
         self.isEnabled = true
         self.setTitleColor(#colorLiteral(red: 0, green: 0.9866840243, blue: 0, alpha: 1), for: .normal)
     }
+    func disableRecoveryButton(){
+        self.isEnabled = false
+        self.setTitleColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.5041202911), for: .normal)
+    }
+    func enableRecoveryButton(){
+        self.isEnabled = true
+        self.setTitleColor(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), for: .normal)
+    }
 }
 
 extension UITextField {
