@@ -307,6 +307,8 @@ enum ErrorMsg: String {
     case emptyEditFields = "User fields can't be empty."
     case invalidCredential = "Invalid credentials."
     case requiresRecentLogin = "Updating/deleting requires recent log in."
+    case invalidSender = "Invalid sender email."
+    case invalidRecipientEmail = "Invalid recipient email."
     case fbLoginDefault = "Facebook login failed."
     case loginDefault = "Login failed."
     case registerDefault = "Regisration failed."

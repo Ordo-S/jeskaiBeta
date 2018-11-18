@@ -55,6 +55,14 @@ class RecoveryViewController: UIViewController {
                 //error
                 if let errCode = AuthErrorCode(rawValue: error._code) {
                     switch errCode {
+                    case .invalidEmail:
+                        self.resultLabel.text = ErrorMsg.invalidEmail.rawValue
+                    case .userNotFound:
+                        self.resultLabel.text = ErrorMsg.userNotFound.rawValue
+                    case .invalidSender:
+                        self.resultLabel.text = ErrorMsg.invalidSender.rawValue
+                    case .invalidRecipientEmail:
+                        self.resultLabel.text = ErrorMsg.invalidRecipientEmail.rawValue
                     case .tooManyRequests:
                         self.resultLabel.text = ErrorMsg.tooManyRequests.rawValue
                     case .networkError:
