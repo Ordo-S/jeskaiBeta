@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -759,18 +759,26 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="89.666666666666671"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="GSa-e3-IMT">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="GSa-e3-IMT">
                                             <rect key="frame" x="0.0" y="0.0" width="85" height="90"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VTF-XC-kMq">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VTF-XC-kMq">
                                             <rect key="frame" x="93" y="11" width="266" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="twr-vp-3mq">
+                                            <rect key="frame" x="93" y="49" width="205" height="30"/>
+                                            <state key="normal" title="Button"/>
+                                        </button>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="twr-vp-3mq" firstAttribute="bottom" secondItem="2GB-6o-uwE" secondAttribute="bottomMargin" id="cA5-cX-1bc"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="twr-vp-3mq" secondAttribute="trailing" constant="96" id="lOl-3H-Epa"/>
+                                        <constraint firstItem="twr-vp-3mq" firstAttribute="leading" secondItem="GSa-e3-IMT" secondAttribute="trailing" constant="8" id="xaY-O1-eYc"/>
+                                        <constraint firstItem="twr-vp-3mq" firstAttribute="top" secondItem="VTF-XC-kMq" secondAttribute="bottom" constant="17" id="zo7-sZ-nB8"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="eventLabel" destination="VTF-XC-kMq" id="fyk-JU-i8m"/>
@@ -793,7 +801,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J5e-Hb-4LQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3061" y="-950"/>
+            <point key="canvasLocation" x="3060.8695652173915" y="-950.22321428571422"/>
         </scene>
         <!--Add Event-->
         <scene sceneID="xql-mg-SMZ">
@@ -804,7 +812,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="jxE-r7-Lp1">
-                                <rect key="frame" x="8" y="107.99999999999997" width="398" height="380.33333333333326"/>
+                                <rect key="frame" x="8" y="107.99999999999997" width="398" height="415.33333333333326"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pvk-ew-0ze">
                                         <rect key="frame" x="0.0" y="0.0" width="47.333333333333336" height="20.333333333333332"/>
@@ -818,8 +826,14 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                                     </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Adress, City, State Zip" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="V6W-QD-LIV">
+                                        <rect key="frame" x="0.0" y="60.333333333333343" width="398" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
                                     <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="320" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="Zzm-Wd-3eY">
-                                        <rect key="frame" x="0.0" y="60.333333333333343" width="320" height="320"/>
+                                        <rect key="frame" x="0.0" y="95.333333333333343" width="320" height="320"/>
                                         <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Zzm-Wd-3eY" secondAttribute="height" multiplier="1:1" id="zo2-tA-ckr"/>
@@ -831,6 +845,7 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="Srh-eU-FWB" secondAttribute="trailing" id="SW8-s0-lbp"/>
+                                    <constraint firstAttribute="trailing" secondItem="V6W-QD-LIV" secondAttribute="trailing" id="YFo-2N-4w6"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -851,6 +866,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="eventAdressLabel" destination="V6W-QD-LIV" id="QyI-AA-7Mn"/>
                         <outlet property="eventNameLabel" destination="Pvk-ew-0ze" id="zdH-2x-YXQ"/>
                         <outlet property="eventTextField" destination="Srh-eU-FWB" id="cJM-i6-Ji6"/>
                         <outlet property="photoImageView" destination="Zzm-Wd-3eY" id="cAs-7X-soG"/>

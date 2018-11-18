@@ -8,11 +8,13 @@
 
 import UIKit
 import os.log
+import CoreLocation
 
 class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
     //Properties of View
     @IBOutlet weak var eventTextField: UITextField!
     @IBOutlet weak var eventNameLabel: UILabel!
+    @IBOutlet weak var eventAdressLabel: UITextField!
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
@@ -29,6 +31,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
         
         // Handle the text field’s user input through delegate callbacks.
         eventTextField.delegate = self
+        eventAdressLabel.delegate = self
     }
     //MARK: UITextFieldDelegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -68,10 +71,11 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
         
         let name = eventTextField.text ?? ""
         let photo = photoImageView.image
+        let address = eventAdressLabel.text ?? ""
         
         
         // Set the meal to be passed to MealTableViewController after the unwind segue.
-        Event = event(name: name, photo: photo!)
+        Event = event(name: name, photo: photo!, address: address)
     }
     
     //Actions of View
@@ -86,5 +90,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
         imagePickerController.delegate = self
         present(imagePickerController, animated: true, completion: nil)
     }
+    
 }
 

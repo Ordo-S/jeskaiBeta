@@ -12,9 +12,10 @@ class event{
     //MARK: Properties
     var name: String
     var photo: UIImage?
+    var address: String
     //Mark: Inits
     // Initialization should fail if there is no name.
-    init?(name:String, photo:UIImage) {
+    init?(name:String, photo:UIImage, address: String) {
         // Initialize stored properties.
         // The name must not be empty
         guard !name.isEmpty else {
@@ -23,6 +24,7 @@ class event{
         
         self.name = name
         self.photo = photo
+        self.address = address
         
     }
 }
