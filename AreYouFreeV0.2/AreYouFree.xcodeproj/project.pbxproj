@@ -27,6 +27,7 @@
 		DE690B9B215454DA00D3B2DE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DE690B9A215454DA00D3B2DE /* GoogleService-Info.plist */; };
 		DE7BC6CD219A7FC400E899E2 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7BC6CC219A7FC400E899E2 /* Extensions.swift */; };
 		DE7BC6CF219A8F4500E899E2 /* AppUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7BC6CE219A8F4500E899E2 /* AppUtility.swift */; };
+		DEBC58EE21A0D8ED0071D410 /* RecoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBC58ED21A0D8ED0071D410 /* RecoveryViewController.swift */; };
 		DEDBC9F9219E4C4900C8C207 /* Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDBC9F8219E4C4900C8C207 /* Singleton.swift */; };
 		DEDBC9FB219F8D8400C8C207 /* EditAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDBC9FA219F8D8400C8C207 /* EditAccountViewController.swift */; };
 		DEE16F57217BD7BD000D553A /* SettingsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE16F56217BD7BD000D553A /* SettingsPageViewController.swift */; };
@@ -85,6 +86,7 @@
 		DE690B9A215454DA00D3B2DE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DE7BC6CC219A7FC400E899E2 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		DE7BC6CE219A8F4500E899E2 /* AppUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtility.swift; sourceTree = "<group>"; };
+		DEBC58ED21A0D8ED0071D410 /* RecoveryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoveryViewController.swift; sourceTree = "<group>"; };
 		DEDBC9F8219E4C4900C8C207 /* Singleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Singleton.swift; sourceTree = "<group>"; };
 		DEDBC9FA219F8D8400C8C207 /* EditAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountViewController.swift; sourceTree = "<group>"; };
 		DEE16F56217BD7BD000D553A /* SettingsPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPageViewController.swift; sourceTree = "<group>"; };
@@ -146,7 +148,6 @@
 			children = (
 				27C2DDCD219D035500F229A3 /* event.swift */,
 				941F33DA219CDE6600C1BEE4 /* Contact.swift */,
-				DEDBC9F8219E4C4900C8C207 /* Singleton.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -165,6 +166,7 @@
 		DE100A8E219BAE30006E6EB1 /* UtilityScripts */ = {
 			isa = PBXGroup;
 			children = (
+				DEDBC9F8219E4C4900C8C207 /* Singleton.swift */,
 				DE7BC6CE219A8F4500E899E2 /* AppUtility.swift */,
 				DE7BC6CC219A7FC400E899E2 /* Extensions.swift */,
 			);
@@ -232,6 +234,7 @@
 			isa = PBXGroup;
 			children = (
 				DE690B6E215454AC00D3B2DE /* LoginViewController.swift */,
+				DEBC58ED21A0D8ED0071D410 /* RecoveryViewController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -514,6 +517,7 @@
 				27C2DDD2219D036300F229A3 /* EventTableViewCell.swift in Sources */,
 				27C2DDD4219D036300F229A3 /* EventViewController.swift in Sources */,
 				DE690B6F215454AC00D3B2DE /* LoginViewController.swift in Sources */,
+				DEBC58EE21A0D8ED0071D410 /* RecoveryViewController.swift in Sources */,
 				DE690B6D215454AC00D3B2DE /* AppDelegate.swift in Sources */,
 				DE7BC6CF219A8F4500E899E2 /* AppUtility.swift in Sources */,
 				27C2DDCE219D035500F229A3 /* event.swift in Sources */,

@@ -20,6 +20,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var signInButton: UIButton!
     @IBOutlet weak var facebookLoginButton: UIButton!
+    @IBOutlet weak var recoveryButton: UIButton!
     
     //Login lockout properties
     private var failedLoginAttempts = 0
@@ -120,6 +121,10 @@ class LoginViewController: UIViewController {
                 self.loginLabel.text = ErrorMsg.fbLoginDefault.rawValue
             }
         }
+    }
+    
+    @IBAction func recoveryClicked(_ sender: Any) {
+        performSegue(withIdentifier: "goToRecovery", sender: self)
     }
     
     //Activates when you change the value of the selector
@@ -231,6 +236,8 @@ class LoginViewController: UIViewController {
             signInButton.disableLoginButton()
             emailTextField.disableLoginTextField()
             passwordTextField.disableLoginTextField()
+            facebookLoginButton.disableFBButton()
+            recoveryButton.disableRecoveryButton()
             
             //Begin timer
             startTimer()
@@ -254,6 +261,8 @@ class LoginViewController: UIViewController {
             signInButton.enableLoginButton()
             emailTextField.enableLoginTextfield()
             passwordTextField.enableLoginTextfield()
+            facebookLoginButton.enableFBButton()
+            recoveryButton.enableRecoveryButton()
             
         } else {
             //Otherwise keep counting down and updating the message
@@ -298,11 +307,14 @@ enum ErrorMsg: String {
     case emptyEditFields = "User fields can't be empty."
     case invalidCredential = "Invalid credentials."
     case requiresRecentLogin = "Updating/deleting requires recent log in."
+    case invalidSender = "Invalid sender email."
+    case invalidRecipientEmail = "Invalid recipient email."
     case fbLoginDefault = "Facebook login failed."
     case loginDefault = "Login failed."
     case registerDefault = "Regisration failed."
     case deleteAccountDefault = "Account deletion failed."
     case updateAccountDefault = "Account update failed."
+    case recoverAccountDefault = "Account recovery email failed."
 }
 
 //This enum contains all the strings used for the login prompt messages
