@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import CoreLocation
 class event{
     //MARK: Properties
     var name: String
@@ -21,11 +21,26 @@ class event{
         guard !name.isEmpty else {
             return nil
         }
+        guard !address.isEmpty else {
+            return nil
+        }
         
         self.name = name
         self.photo = photo
         self.address = address
+        //Mark: Testing out Map features
+        //Code taken from https://stackoverflow.com/questions/42279252/convert-address-to-coordinates-swift
+        //And launching Map app https://www.youtube.com/watch?v=INfCmCxLC0o
+        let geocoder = CLGeocoder()
+        geocoder.geocodeAddressString(address) {
+            placemarks, error in
+            let placemark = placemarks?.first
+            let lat = placemark?.location?.coordinate.latitude
+            let lon = placemark?.location?.coordinate.longitude
+            print("Lat: \(String(describing: lat)), Lon: \(String(describing: lon))")
+        }
         
     }
+    
 }
 

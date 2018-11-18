@@ -769,12 +769,19 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="twr-vp-3mq">
-                                            <rect key="frame" x="93" y="49" width="205" height="30"/>
-                                            <state key="normal" title="Button"/>
+                                            <rect key="frame" x="74" y="49" width="102" height="30"/>
+                                            <state key="normal" title="Directions"/>
+                                            <connections>
+                                                <action selector="sendToMapsButton:" destination="Ckd-2M-MdS" eventType="touchUpInside" id="LmT-2V-0qp"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="twr-vp-3mq" firstAttribute="top" secondItem="VTF-XC-kMq" secondAttribute="bottom" constant="17" id="Ld1-kK-fCQ"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="twr-vp-3mq" secondAttribute="trailing" constant="218" id="NbD-f2-HSh"/>
+                                        <constraint firstItem="twr-vp-3mq" firstAttribute="bottom" secondItem="2GB-6o-uwE" secondAttribute="bottomMargin" id="P3m-8i-7HH"/>
                                         <constraint firstItem="twr-vp-3mq" firstAttribute="bottom" secondItem="2GB-6o-uwE" secondAttribute="bottomMargin" id="cA5-cX-1bc"/>
+                                        <constraint firstItem="twr-vp-3mq" firstAttribute="leading" secondItem="2GB-6o-uwE" secondAttribute="leadingMargin" constant="54" id="f6d-uh-CKE"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="twr-vp-3mq" secondAttribute="trailing" constant="96" id="lOl-3H-Epa"/>
                                         <constraint firstItem="twr-vp-3mq" firstAttribute="leading" secondItem="GSa-e3-IMT" secondAttribute="trailing" constant="8" id="xaY-O1-eYc"/>
                                         <constraint firstItem="twr-vp-3mq" firstAttribute="top" secondItem="VTF-XC-kMq" secondAttribute="bottom" constant="17" id="zo7-sZ-nB8"/>
@@ -801,7 +808,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J5e-Hb-4LQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3060.8695652173915" y="-950.22321428571422"/>
+            <point key="canvasLocation" x="3066.666666666667" y="-950.22321428571422"/>
         </scene>
         <!--Add Event-->
         <scene sceneID="xql-mg-SMZ">
@@ -900,7 +907,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V70-eX-IIg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2248" y="-950"/>
+            <point key="canvasLocation" x="2281" y="-950"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="gIZ-SX-iYN">
