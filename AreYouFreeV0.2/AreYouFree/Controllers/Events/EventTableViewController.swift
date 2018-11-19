@@ -42,6 +42,7 @@ class EventTableViewController: UITableViewController {
         
         // Table view cells are reused and should be dequeued using a cell identifier.
         let cellIdentifier = "EventTableViewCell"
+
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? EventTableViewCell  else {
             fatalError("The dequeued cell is not an instance of EventTableViewCell.")
@@ -49,9 +50,14 @@ class EventTableViewController: UITableViewController {
         
         // Fetches the appropriate meal for the data source layout.
         let Event = Events[indexPath.row]
+        let lat = Event.calculateLat()
+        let lon = Event.calculateLon()
         
         cell.eventLabel.text = Event.name
         cell.photoImageView.image = Event.photo
+        cell.latitude = lat
+        cell.longitude = lon
+        
         
         return cell
         

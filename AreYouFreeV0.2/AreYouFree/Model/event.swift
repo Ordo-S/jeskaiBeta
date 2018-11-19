@@ -8,6 +8,12 @@
 
 import UIKit
 import CoreLocation
+
+protocol findLocationProtocal {
+    var address:String {get}
+    func calculateLat() -> Double
+    func calculateLon() -> Double
+}
 class event{
     //MARK: Properties
     var name: String
@@ -15,7 +21,7 @@ class event{
     var address: String
     //Mark: Inits
     // Initialization should fail if there is no name.
-    init?(name:String, photo:UIImage, address: String) {
+    init?(name:String, photo:UIImage, address:String ) {
         // Initialize stored properties.
         // The name must not be empty
         guard !name.isEmpty else {
@@ -24,6 +30,7 @@ class event{
         guard !address.isEmpty else {
             return nil
         }
+      
         
         self.name = name
         self.photo = photo
@@ -31,16 +38,34 @@ class event{
         //Mark: Testing out Map features
         //Code taken from https://stackoverflow.com/questions/42279252/convert-address-to-coordinates-swift
         //And launching Map app https://www.youtube.com/watch?v=INfCmCxLC0o
+        
+    }
+}
+
+extension event: findLocationProtocal {
+    func calculateLat() -> Double {
+        var lat: Double?
         let geocoder = CLGeocoder()
         geocoder.geocodeAddressString(address) {
             placemarks, error in
             let placemark = placemarks?.first
-            let lat = placemark?.location?.coordinate.latitude
-            let lon = placemark?.location?.coordinate.longitude
-            print("Lat: \(String(describing: lat)), Lon: \(String(describing: lon))")
+            lat = placemark?.location?.coordinate.latitude
+            //print("Lat: \(String(describing: self.lat)), Lon: \(String(describing: self.lon))")
         }
-        
+        return lat ?? 37.333944
     }
     
-}
+     func calculateLon() -> Double{
+        var lon: Double?
+        let geocoder = CLGeocoder()
+        geocoder.geocodeAddressString(address) {
+            placemarks, error in
+            let placemark = placemarks?.first
+            lon = placemark?.location?.coordinate.latitude
+        }
+        return lon ??  -121.883991
+    }
+    }
+    
+
 

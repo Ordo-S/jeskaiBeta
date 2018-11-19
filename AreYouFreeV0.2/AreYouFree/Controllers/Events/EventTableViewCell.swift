@@ -10,13 +10,16 @@ import UIKit
 import MapKit
 
 class EventTableViewCell: UITableViewCell {
+    //Mark: Variables
+    var latitude:CLLocationDegrees = 0.0
+    var longitude:CLLocationDegrees = 0.0
     //Mark: Properties
+    
     @IBOutlet weak var eventLabel: UILabel!
     @IBOutlet weak var photoImageView: UIImageView!
     @IBAction func sendToMapsButton(_ sender: UIButton) {
         //Defining destination
-        let latitude:CLLocationDegrees = 39.048825
-        let longitude:CLLocationDegrees = -120.981227
+        
         
         let regionDistance:CLLocationDistance = 1000;
         let coordinates = CLLocationCoordinate2DMake(latitude, longitude)
@@ -26,10 +29,11 @@ class EventTableViewCell: UITableViewCell {
         
         let placemark = MKPlacemark(coordinate: coordinates)
         let mapItem = MKMapItem(placemark: placemark)
-        mapItem.name = "My House"
+        mapItem.name = eventLabel.text
         mapItem.openInMaps(launchOptions: options)
     }
     
+
     
 
     override func awakeFromNib() {
