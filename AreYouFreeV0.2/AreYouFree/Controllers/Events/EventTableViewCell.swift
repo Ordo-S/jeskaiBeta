@@ -11,8 +11,8 @@ import MapKit
 
 class EventTableViewCell: UITableViewCell {
     //Mark: Variables
-    var latitude:CLLocationDegrees = 0.0
-    var longitude:CLLocationDegrees = 0.0
+    var latitude:CLLocationDegrees = 128.0
+    var longitude:CLLocationDegrees = -64.1
     //Mark: Properties
     
     @IBOutlet weak var eventLabel: UILabel!

@@ -11,8 +11,8 @@ import CoreLocation
 
 protocol findLocationProtocal {
     var address:String {get}
-    func calculateLat() -> Double
-    func calculateLon() -> Double
+    func calculateLat() -> CLLocationDegrees
+    func calculateLon() -> CLLocationDegrees
 }
 class event{
     //MARK: Properties
@@ -41,29 +41,30 @@ class event{
         
     }
 }
-
+//need to return lat and long
 extension event: findLocationProtocal {
-    func calculateLat() -> Double {
-        var lat: Double?
+    func calculateLat() -> CLLocationDegrees {
+        var lat: CLLocationDegrees?
         let geocoder = CLGeocoder()
         geocoder.geocodeAddressString(address) {
             placemarks, error in
             let placemark = placemarks?.first
-            lat = placemark?.location?.coordinate.latitude
-            //print("Lat: \(String(describing: self.lat)), Lon: \(String(describing: self.lon))")
+            lat = (placemark?.location?.coordinate.latitude)!
+            
         }
-        return lat ?? 37.333944
+        
+        return lat!
     }
     
-     func calculateLon() -> Double{
-        var lon: Double?
+     func calculateLon() -> CLLocationDegrees{
+        var lon: CLLocationDegrees?
         let geocoder = CLGeocoder()
         geocoder.geocodeAddressString(address) {
             placemarks, error in
             let placemark = placemarks?.first
-            lon = placemark?.location?.coordinate.latitude
+            lon = (placemark?.location?.coordinate.latitude)!
         }
-        return lon ??  -121.883991
+        return lon!
     }
     }
     
