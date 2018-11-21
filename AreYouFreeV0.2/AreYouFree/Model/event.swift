@@ -44,7 +44,7 @@ class event{
 //need to return lat and long
 extension event: findLocationProtocal {
     func calculateLat() -> CLLocationDegrees {
-        var lat: CLLocationDegrees?
+        var lat: CLLocationDegrees = 0.0
         let geocoder = CLGeocoder()
         geocoder.geocodeAddressString(address) {
             placemarks, error in
@@ -52,21 +52,24 @@ extension event: findLocationProtocal {
             lat = (placemark?.location?.coordinate.latitude)!
             
         }
-        
-        return lat!
+
+        return lat
     }
     
      func calculateLon() -> CLLocationDegrees{
-        var lon: CLLocationDegrees?
+        var lon: CLLocationDegrees = 0.0
         let geocoder = CLGeocoder()
         geocoder.geocodeAddressString(address) {
             placemarks, error in
             let placemark = placemarks?.first
             lon = (placemark?.location?.coordinate.latitude)!
+            while(lon == 0.0){}
+            
         }
-        return lon!
+        
+        return lon
     }
-    }
+}
     
 
 
