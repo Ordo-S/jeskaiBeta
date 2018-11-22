@@ -979,7 +979,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="qPl-or-ygn" kind="show" identifier="InviteView" id="bPM-FL-8SS"/>
+                                    <segue destination="I3F-wG-7k5" kind="show" identifier="EditEvent" id="3Dh-ep-ONS"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yOA-gY-aU2">
@@ -991,6 +991,9 @@
                                 <state key="normal" title="Invite Peeps">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <segue destination="qPl-or-ygn" kind="show" identifier="Invite" id="fiZ-v9-LAO"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="17b-2v-DrP">
                                 <rect key="frame" x="20" y="340" width="350" height="300"/>
@@ -1084,7 +1087,7 @@
                         </prototypes>
                     </tableView>
                     <navigationItem key="navigationItem" title="Contacts" id="u3C-29-cNg">
-                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="add" id="8DA-DG-lQm"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="8DA-DG-lQm"/>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="phA-Gd-xFj" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1101,6 +1104,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="5YA-Nw-v0l"/>
+        <segue reference="3Dh-ep-ONS"/>
         <segue reference="Yrg-hC-ybp"/>
         <segue reference="Avu-ks-v7G"/>
     </inferredMetricsTieBreakers>
