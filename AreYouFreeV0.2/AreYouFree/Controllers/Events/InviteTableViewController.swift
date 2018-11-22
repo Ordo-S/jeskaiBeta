@@ -8,14 +8,17 @@
 
 import UIKit
 import FirebaseDatabase
+import os.log
 
 // The Firebase DB uses key-value pairs
 class InviteTableViewController: UITableViewController {
-    
+    //Mark: Properties
+    var event: event?
     var contacts: [Contact] = []
     var databaseHandle:DatabaseHandle?
     var ref: DatabaseReference!
-    
+    //used for invitng people to event
+    var hasCheckmark: [Int] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -43,6 +46,8 @@ class InviteTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        //init the array to be full of 0
+        hasCheckmark = Array(repeating: 0, count: contacts.count)
         // #return the number of rows (number of contacts we have!)
         return contacts.count
     }
@@ -66,12 +71,28 @@ class InviteTableViewController: UITableViewController {
         if tableView.cellForRow(at: indexPath)?.accessoryType == UITableViewCell.AccessoryType.checkmark
         {
             tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCell.AccessoryType.none
+            hasCheckmark[indexPath.row] = 0
         }
         else
         {
             tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCell.AccessoryType.checkmark
+            hasCheckmark[indexPath.row] = 1
         }
     }
+    //Mark: Actions
+    @IBAction func inviteToEventButton(_ sender: Any) {
+        print("Event: ",event?.name ?? "Error in getting event name")
+        print("Contacts Invited")
+            for i in 0...hasCheckmark.count-1 {
+                if hasCheckmark[i] == 1{
+                    let path = IndexPath(row: i, section: i)
+                    let contact = contacts[path.row]
+                    print(contact.name)
+                }
+            }
+        }
+    
+    
     //Orientation lock purposes
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

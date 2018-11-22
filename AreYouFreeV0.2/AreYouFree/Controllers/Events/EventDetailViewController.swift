@@ -29,12 +29,33 @@ class EventDetailViewController: UIViewController, UINavigationControllerDelegat
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //From Apples docs on how to send to segue
+        /*
         super.prepare(for: segue, sender: sender)
         if segue.identifier == "EditEvent" {
             guard let viewController = segue.destination as? ViewController else{
                  fatalError("Unexpected destination: \(segue.destination)") }
             //Passing the details to the view
             viewController.Event = event
+        }*/
+        switch(segue.identifier ?? "") {
+            
+        case "EditEvent":
+            guard let viewController = segue.destination as? ViewController else{
+                fatalError("Unexpected destination: \(segue.destination)") }
+            //Passing the details to the view
+            viewController.Event = event
+            
+        case "Invite":
+            //taken from apple docs exactly modifed for project use
+            guard let ViewController = segue.destination as? InviteTableViewController else {
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            ViewController.event = event
+            
+           
+            
+        default:
+            fatalError("Unexpected Segue Identifier; \(String(describing: segue.identifier))")
         }
     }
 }
