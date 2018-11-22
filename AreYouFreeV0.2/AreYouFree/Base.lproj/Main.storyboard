@@ -933,19 +933,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="46" translatesAutoresizingMaskIntoConstraints="NO" id="MxY-Q8-JXJ">
-                                <rect key="frame" x="20" y="88.000000000000014" width="374" height="184.33333333333337"/>
+                                <rect key="frame" x="20" y="88.000000000000014" width="374" height="233.33333333333337"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="234" translatesAutoresizingMaskIntoConstraints="NO" id="ZF9-Fc-aIr">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="79"/>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JHV-vV-AYa">
-                                        <rect key="frame" x="0.0" y="76" width="374" height="38.333333333333343"/>
+                                        <rect key="frame" x="0.0" y="124.99999999999999" width="374" height="38.333333333333329"/>
                                         <fontDescription key="fontDescription" type="system" weight="black" pointSize="32"/>
                                         <color key="textColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="115" translatesAutoresizingMaskIntoConstraints="NO" id="5aL-48-uSX">
-                                        <rect key="frame" x="0.0" y="160.33333333333334" width="374" height="24"/>
+                                        <rect key="frame" x="0.0" y="209.33333333333331" width="374" height="24"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Adress:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wq3-FX-GZA">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="24"/>
@@ -970,7 +970,7 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hn8-gS-aMI">
-                                <rect key="frame" x="10" y="743" width="394" height="50"/>
+                                <rect key="frame" x="10" y="792" width="394" height="50"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="u3W-Ei-gPj"/>
@@ -978,9 +978,12 @@
                                 <state key="normal" title="Edit Event">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <segue destination="I3F-wG-7k5" kind="show" identifier="EditEvent" id="ZvT-Mk-DfX"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yOA-gY-aU2">
-                                <rect key="frame" x="10" y="679" width="394" height="50"/>
+                                <rect key="frame" x="10" y="728" width="394" height="50"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="XH2-mG-iPm"/>
@@ -990,7 +993,7 @@
                                 </state>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="17b-2v-DrP">
-                                <rect key="frame" x="20" y="291" width="350" height="300"/>
+                                <rect key="frame" x="20" y="340" width="350" height="300"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.23137254900000001" green="0.25882352939999997" blue="0.32156862749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1053,7 +1056,8 @@
         <image name="сontacts" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="O0w-7E-5xH"/>
+        <segue reference="5YA-Nw-v0l"/>
+        <segue reference="ZvT-Mk-DfX"/>
         <segue reference="vye-yT-dTq"/>
         <segue reference="Avu-ks-v7G"/>
     </inferredMetricsTieBreakers>

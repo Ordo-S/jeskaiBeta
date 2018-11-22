@@ -131,7 +131,7 @@ class EventTableViewController: UITableViewController {
             
             let selectedEvent = Events[indexPath.row]
             ViewController.event = selectedEvent
-
+            os_log("Veiwing Event detail", log: OSLog.default, type: .debug)
             
         default:
             fatalError("Unexpected Segue Identifier; \(String(describing: segue.identifier))")

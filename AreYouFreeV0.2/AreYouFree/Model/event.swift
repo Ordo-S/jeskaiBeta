@@ -44,7 +44,7 @@ class event{
 }
 //need to return lat and long
 extension event: findLocationProtocal {
-    
+    //have stoped dev on this for now 
    
 }
     

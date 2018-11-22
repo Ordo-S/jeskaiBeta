@@ -19,7 +19,7 @@ class EventDetailViewController: UIViewController, UINavigationControllerDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         //Set the View
-       
+        //Set the View
         if let event = event {
             navigationItem.title = event.name
             eventNameLabel.text = event.name
@@ -27,7 +27,14 @@ class EventDetailViewController: UIViewController, UINavigationControllerDelegat
             eventAdressLabel.text = event.address
         }
     }
-    
-    
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //From Apples docs on how to send to segue
+        super.prepare(for: segue, sender: sender)
+        if segue.identifier == "EditEvent" {
+            guard let viewController = segue.destination as? ViewController else{
+                 fatalError("Unexpected destination: \(segue.destination)") }
+            //Passing the details to the view
+            viewController.Event = event
+        }
+    }
 }
