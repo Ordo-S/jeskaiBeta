@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import os.log
 
 class EventTableViewController: UITableViewController {
     //Mark: Properties
@@ -51,13 +52,13 @@ class EventTableViewController: UITableViewController {
         
         // Fetches the appropriate event for the data source layout.
         let Event = Events[indexPath.row]
-        let lat = Event.calculateLat()
-        let lon = Event.calculateLon()
+        //let lat = Event.calculateLat()
+       // let lon = Event.calculateLon()
         
         cell.eventLabel.text = Event.name
         cell.photoImageView.image = Event.photo
-        cell.latitude = lat
-        cell.longitude = lon
+       // cell.latitude = lat
+       // cell.longitude = lon
         
         
         return cell
@@ -100,27 +101,63 @@ class EventTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        //From Apples docs on how to send to segue
+        super.prepare(for: segue, sender: sender)
+        
+        switch(segue.identifier ?? "") {
+            
+        case "AddItem":
+            os_log("Adding a new event.", log: OSLog.default, type: .debug)
+            
+        case "ShowDetail":
+            guard let eventDetailViewController = segue.destination as? ViewController else {
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            
+            guard let selectedEventCell = sender as? EventTableViewCell else {
+                fatalError("Unexpected sender: \(String(describing: sender))")
+            }
+            
+            guard let indexPath = tableView.indexPath(for: selectedEventCell) else {
+                fatalError("The selected cell is not being displayed by the table")
+            }
+            //Event is from our EventViewConroller
+            let selectedEvent = Events[indexPath.row]
+            eventDetailViewController.Event = selectedEvent
+            
+        default:
+            fatalError("Unexpected Segue Identifier; \(String(describing: segue.identifier))")
+        }
     }
-    */
+ 
     //MARK: Actions
     @IBAction func unwindTEventList(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.source as? ViewController, let Event = sourceViewController.Event {
             //Events is Local
             //Event is from EventView super confusing I know
             
-            let newIndexPath = IndexPath(row: Events.count, section: 0)
+            //How to chouse how to segue to the event view
             
-            Events.append(Event)
-            tableView.insertRows(at: [newIndexPath], with: .automatic)
+            if let selectedIndexPath = tableView.indexPathForSelectedRow {
+                // Update an existing event.
+                Events[selectedIndexPath.row] = Event
+                tableView.reloadRows(at: [selectedIndexPath], with: .none)
+            }
+            else {
+                // Add a new event.
+                let newIndexPath = IndexPath(row: Events.count, section: 0)
+                
+                Events.append(Event)
+                tableView.insertRows(at: [newIndexPath], with: .automatic)
+            }
         }
     }
+    
     //MARK: Private Methods
     /*Used for testing
     private func loadSampleEvent() {

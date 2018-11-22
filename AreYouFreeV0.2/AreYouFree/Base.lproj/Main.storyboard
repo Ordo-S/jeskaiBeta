@@ -783,6 +783,7 @@
                                 <connections>
                                     <outlet property="eventLabel" destination="VTF-XC-kMq" id="fyk-JU-i8m"/>
                                     <outlet property="photoImageView" destination="GSa-e3-IMT" id="rZ2-VB-tx4"/>
+                                    <segue destination="I3F-wG-7k5" kind="show" identifier="ShowDetail" id="bES-Py-Hh1"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -826,11 +827,10 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Adress, City, State Zip" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="V6W-QD-LIV">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Adress, City, State Zip" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="V6W-QD-LIV">
                                         <rect key="frame" x="0.0" y="60.333333333333343" width="398" height="30"/>
                                         <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" textContentType="street-address"/>
                                     </textField>
                                     <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="320" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="Zzm-Wd-3eY">
                                         <rect key="frame" x="0.0" y="95.333333333333343" width="320" height="320"/>
@@ -885,7 +885,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="4857" y="-950"/>
+            <point key="canvasLocation" x="4856.521739130435" y="-950.22321428571422"/>
         </scene>
         <!--Events-->
         <scene sceneID="UJh-EX-Z3D">
@@ -922,7 +922,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RJF-N8-j7N" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3906" y="-950"/>
+            <point key="canvasLocation" x="3910" y="-542"/>
         </scene>
     </scenes>
     <resources>
@@ -933,6 +933,7 @@
         <image name="сontacts" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="bES-Py-Hh1"/>
         <segue reference="vye-yT-dTq"/>
         <segue reference="Avu-ks-v7G"/>
     </inferredMetricsTieBreakers>

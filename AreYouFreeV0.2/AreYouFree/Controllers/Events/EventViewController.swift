@@ -32,6 +32,17 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
         // Handle the text field’s user input through delegate callbacks.
         eventTextField.delegate = self
         eventAdressLabel.delegate = self
+        
+        // Set up views if editing an existing Meal.
+        if let event = Event {
+            navigationItem.title = event.name
+            eventTextField.text = event.name
+            photoImageView.image = event.photo
+            eventAdressLabel.text = event.address
+        }
+        
+        // Enable the Save button only if the text field has a valid Meal name.
+        updateSaveButtonState()
     }
     //MARK: UITextFieldDelegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -61,8 +72,21 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
     //MARK: Navigation
     
     @IBAction func cancelEvent(_ sender: UIBarButtonItem) {
-        dismiss(animated: true, completion: nil)
+        // Depending on style of presentation (modal or push presentation), this view controller needs to be dismissed in two different ways.
+        //Taken from apple docs
+        let isPresentingInAddEventMode = presentingViewController is UINavigationController
+        
+        if isPresentingInAddEventMode {
+            dismiss(animated: true, completion: nil)
+        }
+        else if let owningNavigationController = navigationController{
+            owningNavigationController.popViewController(animated: true)
+        }
+        else {
+            fatalError("The EventViewController is not inside a navigation controller.")
+        }
     }
+    
     // This method lets you configure a view controller before it's presented.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
