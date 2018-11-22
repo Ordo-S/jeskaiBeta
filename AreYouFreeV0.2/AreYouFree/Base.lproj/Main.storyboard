@@ -1090,11 +1090,16 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="8DA-DG-lQm">
                             <connections>
                                 <action selector="inviteToEventButton:" destination="qPl-or-ygn" id="D5J-bk-QcT"/>
+                                <segue destination="KXr-8X-AcB" kind="unwind" unwindAction="unwindTEventListWithSender:" id="Smc-bW-oRo"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="saveButton" destination="8DA-DG-lQm" id="I6e-Tl-GUR"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="phA-Gd-xFj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="KXr-8X-AcB" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="6035" y="-1469"/>
         </scene>
@@ -1107,7 +1112,7 @@
         <image name="сontacts" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="O0w-7E-5xH"/>
+        <segue reference="5YA-Nw-v0l"/>
         <segue reference="3Dh-ep-ONS"/>
         <segue reference="Yrg-hC-ybp"/>
         <segue reference="Avu-ks-v7G"/>

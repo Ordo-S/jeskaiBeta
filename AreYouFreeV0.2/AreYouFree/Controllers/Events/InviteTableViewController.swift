@@ -19,6 +19,7 @@ class InviteTableViewController: UITableViewController {
     var ref: DatabaseReference!
     //used for invitng people to event
     var hasCheckmark: [Int] = []
+    @IBOutlet weak var saveButton: UIBarButtonItem!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -80,18 +81,26 @@ class InviteTableViewController: UITableViewController {
         }
     }
     //Mark: Actions
-    @IBAction func inviteToEventButton(_ sender: Any) {
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        // Configure the destination view controller only when the save button is pressed.
+        guard let button = sender as? UIBarButtonItem, button === saveButton else {
+            os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
+            return
+        }
         print("Event: ",event?.name ?? "Error in getting event name")
         print("Contacts Invited")
-            for i in 0...hasCheckmark.count-1 {
-                if hasCheckmark[i] == 1{
-                    let path = IndexPath(row: i, section: i)
-                    let contact = contacts[path.row]
-                    print(contact.name)
-                }
+        for i in 0...hasCheckmark.count-1 {
+            if hasCheckmark[i] == 1{
+                let path = IndexPath(row: i, section: i)
+                let contact = contacts[path.row]
+                print(contact.name)
             }
         }
-    
+        
+    }
     
     //Orientation lock purposes
     override func viewWillAppear(_ animated: Bool) {
