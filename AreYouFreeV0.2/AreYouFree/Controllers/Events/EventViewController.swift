@@ -41,8 +41,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
             eventAdressLabel.text = event.address
         }
         
-        // Enable the Save button only if the text field has a valid Meal name.
-        updateSaveButtonState()
+        
     }
     //MARK: UITextFieldDelegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
