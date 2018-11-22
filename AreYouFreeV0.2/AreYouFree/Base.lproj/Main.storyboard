@@ -858,7 +858,11 @@
                         <viewLayoutGuide key="safeArea" id="k8I-oq-fPB"/>
                     </view>
                     <navigationItem key="navigationItem" title="Add Event" id="kPN-bj-UI6">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="qLH-Nh-j2n"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="qLH-Nh-j2n">
+                            <connections>
+                                <action selector="cancelEvent:" destination="I3F-wG-7k5" id="HYX-G0-6gc"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="4uo-cM-jrk">
                             <connections>
                                 <segue destination="jO0-j6-Jh1" kind="unwind" unwindAction="unwindTEventListWithSender:" id="1dI-5D-IS3"/>

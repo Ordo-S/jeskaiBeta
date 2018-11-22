@@ -49,7 +49,7 @@ class EventTableViewController: UITableViewController {
             fatalError("The dequeued cell is not an instance of EventTableViewCell.")
         }
         
-        // Fetches the appropriate meal for the data source layout.
+        // Fetches the appropriate event for the data source layout.
         let Event = Events[indexPath.row]
         let lat = Event.calculateLat()
         let lon = Event.calculateLon()

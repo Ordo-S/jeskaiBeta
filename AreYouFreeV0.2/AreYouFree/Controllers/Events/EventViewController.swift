@@ -59,6 +59,10 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
         dismiss(animated: true, completion: nil)
     }
     //MARK: Navigation
+    
+    @IBAction func cancelEvent(_ sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
+    }
     // This method lets you configure a view controller before it's presented.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
