@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FirebaseStorage
+import FirebaseDatabase
 
 class EventTableViewController: UITableViewController {
     //Mark: Properties
@@ -17,6 +19,44 @@ class EventTableViewController: UITableViewController {
         
         //Load Sample Events, for testing 
        // loadSampleEvent()
+        
+        
+        // ### Luke Begin ###
+        
+        // the function below retrieves an the events from the database
+        
+        let newIndexPath = IndexPath(row: Events.count, section: 0)
+        let storageRef = Storage.storage().reference()
+        let currentUserID = Singleton.shared.currentUserID
+        let ref = Database.database().reference()
+        let databaseHandle = ref.child(currentUserID + "/Events").observe(.childAdded, with: { (snapshot) in
+            let name: String = (snapshot.value as? String)!
+            let pathToImage = storageRef.child(currentUserID + "/EventImages/" + name)
+            pathToImage.getData(maxSize: 1 * 1024 * 1024) { data, error in
+                if let error = error {
+                    
+                } else {
+                    let eventImage = UIImage (data: data!)
+                    let loadedEvent = event(name: name, photo: eventImage!)
+                    self.Events.append(loadedEvent!)
+                    self.tableView.insertRows(at: [newIndexPath], with: .automatic)
+                    self.tableView.reloadData()
+                }
+            }
+            
+        })
+        
+        // Luke: add remove below
+        ref.child(currentUserID + "/Events").observe(.childRemoved, with: { (snapshot) in
+            // if child is removed, refresh the screen
+            self.tableView.reloadData()
+        })
+        
+        // ### Luke end ###
+        
+        
+        // tableView.insertRows(at: [newIndexPath], with: .automatic)
+        // tableView.reloadData()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -111,7 +151,9 @@ class EventTableViewController: UITableViewController {
             let newIndexPath = IndexPath(row: Events.count, section: 0)
             
             Events.append(Event)
-            tableView.insertRows(at: [newIndexPath], with: .automatic)
+            // tableView.insertRows(at: [newIndexPath], with: .automatic)
+            // I commented the line above because the insertion is handled in viewDidLoad()
+            tableView.reloadData()
         }
     }
     //MARK: Private Methods

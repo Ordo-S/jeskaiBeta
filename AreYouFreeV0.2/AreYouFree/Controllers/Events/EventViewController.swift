@@ -8,6 +8,8 @@
 
 import UIKit
 import os.log
+import FirebaseDatabase
+import FirebaseStorage
 
 class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
     //Properties of View
@@ -22,10 +24,15 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
      Tanken from apples docs.
      */
     var Event: event?
+    var databaseHandle:DatabaseHandle?
+    var ref: DatabaseReference!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        let currentUserID = Singleton.shared.currentUserID
+        ref = Database.database().reference()
+        
         
         // Handle the text field’s user input through delegate callbacks.
         eventTextField.delegate = self
@@ -68,10 +75,30 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
         
         let name = eventTextField.text ?? ""
         let photo = photoImageView.image
+        let currentUserID = Singleton.shared.currentUserID
         
         
         // Set the meal to be passed to MealTableViewController after the unwind segue.
         Event = event(name: name, photo: photo!)
+        
+        let eventPhoto: UIImage = photo!
+        let imageData : Data = (eventPhoto.jpegData(compressionQuality: 0.8))!      // compressing image data
+        let storageRef = Storage.storage().reference()                              // creating a storage reference
+        
+        // store image to a folder called userID/EventImages and save the image name as the event name
+        storageRef.child(currentUserID + "/EventImages/" + (Event?.name)!).putData(imageData, metadata: nil) { metadata, error in
+            guard let metadata = metadata else {
+                return
+            }
+            let size = metadata.size
+            storageRef.downloadURL { (url, error) in
+                guard let downloadURL = url else {
+                    return
+                }
+            }
+        }
+        
+        ref.child(currentUserID + "/Events").child(Event!.name).setValue(Event!.name)   // store name of event to the database
     }
     
     //Actions of View
