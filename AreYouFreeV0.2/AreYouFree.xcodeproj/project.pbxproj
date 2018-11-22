@@ -11,6 +11,7 @@
 		27C2DDD2219D036300F229A3 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C2DDCF219D036300F229A3 /* EventTableViewCell.swift */; };
 		27C2DDD3219D036300F229A3 /* EventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C2DDD0219D036300F229A3 /* EventTableViewController.swift */; };
 		27C2DDD4219D036300F229A3 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C2DDD1219D036300F229A3 /* EventViewController.swift */; };
+		27F362A921A652B400027AA5 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F362A821A652B400027AA5 /* EventDetailViewController.swift */; };
 		941F33DB219CDE6600C1BEE4 /* AddContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941F33D7219CDE6600C1BEE4 /* AddContactViewController.swift */; };
 		941F33DC219CDE6600C1BEE4 /* ContactDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941F33D8219CDE6600C1BEE4 /* ContactDetailViewController.swift */; };
 		941F33DD219CDE6600C1BEE4 /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941F33D9219CDE6600C1BEE4 /* ContactsViewController.swift */; };
@@ -58,6 +59,7 @@
 		27C2DDCF219D036300F229A3 /* EventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		27C2DDD0219D036300F229A3 /* EventTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableViewController.swift; sourceTree = "<group>"; };
 		27C2DDD1219D036300F229A3 /* EventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
+		27F362A821A652B400027AA5 /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EventDetailViewController.swift; path = /Users/ordo/git/jeskaiBeta/AreYouFreeV0.2/AreYouFree/Controllers/Events/EventDetailViewController.swift; sourceTree = "<absolute>"; };
 		2EE058ACE044251D64953D24 /* Pods-AreYouFreeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AreYouFreeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AreYouFreeTests/Pods-AreYouFreeTests.release.xcconfig"; sourceTree = "<group>"; };
 		347AAD725CD919098C3B07A2 /* Pods-AreYouFree.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AreYouFree.release.xcconfig"; path = "Pods/Target Support Files/Pods-AreYouFree/Pods-AreYouFree.release.xcconfig"; sourceTree = "<group>"; };
 		484BC0E57818539CB4137710 /* Pods_AreYouFreeUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AreYouFreeUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -242,6 +244,7 @@
 		DEDBC9FD219FA3F900C8C207 /* Events */ = {
 			isa = PBXGroup;
 			children = (
+				27F362A821A652B400027AA5 /* EventDetailViewController.swift */,
 				27C2DDCF219D036300F229A3 /* EventTableViewCell.swift */,
 				27C2DDD0219D036300F229A3 /* EventTableViewController.swift */,
 				27C2DDD1219D036300F229A3 /* EventViewController.swift */,
@@ -527,6 +530,7 @@
 				DEE16F57217BD7BD000D553A /* SettingsPageViewController.swift in Sources */,
 				DEDBC9FB219F8D8400C8C207 /* EditAccountViewController.swift in Sources */,
 				27C2DDD3219D036300F229A3 /* EventTableViewController.swift in Sources */,
+				27F362A921A652B400027AA5 /* EventDetailViewController.swift in Sources */,
 				DE7BC6CD219A7FC400E899E2 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

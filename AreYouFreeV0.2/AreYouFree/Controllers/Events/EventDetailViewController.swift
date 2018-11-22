@@ -7,23 +7,25 @@
 
 import UIKit
 
-class EventDetailViewController: UIViewController {
-
+class EventDetailViewController: UIViewController, UINavigationControllerDelegate {
+    //Mark: Properties
+    @IBOutlet weak var eventNameLabel: UILabel!
+    @IBOutlet weak var eventAdressLabel: UILabel!
+    @IBOutlet weak var eventPhotoImage: UIImageView!
+    
+    // Declare as var for mutability and initialize as nil.
+    var Event: event?
+    // To know whether or not we have deleted the contact.
+    var indexPath: IndexPath? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        //Set the View
+        eventNameLabel.text = Event?.name
+        eventAdressLabel.text = Event?.address
+        eventPhotoImage.image = Event?.photo
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
 
 }

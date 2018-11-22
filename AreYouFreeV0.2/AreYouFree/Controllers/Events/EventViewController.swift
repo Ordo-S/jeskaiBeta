@@ -33,7 +33,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
         eventTextField.delegate = self
         eventAdressLabel.delegate = self
         
-        // Set up views if editing an existing Meal.
+        // Set up views if editing an existing Event.
         if let event = Event {
             navigationItem.title = event.name
             eventTextField.text = event.name
@@ -103,6 +103,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
         
         // Set the meal to be passed to MealTableViewController after the unwind segue.
         Event = event(name: name, photo: photo!, address: address)
+       
     }
     
     //Actions of View

@@ -116,20 +116,14 @@ class EventTableViewController: UITableViewController {
             os_log("Adding a new event.", log: OSLog.default, type: .debug)
             
         case "ShowDetail":
-            guard let eventDetailViewController = segue.destination as? ViewController else {
-                fatalError("Unexpected destination: \(segue.destination)")
-            }
+            // if contactDetailSegue is not talking to the ContactDetailViewController... return
+            guard let viewController = segue.destination as? EventDetailViewController else { return }
             
-            guard let selectedEventCell = sender as? EventTableViewCell else {
-                fatalError("Unexpected sender: \(String(describing: sender))")
-            }
-            
-            guard let indexPath = tableView.indexPath(for: selectedEventCell) else {
-                fatalError("The selected cell is not being displayed by the table")
-            }
-            //Event is from our EventViewConroller
-            let selectedEvent = Events[indexPath.row]
-            eventDetailViewController.Event = selectedEvent
+            // Make sure it is unwrapped! If we do not know which row is selected, we won't know which contact to pass on!
+            guard let indexPath = tableView.indexPathForSelectedRow else { return }
+            let Event = Events[indexPath.row]
+            viewController.Event = Event
+            viewController.indexPath = indexPath
             
         default:
             fatalError("Unexpected Segue Identifier; \(String(describing: segue.identifier))")
