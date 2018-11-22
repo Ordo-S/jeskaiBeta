@@ -783,7 +783,7 @@
                                 <connections>
                                     <outlet property="eventLabel" destination="VTF-XC-kMq" id="fyk-JU-i8m"/>
                                     <outlet property="photoImageView" destination="GSa-e3-IMT" id="rZ2-VB-tx4"/>
-                                    <segue destination="oTe-Nc-DWq" kind="show" identifier="ShowDetail" id="9GR-1A-syn"/>
+                                    <segue destination="jj3-mI-OqS" kind="show" identifier="EventDetail" id="O0w-7E-5xH"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -1053,6 +1053,7 @@
         <image name="сontacts" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="O0w-7E-5xH"/>
         <segue reference="vye-yT-dTq"/>
         <segue reference="Avu-ks-v7G"/>
     </inferredMetricsTieBreakers>
