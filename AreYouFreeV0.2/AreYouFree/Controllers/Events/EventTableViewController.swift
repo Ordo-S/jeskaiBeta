@@ -161,6 +161,31 @@ class EventTableViewController: UITableViewController {
         }
     }
     
+    @IBAction func unwindToEvents(segue: UIStoryboardSegue) {
+        //Do nothing
+    }
+    
+    //Orientation lock purposes
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        AppUtility.lockOrientation(.portrait)
+        // Or to rotate and lock
+        // AppUtility.lockOrientation(.portrait, andRotateTo: .portrait)
+        
+    }
+    
+    //Releasing orientation lock purposes
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        // Don't forget to reset when view is being removed
+        AppUtility.lockOrientation(.all)
+    }
+    
+    //Set status bar to white icons
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     //MARK: Private Methods
     /*Used for testing
     private func loadSampleEvent() {

@@ -11,7 +11,7 @@ import FirebaseDatabase
 import os.log
 
 // The Firebase DB uses key-value pairs
-class InviteTableViewController: UITableViewController {
+class InviteSendTableViewController: UITableViewController {
     //Mark: Properties
     var event: event?
     var contacts: [Contact] = []
@@ -116,5 +116,10 @@ class InviteTableViewController: UITableViewController {
         super.viewWillDisappear(animated)
         // Don't forget to reset when view is being removed
         AppUtility.lockOrientation(.all)
+    }
+    
+    //Set status bar to white icons
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
 }

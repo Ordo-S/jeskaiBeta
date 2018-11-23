@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/ordo/git/jeskaiBeta/AreYouFreeV0.2/AreYouFree/Controllers/Events/EventDetailViewController.swift">
-   </FileRef>
-   <FileRef
       location = "group:AreYouFree.xcodeproj">
    </FileRef>
    <FileRef

@@ -41,8 +41,32 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
             eventAdressLabel.text = event.address
         }
         
-        
+        setUpUI()
     }
+    
+    private func setUpUI() {
+        self.hideKeyboardWhenTappedAround()
+        
+        let cornerRad = CGFloat(25)
+        let borderWidth = CGFloat(1)
+        let borderColor = UIColor.gray.cgColor
+        
+        eventTextField.layer.cornerRadius = cornerRad
+        eventTextField.layer.borderWidth = borderWidth
+        eventTextField.layer.borderColor = borderColor
+        eventTextField.clipsToBounds = true
+        eventTextField.keyboardType = .default
+        
+        eventAdressLabel.layer.cornerRadius = cornerRad
+        eventAdressLabel.layer.borderWidth = borderWidth
+        eventAdressLabel.layer.borderColor = borderColor
+        eventAdressLabel.clipsToBounds = true
+        eventAdressLabel.keyboardType = .default
+    }
+    
+    
+    
+    
     //MARK: UITextFieldDelegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         //hide keyboard
@@ -50,7 +74,13 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
         return true
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
-        eventNameLabel.text = textField.text
+        if (textField == eventTextField) {
+            if textField.text?.count != 0 {
+                eventNameLabel.text = textField.text
+            } else {
+                eventNameLabel.text = "Event"
+            }
+        }
     }
     //MARK: UIImagePickerControllerDelegate
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -68,22 +98,10 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
         // Dismiss the picker.
         dismiss(animated: true, completion: nil)
     }
-    //MARK: Navigation
     
-    @IBAction func cancelEvent(_ sender: UIBarButtonItem) {
-        // Depending on style of presentation (modal or push presentation), this view controller needs to be dismissed in two different ways.
-        //Taken from apple docs
-        let isPresentingInAddEventMode = presentingViewController is UINavigationController
-        
-        if isPresentingInAddEventMode {
-            dismiss(animated: true, completion: nil)
-        }
-        else if let owningNavigationController = navigationController{
-            owningNavigationController.popViewController(animated: true)
-        }
-        else {
-            fatalError("The EventViewController is not inside a navigation controller.")
-        }
+    //MARK: Navigation
+    @IBAction func cancelButton(_ sender: Any) {
+        performSegue(withIdentifier: "unwindToEvents", sender: self)
     }
     
     // This method lets you configure a view controller before it's presented.
@@ -119,6 +137,25 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
         present(imagePickerController, animated: true, completion: nil)
     }
    
+    //Orientation lock purposes
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        AppUtility.lockOrientation(.portrait)
+        // Or to rotate and lock
+        // AppUtility.lockOrientation(.portrait, andRotateTo: .portrait)
+        
+    }
     
+    //Releasing orientation lock purposes
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        // Don't forget to reset when view is being removed
+        AppUtility.lockOrientation(.all)
+    }
+    
+    //Set status bar to white icons
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
 }
 
