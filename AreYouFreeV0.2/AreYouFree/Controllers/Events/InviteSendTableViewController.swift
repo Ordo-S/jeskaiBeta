@@ -117,4 +117,9 @@ class InviteSendTableViewController: UITableViewController {
         // Don't forget to reset when view is being removed
         AppUtility.lockOrientation(.all)
     }
+    
+    //Set status bar to white icons
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
 }

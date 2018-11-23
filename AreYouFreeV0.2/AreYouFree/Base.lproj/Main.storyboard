@@ -832,7 +832,7 @@
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                                        <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" textContentType="name"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Adress, City, State Zip" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="V6W-QD-LIV">
                                         <rect key="frame" x="0.0" y="104.33333333333334" width="394" height="50"/>
@@ -877,11 +877,11 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="eventAdressLabel" destination="V6W-QD-LIV" id="7ME-hq-AuX"/>
-                        <outlet property="eventNameLabel" destination="Pvk-ew-0ze" id="zdH-2x-YXQ"/>
-                        <outlet property="eventTextField" destination="Srh-eU-FWB" id="cJM-i6-Ji6"/>
-                        <outlet property="photoImageView" destination="Zzm-Wd-3eY" id="cAs-7X-soG"/>
-                        <outlet property="saveButton" destination="4uo-cM-jrk" id="VAq-Fz-kk2"/>
+                        <outlet property="eventAdressLabel" destination="V6W-QD-LIV" id="pQ2-pp-wDD"/>
+                        <outlet property="eventNameLabel" destination="Pvk-ew-0ze" id="1c0-K4-cX3"/>
+                        <outlet property="eventTextField" destination="Srh-eU-FWB" id="fL6-sa-XUY"/>
+                        <outlet property="photoImageView" destination="Zzm-Wd-3eY" id="8qn-gM-j05"/>
+                        <outlet property="saveButton" destination="4uo-cM-jrk" id="3Zo-gj-0Ey"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wGM-nJ-bzo" sceneMemberID="firstResponder"/>
@@ -1007,9 +1007,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="rZe-Ue-cgR"/>
                     <connections>
+                        <outlet property="editButton" destination="Hn8-gS-aMI" id="Fx6-8m-XqT"/>
                         <outlet property="eventAdressLabel" destination="wq3-FX-GZA" id="S7U-Xj-byC"/>
                         <outlet property="eventNameLabel" destination="JHV-vV-AYa" id="9zi-ST-XbY"/>
                         <outlet property="eventPhotoImage" destination="17b-2v-DrP" id="WsH-Ea-Ncc"/>
+                        <outlet property="inviteButton" destination="yOA-gY-aU2" id="wj1-Ig-umt"/>
                         <segue destination="WhF-2S-1B7" kind="unwind" identifier="unwindToContactList" unwindAction="unwindToContactListWithSegue:" id="rc0-pv-wpy"/>
                         <segue destination="WhF-2S-1B7" kind="unwind" unwindAction="unwindToContactListWithSegue:" id="edH-3m-CNW"/>
                     </connections>

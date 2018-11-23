@@ -41,8 +41,29 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
             eventAdressLabel.text = event.address
         }
         
-        
+        setUpUI()
     }
+    
+    private func setUpUI() {
+        self.hideKeyboardWhenTappedAround()
+        
+        let cornerRad = CGFloat(25)
+        let borderWidth = CGFloat(1)
+        let borderColor = UIColor.gray.cgColor
+        
+        eventTextField.layer.cornerRadius = cornerRad
+        eventTextField.layer.borderWidth = borderWidth
+        eventTextField.layer.borderColor = borderColor
+        eventTextField.clipsToBounds = true
+        eventTextField.keyboardType = .default
+        
+        eventAdressLabel.layer.cornerRadius = cornerRad
+        eventAdressLabel.layer.borderWidth = borderWidth
+        eventAdressLabel.layer.borderColor = borderColor
+        eventAdressLabel.clipsToBounds = true
+        eventAdressLabel.keyboardType = .default
+    }
+    
     //MARK: UITextFieldDelegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         //hide keyboard
@@ -119,6 +140,25 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
         present(imagePickerController, animated: true, completion: nil)
     }
    
+    //Orientation lock purposes
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        AppUtility.lockOrientation(.portrait)
+        // Or to rotate and lock
+        // AppUtility.lockOrientation(.portrait, andRotateTo: .portrait)
+        
+    }
     
+    //Releasing orientation lock purposes
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        // Don't forget to reset when view is being removed
+        AppUtility.lockOrientation(.all)
+    }
+    
+    //Set status bar to white icons
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
 }
 
