@@ -64,9 +64,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
         eventAdressLabel.keyboardType = .default
     }
     
-    @IBAction func cancelButton(_ sender: Any) {
-        performSegue(withIdentifier: "unwindToEvents", sender: self)
-    }
+    
     
     
     //MARK: UITextFieldDelegate
@@ -100,22 +98,10 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
         // Dismiss the picker.
         dismiss(animated: true, completion: nil)
     }
-    //MARK: Navigation
     
-    @IBAction func cancelEvent(_ sender: UIBarButtonItem) {
-        // Depending on style of presentation (modal or push presentation), this view controller needs to be dismissed in two different ways.
-        //Taken from apple docs
-        let isPresentingInAddEventMode = presentingViewController is UINavigationController
-        
-        if isPresentingInAddEventMode {
-            dismiss(animated: true, completion: nil)
-        }
-        else if let owningNavigationController = navigationController{
-            owningNavigationController.popViewController(animated: true)
-        }
-        else {
-            fatalError("The EventViewController is not inside a navigation controller.")
-        }
+    //MARK: Navigation
+    @IBAction func cancelButton(_ sender: Any) {
+        performSegue(withIdentifier: "unwindToEvents", sender: self)
     }
     
     // This method lets you configure a view controller before it's presented.
