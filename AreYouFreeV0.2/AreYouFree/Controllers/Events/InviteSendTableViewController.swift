@@ -11,7 +11,7 @@ import FirebaseDatabase
 import os.log
 
 // The Firebase DB uses key-value pairs
-class InviteTableViewController: UITableViewController {
+class InviteSendTableViewController: UITableViewController {
     //Mark: Properties
     var event: event?
     var contacts: [Contact] = []
