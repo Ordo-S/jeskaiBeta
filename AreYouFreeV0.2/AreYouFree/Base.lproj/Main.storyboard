@@ -973,7 +973,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="XH2-mG-iPm"/>
                                         </constraints>
-                                        <state key="normal" title="Invite Peeps">
+                                        <state key="normal" title="Invite People">
                                             <color key="titleColor" red="0.23137254900000001" green="0.25882352939999997" blue="0.32156862749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>

@@ -76,7 +76,13 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
         return true
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
-        eventNameLabel.text = textField.text
+        if (textField == eventTextField) {
+            if textField.text?.count != 0 {
+                eventNameLabel.text = textField.text
+            } else {
+                eventNameLabel.text = "Event"
+            }
+        }
     }
     //MARK: UIImagePickerControllerDelegate
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
