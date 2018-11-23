@@ -64,6 +64,11 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
         eventAdressLabel.keyboardType = .default
     }
     
+    @IBAction func cancelButton(_ sender: Any) {
+        performSegue(withIdentifier: "unwindToEvents", sender: self)
+    }
+    
+    
     //MARK: UITextFieldDelegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         //hide keyboard

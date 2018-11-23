@@ -161,6 +161,10 @@ class EventTableViewController: UITableViewController {
         }
     }
     
+    @IBAction func unwindToEvents(segue: UIStoryboardSegue) {
+        //Do nothing
+    }
+    
     //Orientation lock purposes
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

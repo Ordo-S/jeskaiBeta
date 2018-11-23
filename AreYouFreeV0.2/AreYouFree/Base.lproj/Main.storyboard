@@ -867,7 +867,7 @@
                     <navigationItem key="navigationItem" title="Add Event" id="kPN-bj-UI6">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="qLH-Nh-j2n">
                             <connections>
-                                <action selector="cancelEvent:" destination="I3F-wG-7k5" id="HYX-G0-6gc"/>
+                                <action selector="cancelButton:" destination="I3F-wG-7k5" id="aP4-Lp-aAN"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="4uo-cM-jrk">
@@ -882,6 +882,8 @@
                         <outlet property="eventTextField" destination="Srh-eU-FWB" id="fL6-sa-XUY"/>
                         <outlet property="photoImageView" destination="Zzm-Wd-3eY" id="8qn-gM-j05"/>
                         <outlet property="saveButton" destination="4uo-cM-jrk" id="3Zo-gj-0Ey"/>
+                        <segue destination="jO0-j6-Jh1" kind="unwind" unwindAction="unwindTEventListWithSender:" id="edI-8Z-gDs"/>
+                        <segue destination="jO0-j6-Jh1" kind="unwind" identifier="unwindToEvents" unwindAction="unwindToEventsWithSegue:" id="dSo-of-tZz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wGM-nJ-bzo" sceneMemberID="firstResponder"/>
