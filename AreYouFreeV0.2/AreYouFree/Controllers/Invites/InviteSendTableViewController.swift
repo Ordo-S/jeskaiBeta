@@ -100,7 +100,7 @@ class InviteSendTableViewController: UITableViewController {
                 let contact = contacts[path.row]
                 print(contact.name)
                 //Store the contact invited into the DB 
-                ref.child(contact.username).child(event?.name ?? "Erreor in getting event").setValue("false")
+                ref.child(contact.username).child(event?.name ?? "Erreor in getting event").setValue(false)
             }
         }
     }

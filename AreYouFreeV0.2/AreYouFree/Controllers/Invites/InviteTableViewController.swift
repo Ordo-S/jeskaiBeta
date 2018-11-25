@@ -7,29 +7,33 @@
 //
 
 import UIKit
+import Firebase
 
 class InviteTableViewController: UITableViewController {
     
     // create array to hold events
     var requests: [InviteRequest] = []
+    var ref: DatabaseReference!
+    var databaseHandle: DatabaseHandle?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Load events
-        
-        let request1 = InviteRequest(name: "Event 1", accepted: true)
-        requests.append(request1)
-        
-        let request2 = InviteRequest(name: "Event 2", accepted: false)
-        requests.append(request2)
-        
-        let request3 = InviteRequest(name: "Event 3", accepted: true)
-        requests.append(request3)
-        
-        let request4 = InviteRequest(name: "Event 4", accepted: false)
-        requests.append(request4)
-        
+        //Load invited events from DB
+        let currentUsername = Singleton.shared.currentUsername
+        ref = Database.database().reference()
+        databaseHandle = ref.child(currentUsername).observe(.childAdded, with: { (snapshot) in
+            let accepted: Bool = (snapshot.value as? Bool)!
+            let name: String = snapshot.key
+            let newGuy = InviteRequest(name: name, accepted: accepted)
+            self.requests.append(newGuy)
+            self.tableView.reloadData()
+        })
+        //Async will remove any removed events
+        ref.child(currentUsername).observe(.childRemoved, with: { (snapshot) in
+            // if child is removed, refresh the screen
+            self.tableView.reloadData()
+        })
+        //removed static tests from micheal ||ms
     }
     
     // MARK: - Table view data source
