@@ -52,29 +52,16 @@ class EventTableViewController: UITableViewController {
         
         // Fetches the appropriate event for the data source layout.
         let Event = Events[indexPath.row]
-        //let lat = Event.calculateLat()
-       // let lon = Event.calculateLon()
+        
         
         cell.eventLabel.text = Event.name
         cell.photoImageView.image = Event.photo
-       // cell.latitude = lat
-       // cell.longitude = lon
+        
         
         
         return cell
         
     }
-    
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
@@ -85,24 +72,6 @@ class EventTableViewController: UITableViewController {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -185,30 +154,18 @@ class EventTableViewController: UITableViewController {
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
-    
-    //MARK: Private Methods
-    /*Used for testing
-    private func loadSampleEvent() {
-        //setting up sample photos
-        let photo1 = UIImage(named: "event1")
-        let photo2 = UIImage(named: "event2")
-        let photo3 = UIImage(named: "event3")
-        
-        guard let event1 = event(name: "Event One", photo: photo1!) else{
-            fatalError("Unable to create event")
-        }
-        guard let event2 = event(name: "Event Two", photo: photo2!) else{
-            fatalError("Unable to create evnet")
-        }
-        guard let event3 = event(name: "Event Threee", photo: photo3!) else {
-            fatalError("Unable to create event")
-        }
-        
-        Event += [event1, event2, event3]
-        
-    }
-
 }
-
-}*/
+private func forwardGeocoding (address: String, completion: @escaping (CLLocationCoordinate2D?) -> () ) {
+    let geoCoder = CLGeocoder()
+    geoCoder.geocodeAddressString(address, completionHandler: {(placemarks, error) -> Void in
+        if((error) != nil){
+            print("Error", error ?? "")
+            completion(nil)
+        }
+        if let placemark = placemarks?.first {
+            let location = placemark.location
+            completion(location?.coordinate)
+        }
+    })
+    
 }

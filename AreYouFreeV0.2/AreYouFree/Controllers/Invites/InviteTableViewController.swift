@@ -75,6 +75,7 @@ class InviteTableViewController: UITableViewController {
         {
             let request = requests[indexPath.row]
             tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCell.AccessoryType.none
+            //set invite status back to false in FB 
             ref.child(Singleton.shared.currentUsername + "/Invites").child(request.name).setValue(false)
 
         }
@@ -84,6 +85,7 @@ class InviteTableViewController: UITableViewController {
         {
             let request = requests[indexPath.row]
             tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCell.AccessoryType.checkmark
+            //Set invite status to true in FB
             ref.child(Singleton.shared.currentUsername + "/Invites").child(request.name).setValue(true)
         }
     }
