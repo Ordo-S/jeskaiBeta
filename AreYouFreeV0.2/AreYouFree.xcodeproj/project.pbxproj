@@ -187,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				DE3CB6A421A786B300240799 /* InviteTableViewController.swift */,
+				27F362AA21A72E1400027AA5 /* InviteSendTableViewController.swift */,
 			);
 			path = Invites;
 			sourceTree = "<group>";
@@ -260,7 +261,6 @@
 		DEDBC9FD219FA3F900C8C207 /* Events */ = {
 			isa = PBXGroup;
 			children = (
-				27F362AA21A72E1400027AA5 /* InviteSendTableViewController.swift */,
 				27C2DDCF219D036300F229A3 /* EventTableViewCell.swift */,
 				27C2DDD0219D036300F229A3 /* EventTableViewController.swift */,
 				27C2DDD1219D036300F229A3 /* EventViewController.swift */,

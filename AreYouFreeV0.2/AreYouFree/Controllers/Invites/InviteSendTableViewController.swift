@@ -20,6 +20,7 @@ class InviteSendTableViewController: UITableViewController {
     //used for invitng people to event
     var hasCheckmark: [Int] = []
     @IBOutlet weak var saveButton: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -90,6 +91,7 @@ class InviteSendTableViewController: UITableViewController {
             os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
             return
         }
+        //Print Event and people invited to contacts
         print("Event: ",event?.name ?? "Error in getting event name")
         print("Contacts Invited")
         for i in 0...hasCheckmark.count-1 {
@@ -97,9 +99,10 @@ class InviteSendTableViewController: UITableViewController {
                 let path = IndexPath(row: i, section: i)
                 let contact = contacts[path.row]
                 print(contact.name)
+                //Store the contact invited into the DB 
+                ref.child(contact.username).child(event?.name ?? "Erreor in getting event").setValue("false")
             }
         }
-        
     }
     
     //Orientation lock purposes
