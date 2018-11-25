@@ -53,7 +53,11 @@ class EventTableViewController: UITableViewController {
         // Fetches the appropriate event for the data source layout.
         let Event = Events[indexPath.row]
         
-        
+        forwardGeocoding(address: Event.address) {
+            coordinate in
+            let lat = coordinate.lattitude
+        }
+
         cell.eventLabel.text = Event.name
         cell.photoImageView.image = Event.photo
         

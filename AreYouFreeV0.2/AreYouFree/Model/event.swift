@@ -54,7 +54,7 @@ extension event: findLocationProtocal {
                 print("Error", error ?? "")
             }
             if let placemark = placemarks?.first {
-                coordinates = placemark.location!.coordinate
+                c
                // print("Lat: \(coordinates.latitude) -- Long: \(coordinates.longitude)")
                 lon = (coordinates?.longitude)!
                 }
