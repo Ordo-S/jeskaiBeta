@@ -21,7 +21,7 @@ class InviteTableViewController: UITableViewController {
         //Load invited events from DB
         let currentUsername = Singleton.shared.currentUsername
         ref = Database.database().reference()
-        databaseHandle = ref.child(currentUsername).observe(.childAdded, with: { (snapshot) in
+        databaseHandle = ref.child(currentUsername + "/Invites").observe(.childAdded, with: { (snapshot) in
             let accepted: Bool = (snapshot.value as? Bool)!
             let name: String = snapshot.key
             let newGuy = InviteRequest(name: name, accepted: accepted)
@@ -73,13 +73,18 @@ class InviteTableViewController: UITableViewController {
         // If there is a checkmark, remove it
         if tableView.cellForRow(at: indexPath)?.accessoryType == UITableViewCell.AccessoryType.checkmark
         {
+            let request = requests[indexPath.row]
             tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCell.AccessoryType.none
+            ref.child(Singleton.shared.currentUsername + "/Invites").child(request.name).setValue(false)
+
         }
             
             // else add a checkmark!
         else
         {
+            let request = requests[indexPath.row]
             tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCell.AccessoryType.checkmark
+            ref.child(Singleton.shared.currentUsername + "/Invites").child(request.name).setValue(true)
         }
     }
     
