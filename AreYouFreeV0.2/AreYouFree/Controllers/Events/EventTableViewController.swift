@@ -55,7 +55,8 @@ class EventTableViewController: UITableViewController {
         
         forwardGeocoding(address: Event.address) {
             coordinate in
-            let lat = coordinate.lattitude
+            cell.latitude = (coordinate?.latitude)!
+            cell.longitude = (coordinate?.longitude)!
         }
 
         cell.eventLabel.text = Event.name
