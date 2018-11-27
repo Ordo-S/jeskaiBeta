@@ -32,7 +32,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        let currentUserID = Singleton.shared.currentUserID
+        
         ref = Database.database().reference()
         
         
@@ -125,11 +125,11 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
         let photo = photoImageView.image
         let address = eventAdressLabel.text ?? ""
         
-        
+        let currentUserID = Singleton.shared.currentUserID
         // Set the meal to be passed to MealTableViewController after the unwind segue.
         Event = event(name: name, photo: photo!, address: address)
        
-        Event = event(name: name, photo: photo!, address: address)
+        
         
         let eventPhoto: UIImage = photo!
         let imageData : Data = (eventPhoto.jpegData(compressionQuality: 0.8))!      // compressing image data
@@ -148,7 +148,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
             }
         }
         
-        ref.child(currentUserID + "/Events").child(Event!.name).setValue(Event!.name)   // store name of event to the database
+        ref.child(currentUserID + "/Events").child(Event!.name).setValue(Event!.address)   // store name of event to the database
     }
     
     //Actions of View
