@@ -129,7 +129,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
         // Set the meal to be passed to MealTableViewController after the unwind segue.
         Event = event(name: name, photo: photo!, address: address)
        
-        Event = event(name: name, photo: photo!)
+        Event = event(name: name, photo: photo!, address: address)
         
         let eventPhoto: UIImage = photo!
         let imageData : Data = (eventPhoto.jpegData(compressionQuality: 0.8))!      // compressing image data
