@@ -16,6 +16,8 @@ class AddContactViewController: UIViewController {
     // Used only for editing to make sure we don't duplicate contacts. 
     var indexPathForContact: IndexPath? = nil
     var ref: DatabaseReference!
+    var tempName: String? = nil
+    var replaced: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,6 +74,11 @@ class AddContactViewController: UIViewController {
         //Mark's fix
         if nameTextField.text != nil && usernameTextField.text != nil {
             ref.child(Singleton.shared.currentUserID + "/Contacts").child(nameTextField.text!).setValue(usernameTextField.text)
+        }
+        
+        if tempName != nil, tempName != nameTextField.text {
+            ref.child(Singleton.shared.currentUserID + "/Contacts").child(tempName!).removeValue()// this removes the contact from our DB
+            replaced = true
         }
         
         performSegue(withIdentifier: "unwindToContactList", sender: self)
