@@ -7,23 +7,39 @@
 //
 
 import UIKit
+import CoreLocation
+
 
 class event{
     //MARK: Properties
     var name: String
     var photo: UIImage?
+    var address: String
+   
     //Mark: Inits
     // Initialization should fail if there is no name.
-    init?(name:String, photo:UIImage) {
+    init?(name:String, photo:UIImage, address:String ) {
         // Initialize stored properties.
         // The name must not be empty
         guard !name.isEmpty else {
             return nil
         }
+        guard !address.isEmpty else {
+            return nil
+        }
+      
         
         self.name = name
         self.photo = photo
+        self.address = address
+        //Mark: Testing out Map features
+        //Code taken from https://stackoverflow.com/questions/42279252/convert-address-to-coordinates-swift
+        //And launching Map app https://www.youtube.com/watch?v=INfCmCxLC0o
         
     }
 }
+//need to return lat and long
+
+    
+
 

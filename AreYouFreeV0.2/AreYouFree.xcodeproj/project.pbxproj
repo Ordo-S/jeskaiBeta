@@ -11,12 +11,16 @@
 		27C2DDD2219D036300F229A3 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C2DDCF219D036300F229A3 /* EventTableViewCell.swift */; };
 		27C2DDD3219D036300F229A3 /* EventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C2DDD0219D036300F229A3 /* EventTableViewController.swift */; };
 		27C2DDD4219D036300F229A3 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C2DDD1219D036300F229A3 /* EventViewController.swift */; };
+		27F362AB21A72E1400027AA5 /* InviteSendTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F362AA21A72E1400027AA5 /* InviteSendTableViewController.swift */; };
 		941F33DB219CDE6600C1BEE4 /* AddContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941F33D7219CDE6600C1BEE4 /* AddContactViewController.swift */; };
 		941F33DC219CDE6600C1BEE4 /* ContactDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941F33D8219CDE6600C1BEE4 /* ContactDetailViewController.swift */; };
 		941F33DD219CDE6600C1BEE4 /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941F33D9219CDE6600C1BEE4 /* ContactsViewController.swift */; };
 		941F33DE219CDE6600C1BEE4 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941F33DA219CDE6600C1BEE4 /* Contact.swift */; };
 		9B4D767A1078764B0D5C2815 /* Pods_AreYouFreeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 484BC0E57818539CB4137710 /* Pods_AreYouFreeUITests.framework */; };
 		C35B4E950033367F0EBC9634 /* Pods_AreYouFreeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0032E0292705E14BDA48AACE /* Pods_AreYouFreeTests.framework */; };
+		DE3CB69A21A7808600240799 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3CB69921A7808600240799 /* EventDetailViewController.swift */; };
+		DE3CB69F21A783F000240799 /* InviteRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3CB69E21A783F000240799 /* InviteRequest.swift */; };
+		DE3CB6A521A786B300240799 /* InviteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3CB6A421A786B300240799 /* InviteTableViewController.swift */; };
 		DE690B6D215454AC00D3B2DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE690B6C215454AC00D3B2DE /* AppDelegate.swift */; };
 		DE690B6F215454AC00D3B2DE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE690B6E215454AC00D3B2DE /* LoginViewController.swift */; };
 		DE690B72215454AC00D3B2DE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE690B70215454AC00D3B2DE /* Main.storyboard */; };
@@ -27,6 +31,7 @@
 		DE690B9B215454DA00D3B2DE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DE690B9A215454DA00D3B2DE /* GoogleService-Info.plist */; };
 		DE7BC6CD219A7FC400E899E2 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7BC6CC219A7FC400E899E2 /* Extensions.swift */; };
 		DE7BC6CF219A8F4500E899E2 /* AppUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7BC6CE219A8F4500E899E2 /* AppUtility.swift */; };
+		DEBC58EE21A0D8ED0071D410 /* RecoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBC58ED21A0D8ED0071D410 /* RecoveryViewController.swift */; };
 		DEDBC9F9219E4C4900C8C207 /* Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDBC9F8219E4C4900C8C207 /* Singleton.swift */; };
 		DEDBC9FB219F8D8400C8C207 /* EditAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDBC9FA219F8D8400C8C207 /* EditAccountViewController.swift */; };
 		DEE16F57217BD7BD000D553A /* SettingsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE16F56217BD7BD000D553A /* SettingsPageViewController.swift */; };
@@ -57,6 +62,7 @@
 		27C2DDCF219D036300F229A3 /* EventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		27C2DDD0219D036300F229A3 /* EventTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableViewController.swift; sourceTree = "<group>"; };
 		27C2DDD1219D036300F229A3 /* EventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
+		27F362AA21A72E1400027AA5 /* InviteSendTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteSendTableViewController.swift; sourceTree = "<group>"; };
 		2EE058ACE044251D64953D24 /* Pods-AreYouFreeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AreYouFreeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AreYouFreeTests/Pods-AreYouFreeTests.release.xcconfig"; sourceTree = "<group>"; };
 		347AAD725CD919098C3B07A2 /* Pods-AreYouFree.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AreYouFree.release.xcconfig"; path = "Pods/Target Support Files/Pods-AreYouFree/Pods-AreYouFree.release.xcconfig"; sourceTree = "<group>"; };
 		484BC0E57818539CB4137710 /* Pods_AreYouFreeUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AreYouFreeUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -69,6 +75,9 @@
 		B4C1E82594434CAECDFAC824 /* Pods_AreYouFree.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AreYouFree.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2BF94985AF95E438518A7CC /* Pods-AreYouFree.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AreYouFree.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AreYouFree/Pods-AreYouFree.debug.xcconfig"; sourceTree = "<group>"; };
 		DE358079219AB079009D3864 /* AreYouFree.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AreYouFree.entitlements; sourceTree = "<group>"; };
+		DE3CB69921A7808600240799 /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
+		DE3CB69E21A783F000240799 /* InviteRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteRequest.swift; sourceTree = "<group>"; };
+		DE3CB6A421A786B300240799 /* InviteTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteTableViewController.swift; sourceTree = "<group>"; };
 		DE690B69215454AC00D3B2DE /* AreYouFree.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AreYouFree.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE690B6C215454AC00D3B2DE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE690B6E215454AC00D3B2DE /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -85,6 +94,7 @@
 		DE690B9A215454DA00D3B2DE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DE7BC6CC219A7FC400E899E2 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		DE7BC6CE219A8F4500E899E2 /* AppUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtility.swift; sourceTree = "<group>"; };
+		DEBC58ED21A0D8ED0071D410 /* RecoveryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoveryViewController.swift; sourceTree = "<group>"; };
 		DEDBC9F8219E4C4900C8C207 /* Singleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Singleton.swift; sourceTree = "<group>"; };
 		DEDBC9FA219F8D8400C8C207 /* EditAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountViewController.swift; sourceTree = "<group>"; };
 		DEE16F56217BD7BD000D553A /* SettingsPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPageViewController.swift; sourceTree = "<group>"; };
@@ -146,7 +156,7 @@
 			children = (
 				27C2DDCD219D035500F229A3 /* event.swift */,
 				941F33DA219CDE6600C1BEE4 /* Contact.swift */,
-				DEDBC9F8219E4C4900C8C207 /* Singleton.swift */,
+				DE3CB69E21A783F000240799 /* InviteRequest.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -154,6 +164,7 @@
 		DE100A8D219BADFF006E6EB1 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				DE3CB69B21A783C500240799 /* Invites */,
 				DEDBCA00219FA42C00C8C207 /* Settings */,
 				DEDBC9FE219FA40A00C8C207 /* Contacts */,
 				DEDBC9FD219FA3F900C8C207 /* Events */,
@@ -165,10 +176,20 @@
 		DE100A8E219BAE30006E6EB1 /* UtilityScripts */ = {
 			isa = PBXGroup;
 			children = (
+				DEDBC9F8219E4C4900C8C207 /* Singleton.swift */,
 				DE7BC6CE219A8F4500E899E2 /* AppUtility.swift */,
 				DE7BC6CC219A7FC400E899E2 /* Extensions.swift */,
 			);
 			path = UtilityScripts;
+			sourceTree = "<group>";
+		};
+		DE3CB69B21A783C500240799 /* Invites */ = {
+			isa = PBXGroup;
+			children = (
+				DE3CB6A421A786B300240799 /* InviteTableViewController.swift */,
+				27F362AA21A72E1400027AA5 /* InviteSendTableViewController.swift */,
+			);
+			path = Invites;
 			sourceTree = "<group>";
 		};
 		DE690B60215454AC00D3B2DE = {
@@ -232,6 +253,7 @@
 			isa = PBXGroup;
 			children = (
 				DE690B6E215454AC00D3B2DE /* LoginViewController.swift */,
+				DEBC58ED21A0D8ED0071D410 /* RecoveryViewController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -242,6 +264,7 @@
 				27C2DDCF219D036300F229A3 /* EventTableViewCell.swift */,
 				27C2DDD0219D036300F229A3 /* EventTableViewController.swift */,
 				27C2DDD1219D036300F229A3 /* EventViewController.swift */,
+				DE3CB69921A7808600240799 /* EventDetailViewController.swift */,
 			);
 			path = Events;
 			sourceTree = "<group>";
@@ -514,14 +537,19 @@
 				27C2DDD2219D036300F229A3 /* EventTableViewCell.swift in Sources */,
 				27C2DDD4219D036300F229A3 /* EventViewController.swift in Sources */,
 				DE690B6F215454AC00D3B2DE /* LoginViewController.swift in Sources */,
+				DEBC58EE21A0D8ED0071D410 /* RecoveryViewController.swift in Sources */,
 				DE690B6D215454AC00D3B2DE /* AppDelegate.swift in Sources */,
 				DE7BC6CF219A8F4500E899E2 /* AppUtility.swift in Sources */,
+				DE3CB6A521A786B300240799 /* InviteTableViewController.swift in Sources */,
 				27C2DDCE219D035500F229A3 /* event.swift in Sources */,
+				DE3CB69F21A783F000240799 /* InviteRequest.swift in Sources */,
 				941F33DC219CDE6600C1BEE4 /* ContactDetailViewController.swift in Sources */,
 				941F33DB219CDE6600C1BEE4 /* AddContactViewController.swift in Sources */,
 				941F33DD219CDE6600C1BEE4 /* ContactsViewController.swift in Sources */,
+				DE3CB69A21A7808600240799 /* EventDetailViewController.swift in Sources */,
 				DEE16F57217BD7BD000D553A /* SettingsPageViewController.swift in Sources */,
 				DEDBC9FB219F8D8400C8C207 /* EditAccountViewController.swift in Sources */,
+				27F362AB21A72E1400027AA5 /* InviteSendTableViewController.swift in Sources */,
 				27C2DDD3219D036300F229A3 /* EventTableViewController.swift in Sources */,
 				DE7BC6CD219A7FC400E899E2 /* Extensions.swift in Sources */,
 			);

@@ -8,6 +8,7 @@
 
 import UIKit
 import os.log
+import CoreLocation
 import FirebaseDatabase
 import FirebaseStorage
 
@@ -15,6 +16,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
     //Properties of View
     @IBOutlet weak var eventTextField: UITextField!
     @IBOutlet weak var eventNameLabel: UILabel!
+    @IBOutlet weak var eventAdressLabel: UITextField!
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
@@ -36,7 +38,42 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
         
         // Handle the text field’s user input through delegate callbacks.
         eventTextField.delegate = self
+        eventAdressLabel.delegate = self
+        
+        // Set up views if editing an existing Event.
+        if let event = Event {
+            navigationItem.title = event.name
+            eventTextField.text = event.name
+            photoImageView.image = event.photo
+            eventAdressLabel.text = event.address
+        }
+        
+        setUpUI()
     }
+    
+    private func setUpUI() {
+        self.hideKeyboardWhenTappedAround()
+        
+        let cornerRad = CGFloat(25)
+        let borderWidth = CGFloat(1)
+        let borderColor = UIColor.gray.cgColor
+        
+        eventTextField.layer.cornerRadius = cornerRad
+        eventTextField.layer.borderWidth = borderWidth
+        eventTextField.layer.borderColor = borderColor
+        eventTextField.clipsToBounds = true
+        eventTextField.keyboardType = .default
+        
+        eventAdressLabel.layer.cornerRadius = cornerRad
+        eventAdressLabel.layer.borderWidth = borderWidth
+        eventAdressLabel.layer.borderColor = borderColor
+        eventAdressLabel.clipsToBounds = true
+        eventAdressLabel.keyboardType = .default
+    }
+    
+    
+    
+    
     //MARK: UITextFieldDelegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         //hide keyboard
@@ -44,7 +81,13 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
         return true
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
-        eventNameLabel.text = textField.text
+        if (textField == eventTextField) {
+            if textField.text?.count != 0 {
+                eventNameLabel.text = textField.text
+            } else {
+                eventNameLabel.text = "Event"
+            }
+        }
     }
     //MARK: UIImagePickerControllerDelegate
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -62,7 +105,12 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
         // Dismiss the picker.
         dismiss(animated: true, completion: nil)
     }
+    
     //MARK: Navigation
+    @IBAction func cancelButton(_ sender: Any) {
+        performSegue(withIdentifier: "unwindToEvents", sender: self)
+    }
+    
     // This method lets you configure a view controller before it's presented.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
@@ -75,10 +123,12 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
         
         let name = eventTextField.text ?? ""
         let photo = photoImageView.image
-        let currentUserID = Singleton.shared.currentUserID
+        let address = eventAdressLabel.text ?? ""
         
         
         // Set the meal to be passed to MealTableViewController after the unwind segue.
+        Event = event(name: name, photo: photo!, address: address)
+       
         Event = event(name: name, photo: photo!)
         
         let eventPhoto: UIImage = photo!
@@ -112,6 +162,27 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
         // Make sure ViewController is notified when the user picks an image.
         imagePickerController.delegate = self
         present(imagePickerController, animated: true, completion: nil)
+    }
+   
+    //Orientation lock purposes
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        AppUtility.lockOrientation(.portrait)
+        // Or to rotate and lock
+        // AppUtility.lockOrientation(.portrait, andRotateTo: .portrait)
+        
+    }
+    
+    //Releasing orientation lock purposes
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        // Don't forget to reset when view is being removed
+        AppUtility.lockOrientation(.all)
+    }
+    
+    //Set status bar to white icons
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
 }
 
