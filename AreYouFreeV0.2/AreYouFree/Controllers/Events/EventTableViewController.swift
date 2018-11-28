@@ -35,9 +35,9 @@ class EventTableViewController: UITableViewController {
             let name: String = (snapshot.key as? String)!
             let addr: String = (snapshot.value as? String)!
             let pathToImage = storageRef.child(currentUserID + "/EventImages/" + name)
-            pathToImage.getData(maxSize: 1 * 1024 * 1024) { data, error in
+            pathToImage.getData(maxSize: 15 * 1024 * 1024) { data, error in
                 if let error = error {
-                    
+                    print(error.localizedDescription)
                 } else {
                     let eventImage = UIImage (data: data!)
                     let loadedEvent = event(name: name, photo: eventImage!, address: addr)
