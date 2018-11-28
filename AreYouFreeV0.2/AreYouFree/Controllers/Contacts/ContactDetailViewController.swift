@@ -61,6 +61,7 @@ class ContactDetailViewController: UIViewController {
             viewController.titleText = "Edit Contact"
             viewController.contact = contact
             viewController.indexPathForContact = self.indexPath!
+            viewController.tempName = contact?.name
         }
     }
     

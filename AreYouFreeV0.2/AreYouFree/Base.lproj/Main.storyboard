@@ -555,6 +555,7 @@
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="John Doe" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LYb-qM-IhX">
                                         <rect key="frame" x="0.0" y="57.333333333333343" width="394" height="50"/>
+                                        <accessibility key="accessibilityConfiguration" hint="Double tap to edit" label="Name text field"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="RMX-UX-GmF"/>
                                         </constraints>

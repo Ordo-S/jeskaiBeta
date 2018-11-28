@@ -71,9 +71,9 @@ class ContactsViewController: UITableViewController {
         
         // If both text fields are filled (name and username) and it came from AddContactViewController, make a contact!
         if let viewController = segue.source as? AddContactViewController {
-        guard let name = viewController.nameTextField.text else { return }
-        guard let username = viewController.usernameTextField.text else { return }
-        let contact = Contact(name: name, username: username)
+            guard let name = viewController.nameTextField.text else { return }
+            guard let username = viewController.usernameTextField.text else { return }
+            let contact = Contact(name: name, username: username)
             // If name and username text fields are filled.
             if name != "" && username != "" {
                 if let IndexPath = viewController.indexPathForContact {
@@ -84,7 +84,14 @@ class ContactsViewController: UITableViewController {
                     ref.child(currentUserID + "/Contacts").child(contact.name).setValue(username)
                 }
             }
-        tableView.reloadData()
+        
+            if viewController.replaced {
+                viewController.replaced = false
+                contacts.removeAll {$0.name != viewController.tempName}
+                viewController.tempName = nil
+            }
+            
+            tableView.reloadData()
             
         } else if let viewController = segue.source as? ContactDetailViewController {
             if viewController.isDeleted{
