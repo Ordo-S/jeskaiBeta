@@ -7,8 +7,10 @@
 //
 
 import UIKit
-import CoreLocation
 import os.log
+import FirebaseStorage
+import FirebaseDatabase
+import CoreLocation
 
 class EventTableViewController: UITableViewController {
     //Mark: Properties
@@ -19,6 +21,45 @@ class EventTableViewController: UITableViewController {
         
         //Load Sample Events, for testing 
        // loadSampleEvent()
+        
+        
+        // ### Luke Begin ###
+        
+        // the function below retrieves an the events from the database
+        
+        let newIndexPath = IndexPath(row: Events.count, section: 0)
+        let storageRef = Storage.storage().reference()
+        let currentUserID = Singleton.shared.currentUserID
+        let ref = Database.database().reference()
+        let databaseHandle = ref.child(currentUserID + "/Events").observe(.childAdded, with: { (snapshot) in
+            let name: String = (snapshot.key as? String)!
+            let addr: String = (snapshot.value as? String)!
+            let pathToImage = storageRef.child(currentUserID + "/EventImages/" + name)
+            pathToImage.getData(maxSize: 1 * 1024 * 1024) { data, error in
+                if let error = error {
+                    
+                } else {
+                    let eventImage = UIImage (data: data!)
+                    let loadedEvent = event(name: name, photo: eventImage!, address: addr)
+                    self.Events.append(loadedEvent!)
+                    self.tableView.insertRows(at: [newIndexPath], with: .automatic)
+                    self.tableView.reloadData()
+                }
+            }
+            
+        })
+        
+        // Luke: add remove below
+        ref.child(currentUserID + "/Events").observe(.childRemoved, with: { (snapshot) in
+            // if child is removed, refresh the screen
+            self.tableView.reloadData()
+        })
+        
+        // ### Luke end ###
+        
+        
+        // tableView.insertRows(at: [newIndexPath], with: .automatic)
+        // tableView.reloadData()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -71,6 +112,25 @@ class EventTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
+            // ### Luke begin ###
+            let newIndexPath = IndexPath(row: Events.count, section: 0)
+            let storageRef = Storage.storage().reference()
+            let currentUserID = Singleton.shared.currentUserID
+            let ref = Database.database().reference()
+            
+            let pathToImage = storageRef.child(currentUserID + "/EventImages/" + Events[indexPath.row].name).delete { error in
+                if let error = error {
+                    // Uh-oh, an error occurred!
+                } else {
+                    // File deleted successfully
+                }
+            }
+            let pathToEvent = ref.child(currentUserID + "/Events/" + Events[indexPath.row].name).removeValue()
+                
+                
+            
+            // ### Luke end ###
+            
             Events.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
@@ -123,6 +183,11 @@ class EventTableViewController: UITableViewController {
             if let selectedIndexPath = tableView.indexPathForSelectedRow {
                 // Update an existing event.
                 Events[selectedIndexPath.row] = Event
+                
+                // ### Luke begin ###
+                
+                
+                // ### Luke end ####
                 tableView.reloadRows(at: [selectedIndexPath], with: .none)
             }
             else {
@@ -130,7 +195,8 @@ class EventTableViewController: UITableViewController {
                 let newIndexPath = IndexPath(row: Events.count, section: 0)
                 
                 Events.append(Event)
-                tableView.insertRows(at: [newIndexPath], with: .automatic)
+                // tableView.insertRows(at: [newIndexPath], with: .automatic)
+                tableView.reloadData()
             }
         }
     }
