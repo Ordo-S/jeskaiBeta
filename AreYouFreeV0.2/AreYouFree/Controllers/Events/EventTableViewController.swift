@@ -18,15 +18,10 @@ class EventTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         //Load Sample Events, for testing 
-       // loadSampleEvent()
-        
-        
+        // loadSampleEvent()
         // ### Luke Begin ###
-        
         // the function below retrieves an the events from the database
-        
         let newIndexPath = IndexPath(row: Events.count, section: 0)
         let storageRef = Storage.storage().reference()
         let currentUserID = Singleton.shared.currentUserID
@@ -48,24 +43,11 @@ class EventTableViewController: UITableViewController {
             }
             
         })
-        
         // Luke: add remove below
         ref.child(currentUserID + "/Events").observe(.childRemoved, with: { (snapshot) in
             // if child is removed, refresh the screen
             self.tableView.reloadData()
         })
-        
-        // ### Luke end ###
-        
-        
-        // tableView.insertRows(at: [newIndexPath], with: .automatic)
-        // tableView.reloadData()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     // MARK: - Table view data source
@@ -86,25 +68,18 @@ class EventTableViewController: UITableViewController {
         // Table view cells are reused and should be dequeued using a cell identifier.
         let cellIdentifier = "EventTableViewCell"
 
-        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? EventTableViewCell  else {
             fatalError("The dequeued cell is not an instance of EventTableViewCell.")
-        }
-        
+        }        
         // Fetches the appropriate event for the data source layout.
         let Event = Events[indexPath.row]
-        
         forwardGeocoding(address: Event.address) {
             coordinate in
             cell.latitude = (coordinate?.latitude)!
             cell.longitude = (coordinate?.longitude)!
         }
-
         cell.eventLabel.text = Event.name
         cell.photoImageView.image = Event.photo
-        
-        
-        
         return cell
         
     }
@@ -226,6 +201,7 @@ class EventTableViewController: UITableViewController {
         return .lightContent
     }
 }
+//get the coordinates for the string
 private func forwardGeocoding (address: String, completion: @escaping (CLLocationCoordinate2D?) -> () ) {
     let geoCoder = CLGeocoder()
     geoCoder.geocodeAddressString(address, completionHandler: {(placemarks, error) -> Void in

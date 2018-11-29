@@ -32,14 +32,10 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
         ref = Database.database().reference()
-        
-        
         // Handle the text field’s user input through delegate callbacks.
         eventTextField.delegate = self
         eventAdressLabel.delegate = self
-        
         // Set up views if editing an existing Event.
         if let event = Event {
             navigationItem.title = event.name
@@ -47,7 +43,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
             photoImageView.image = event.photo
             eventAdressLabel.text = event.address
         }
-        
         setUpUI()
     }
     
@@ -70,10 +65,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
         eventAdressLabel.clipsToBounds = true
         eventAdressLabel.keyboardType = .default
     }
-    
-    
-    
-    
     //MARK: UITextFieldDelegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         //hide keyboard
@@ -126,11 +117,9 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
         let address = eventAdressLabel.text ?? ""
         
         let currentUserID = Singleton.shared.currentUserID
-        // Set the meal to be passed to MealTableViewController after the unwind segue.
+        // Set the event to be passed to EventTableViewController after the unwind segue.
         Event = event(name: name, photo: photo!, address: address)
        
-        
-        
         let eventPhoto: UIImage = photo!
         let imageData : Data = (eventPhoto.jpegData(compressionQuality: 0.8))!      // compressing image data
         let storageRef = Storage.storage().reference()                              // creating a storage reference
@@ -152,6 +141,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
     }
     
     //Actions of View
+    //Tanken from apple docs
     @IBAction func selectImageFromPhotoLibrary(_ sender: UITapGestureRecognizer) {
         // Hide the keyboard.
         eventTextField.resignFirstResponder()

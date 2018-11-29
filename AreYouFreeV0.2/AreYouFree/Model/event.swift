@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import CoreLocation
-
 
 class event{
     //MARK: Properties
@@ -27,18 +25,15 @@ class event{
         guard !address.isEmpty else {
             return nil
         }
-      
-        
         self.name = name
         self.photo = photo
         self.address = address
         //Mark: Testing out Map features
         //Code taken from https://stackoverflow.com/questions/42279252/convert-address-to-coordinates-swift
         //And launching Map app https://www.youtube.com/watch?v=INfCmCxLC0o
-        
-    }
+        }
 }
-//need to return lat and long
+
 
     
 

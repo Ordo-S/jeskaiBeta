@@ -19,8 +19,6 @@ class EventTableViewCell: UITableViewCell {
     @IBOutlet weak var photoImageView: UIImageView!
     @IBAction func sendToMapsButton(_ sender: UIButton) {
         //Defining destination
-        
-        
         let regionDistance:CLLocationDistance = 1000;
         let coordinates = CLLocationCoordinate2DMake(latitude!, longitude!)
         let regionSpan = MKCoordinateRegion(center: coordinates, latitudinalMeters: regionDistance, longitudinalMeters: regionDistance)
