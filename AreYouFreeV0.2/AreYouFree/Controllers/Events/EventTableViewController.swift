@@ -101,10 +101,7 @@ class EventTableViewController: UITableViewController {
                 }
             }
             let pathToEvent = ref.child(currentUserID + "/Events/" + Events[indexPath.row].name).removeValue()
-                
-                
-            
-            // ### Luke end ###
+                 // ### Luke end ###
             
             Events.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
