@@ -14,12 +14,12 @@ import os.log
 class InviteSendTableViewController: UITableViewController {
     //Mark: Properties
     var event: event?
-    var contacts: [Contact] = []
-    var databaseHandle:DatabaseHandle?
-    var ref: DatabaseReference!
+    private var contacts: [Contact] = []
+    private var databaseHandle:DatabaseHandle?
+    private var ref: DatabaseReference!
     //used for invitng people to event
-    var hasCheckmark: [Int] = []
-    @IBOutlet weak var saveButton: UIBarButtonItem!
+    private var hasCheckmark: [Int] = []
+    @IBOutlet private weak var saveButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,6 +67,7 @@ class InviteSendTableViewController: UITableViewController {
         // Return a UI tableView cell
         return cell
     }
+    
     //To select contacts from your list
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
@@ -81,8 +82,8 @@ class InviteSendTableViewController: UITableViewController {
             hasCheckmark[indexPath.row] = 1
         }
     }
-    //Mark: Actions
     
+    //Mark: Actions
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         
@@ -109,9 +110,6 @@ class InviteSendTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         AppUtility.lockOrientation(.portrait)
-        // Or to rotate and lock
-        // AppUtility.lockOrientation(.portrait, andRotateTo: .portrait)
-        
     }
     
     //Releasing orientation lock purposes

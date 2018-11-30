@@ -12,12 +12,12 @@ import FBSDKLoginKit
 
 class EditAccountViewController: UIViewController {
 
-    @IBOutlet weak var usernameTextField: UITextField!
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var confirmButton: UIButton!
-    @IBOutlet weak var deleteButton: UIButton!
-    @IBOutlet weak var resultLabel: UILabel!
-    @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet private weak var usernameTextField: UITextField!
+    @IBOutlet private weak var emailTextField: UITextField!
+    @IBOutlet private weak var confirmButton: UIButton!
+    @IBOutlet private weak var deleteButton: UIButton!
+    @IBOutlet private weak var resultLabel: UILabel!
+    @IBOutlet private weak var cancelButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,7 +50,7 @@ class EditAccountViewController: UIViewController {
         cancelButton.layer.cornerRadius = cornerRad
     }
 
-    @IBAction func clickedConfirm(_ sender: Any) {
+    @IBAction private func clickedConfirm(_ sender: Any) {
         resultLabel.text = "Confirming changes..."
         
         if let user = Auth.auth().currentUser {
@@ -122,7 +122,7 @@ class EditAccountViewController: UIViewController {
         }
     }
     
-    @IBAction func clickedDeleteAccount(_ sender: Any) {
+    @IBAction private func clickedDeleteAccount(_ sender: Any) {
         //Code credits based on https://stackoverflow.com/questions/25511945/swift-alert-view-ios8-with-ok-and-cancel-button-which-button-tapped
         let refreshAlert = UIAlertController(title: "Delete Account", message: "Are you sure you want to delete your account? You won't be able to get it back.", preferredStyle: UIAlertController.Style.alert)
         
@@ -165,7 +165,7 @@ class EditAccountViewController: UIViewController {
         present(refreshAlert, animated: true, completion: nil)
     }
     
-    @IBAction func clickedCancel(_ sender: Any) {
+    @IBAction private func clickedCancel(_ sender: Any) {
         performSegue(withIdentifier: "unwindToSettings", sender: self)
     }
     
@@ -173,9 +173,6 @@ class EditAccountViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         AppUtility.lockOrientation(.portrait)
-        // Or to rotate and lock
-        // AppUtility.lockOrientation(.portrait, andRotateTo: .portrait)
-        
     }
     
     //Releasing orientation lock purposes
@@ -189,15 +186,4 @@ class EditAccountViewController: UIViewController {
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

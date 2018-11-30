@@ -10,12 +10,8 @@ import UIKit
 
 class ContactDetailViewController: UIViewController {
     
-    // Declare as var for mutability and initialize as nil.
-    var contact:Contact? = nil
-    
-    // To know whether or not we have deleted the contact.
-    var isDeleted: Bool = false
-    
+    var contact:Contact? = nil// Declare as var for mutability and initialize as nil.
+    var isDeleted: Bool = false// To know whether or not we have deleted the contact.
     var indexPath: IndexPath? = nil 
 
     override func viewDidLoad() {
@@ -36,7 +32,6 @@ class ContactDetailViewController: UIViewController {
     }
 
     @IBOutlet weak var nameLabel: UILabel!
-    
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var usernameLabel: UILabel!
 
@@ -45,15 +40,12 @@ class ContactDetailViewController: UIViewController {
         performSegue(withIdentifier: "unwindToContactList", sender: self)
     }
     
-    
-    
     @IBAction func deleteContact(_ sender: Any) {
         isDeleted = true
         performSegue(withIdentifier: "unwindToContactList", sender: self)
     }
     
     //MARK: - Navigation
-    
     //Used to segue to Add Contact screen for editing a contact.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "editContact" {
@@ -69,9 +61,6 @@ class ContactDetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         AppUtility.lockOrientation(.portrait)
-        // Or to rotate and lock
-        // AppUtility.lockOrientation(.portrait, andRotateTo: .portrait)
-        
     }
     
     //Releasing orientation lock purposes

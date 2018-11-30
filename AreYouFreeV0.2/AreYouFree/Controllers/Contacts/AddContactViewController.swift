@@ -15,20 +15,20 @@ class AddContactViewController: UIViewController {
     var contact: Contact? = nil
     // Used only for editing to make sure we don't duplicate contacts. 
     var indexPathForContact: IndexPath? = nil
-    var ref: DatabaseReference!
+    private var ref: DatabaseReference!
     var tempName: String? = nil
     var replaced: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         ref = Database.database().reference()
-        titleLabel.text = titleText 
+        titleLabel.text = titleText
+        
         // Used to populate data
         if let contact = contact {
             nameTextField.text = contact.name
             usernameTextField.text = contact.username
         }
-        
         
         // Do any additional setup after loading the view.
         setUpUI()
@@ -60,17 +60,14 @@ class AddContactViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    @IBOutlet weak var titleLabel: UILabel!
-    
-    
+    @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
-    
     @IBOutlet weak var usernameTextField: UITextField!
-    @IBOutlet weak var cancelButton: UIButton!
-    @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet private weak var cancelButton: UIButton!
+    @IBOutlet private weak var saveButton: UIButton!
     
     // Navigation
-    @IBAction func save(_ sender: Any) {
+    @IBAction private func save(_ sender: Any) {
         //Mark's fix
         if nameTextField.text != nil && usernameTextField.text != nil {
             ref.child(Singleton.shared.currentUserID + "/Contacts").child(nameTextField.text!).setValue(usernameTextField.text)
@@ -84,7 +81,7 @@ class AddContactViewController: UIViewController {
         performSegue(withIdentifier: "unwindToContactList", sender: self)
     }
     
-    @IBAction func close(_ sender: Any) {
+    @IBAction private func close(_ sender: Any) {
         //Don't save contact if user cancels. 
         nameTextField.text = nil
         usernameTextField.text = nil
@@ -99,9 +96,6 @@ class AddContactViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         AppUtility.lockOrientation(.portrait)
-        // Or to rotate and lock
-        // AppUtility.lockOrientation(.portrait, andRotateTo: .portrait)
-        
     }
     
     //Releasing orientation lock purposes

@@ -12,10 +12,10 @@ import FBSDKCoreKit
 
 class SettingsPageViewController: UIViewController {
 
-    @IBOutlet var signOutButton: UIButton!
-    @IBOutlet weak var editAccountButton: UIButton!
-    @IBOutlet weak var usernameLabel: UILabel!
-    @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet private var signOutButton: UIButton!
+    @IBOutlet private weak var editAccountButton: UIButton!
+    @IBOutlet private weak var usernameLabel: UILabel!
+    @IBOutlet private weak var emailLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +27,7 @@ class SettingsPageViewController: UIViewController {
         emailLabel.text = "Email: " + Singleton.shared.currentUserEmail
     }
     
-    @IBAction func signOutClicked(_ sender: UIButton) {
+    @IBAction private func signOutClicked(_ sender: UIButton) {
         //Log out of Firebase
         let firebaseAuth = Auth.auth()
         do {
@@ -48,7 +48,7 @@ class SettingsPageViewController: UIViewController {
         emailLabel.text = "Email: " + Singleton.shared.currentUserEmail
     }
     
-    @IBAction func editClicked(_ sender: UIButton) {
+    @IBAction private func editClicked(_ sender: UIButton) {
         performSegue(withIdentifier: "goToEditAccount", sender: self)
     }
     
@@ -56,9 +56,6 @@ class SettingsPageViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         AppUtility.lockOrientation(.portrait)
-        // Or to rotate and lock
-        // AppUtility.lockOrientation(.portrait, andRotateTo: .portrait)
-        
     }
     
     //Releasing orientation lock purposes

@@ -12,9 +12,9 @@ import FirebaseDatabase
 // The Firebase DB uses key-value pairs
 class ContactsViewController: UITableViewController {
     
-    var contacts: [Contact] = []
-    var databaseHandle:DatabaseHandle?
-    var ref: DatabaseReference!
+    private var contacts: [Contact] = []
+    private var databaseHandle:DatabaseHandle?
+    private var ref: DatabaseReference!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,19 +50,14 @@ class ContactsViewController: UITableViewController {
     // Number of cells we are going to use.
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ContactCell", for: indexPath)
-        
         let contact = contacts[indexPath.row]
-        
         cell.textLabel?.text = contact.name
         cell.detailTextLabel?.text = contact.username
-        
-        
         // Return a UI tableView cell
         return cell
     }
     
     //MARK: - Navigation
-    
     // Return to Contacts List.
     @IBAction func unwindToContactList(segue: UIStoryboardSegue){
     
@@ -99,7 +94,6 @@ class ContactsViewController: UITableViewController {
                 let tempContact = contacts[indexPath.row].name  // tempContact is holding the name of the contact we are about to delete
                 contacts.remove(at: indexPath.row)
                 ref.child(currentUserID + "/Contacts").child(tempContact).removeValue() // this removes the contact from our DB
-                
                 tableView.reloadData()
             }
         }
@@ -109,10 +103,7 @@ class ContactsViewController: UITableViewController {
    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Makes sure that segue is contactDetailSegue and not AddContact
-        
         if segue.identifier == "contactDetailSegue" {
-            
-
             // if contactDetailSegue is not talking to the ContactDetailViewController... return
             guard let viewController = segue.destination as? ContactDetailViewController else { return }
             
@@ -121,7 +112,6 @@ class ContactsViewController: UITableViewController {
             let contact = contacts[indexPath.row]
             viewController.contact = contact
             viewController.indexPath = indexPath
-            
         }
     }
     
@@ -129,9 +119,6 @@ class ContactsViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         AppUtility.lockOrientation(.portrait)
-        // Or to rotate and lock
-        // AppUtility.lockOrientation(.portrait, andRotateTo: .portrait)
-        
     }
     
     //Releasing orientation lock purposes

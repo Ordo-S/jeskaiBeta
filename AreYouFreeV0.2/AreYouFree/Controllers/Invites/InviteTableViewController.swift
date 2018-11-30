@@ -12,9 +12,9 @@ import Firebase
 class InviteTableViewController: UITableViewController {
     
     // create array to hold events
-    var requests: [InviteRequest] = []
-    var ref: DatabaseReference!
-    var databaseHandle: DatabaseHandle?
+    private var requests: [InviteRequest] = []
+    private var ref: DatabaseReference!
+    private var databaseHandle: DatabaseHandle?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +37,6 @@ class InviteTableViewController: UITableViewController {
     }
     
     // MARK: - Table view data source
-    
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
@@ -51,20 +50,16 @@ class InviteTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "InviteCell", for: indexPath)
-        
         let request = requests[indexPath.row]
-        
         
         cell.textLabel?.text = request.name
         cell.textLabel?.textColor = UIColor.white
-        
         
         // if user accepted an event, place a checkmark.
         if (request.accepted)
         {
             cell.accessoryType = UITableViewCell.AccessoryType.checkmark
         }
-        
         return cell
     }
     
@@ -79,8 +74,7 @@ class InviteTableViewController: UITableViewController {
             ref.child(Singleton.shared.currentUsername + "/Invites").child(request.name).setValue(false)
 
         }
-            
-            // else add a checkmark!
+        // else add a checkmark!
         else
         {
             let request = requests[indexPath.row]
@@ -94,9 +88,6 @@ class InviteTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         AppUtility.lockOrientation(.portrait)
-        // Or to rotate and lock
-        // AppUtility.lockOrientation(.portrait, andRotateTo: .portrait)
-        
     }
     
     //Releasing orientation lock purposes

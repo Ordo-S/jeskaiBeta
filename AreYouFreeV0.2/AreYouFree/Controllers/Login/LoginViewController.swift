@@ -13,14 +13,14 @@ import FBSDKLoginKit
 class LoginViewController: UIViewController {
 
     //Firebase and widget properties
-    var ref: DatabaseReference!
-    @IBOutlet weak var loginSelector : UISegmentedControl!
-    @IBOutlet weak var loginLabel: UILabel!
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var signInButton: UIButton!
-    @IBOutlet weak var facebookLoginButton: UIButton!
-    @IBOutlet weak var recoveryButton: UIButton!
+    private var ref: DatabaseReference!
+    @IBOutlet private weak var loginSelector : UISegmentedControl!
+    @IBOutlet private weak var loginLabel: UILabel!
+    @IBOutlet private weak var emailTextField: UITextField!
+    @IBOutlet private weak var passwordTextField: UITextField!
+    @IBOutlet private weak var signInButton: UIButton!
+    @IBOutlet private weak var facebookLoginButton: UIButton!
+    @IBOutlet private weak var recoveryButton: UIButton!
     
     //Login lockout properties
     private var failedLoginAttempts = 0
@@ -36,7 +36,6 @@ class LoginViewController: UIViewController {
         setUpUI()
     }
     
-    //TODO: Normally should be in ViewDidLoad but it doesn't work if I put it there
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         //Check if user is signed in via Facebook login
@@ -114,8 +113,6 @@ class LoginViewController: UIViewController {
                     // User is signed in
                     self.loginLabel.text = "Facebook login Success!"
                     self.performSegue(withIdentifier: "goToHome", sender: self) //we use self. because this is inside a closure
-                    
-                    printUserInfo()
                 }
             } else {
                 self.loginLabel.text = ErrorMsg.fbLoginDefault.rawValue
@@ -123,12 +120,12 @@ class LoginViewController: UIViewController {
         }
     }
     
-    @IBAction func recoveryClicked(_ sender: Any) {
+    @IBAction private func recoveryClicked(_ sender: Any) {
         performSegue(withIdentifier: "goToRecovery", sender: self)
     }
     
     //Activates when you change the value of the selector
-    @IBAction func loginSelectorChanged(_ sender: UISegmentedControl) {
+    @IBAction private func loginSelectorChanged(_ sender: UISegmentedControl) {
         let selectedIndex = loginSelector.selectedSegmentIndex //finds the index of selector
         switch selectedIndex {
         case 0: //0 means sign in
@@ -143,7 +140,7 @@ class LoginViewController: UIViewController {
         resetMenu()
     }
     
-    @IBAction func signInClicked(_ sender: UIButton) {
+    @IBAction private func signInClicked(_ sender: UIButton) {
         //Check if email and password are filled in
         if let email = emailTextField.text, let pass = passwordTextField.text {
             //Check if you're doing sign in or register
@@ -178,8 +175,6 @@ class LoginViewController: UIViewController {
                         }
                     } else {
                         //Validation successful
-                        printUserInfo()
-                        
                         self.performSegue(withIdentifier: "goToHome", sender: self) //we use self. because this is inside a closure
                     }
                 }
@@ -275,9 +270,6 @@ class LoginViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         AppUtility.lockOrientation(.portrait)
-        // Or to rotate and lock
-        // AppUtility.lockOrientation(.portrait, andRotateTo: .portrait)
-        
     }
     
     //Releasing orientation lock purposes

@@ -11,10 +11,10 @@ import Firebase
 
 class RecoveryViewController: UIViewController {
     
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var cancelButton: UIButton!
-    @IBOutlet weak var confirmButton: UIButton!
-    @IBOutlet weak var resultLabel: UILabel!
+    @IBOutlet private weak var emailTextField: UITextField!
+    @IBOutlet private weak var cancelButton: UIButton!
+    @IBOutlet private weak var confirmButton: UIButton!
+    @IBOutlet private weak var resultLabel: UILabel!
     
     
     override func viewDidLoad() {
@@ -40,11 +40,11 @@ class RecoveryViewController: UIViewController {
         confirmButton.layer.cornerRadius = cornerRad
     }
     
-    @IBAction func cancelClicked(_ sender: Any) {
+    @IBAction private func cancelClicked(_ sender: Any) {
         performSegue(withIdentifier: "goToLogin", sender: self)
     }
     
-    @IBAction func confirmClicked(_ sender: Any) {
+    @IBAction private func confirmClicked(_ sender: Any) {
         guard let email = emailTextField.text, emailTextField.text?.count != 0 else {
             resultLabel.text = ErrorMsg.emptyEditFields.rawValue
             return
@@ -84,9 +84,6 @@ class RecoveryViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         AppUtility.lockOrientation(.portrait)
-        // Or to rotate and lock
-        // AppUtility.lockOrientation(.portrait, andRotateTo: .portrait)
-        
     }
     
     //Releasing orientation lock purposes
@@ -100,15 +97,4 @@ class RecoveryViewController: UIViewController {
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
