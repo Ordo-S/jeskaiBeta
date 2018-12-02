@@ -1,5 +1,5 @@
 //
-//  MealTableViewController.swift
+//  EventTableViewController
 //  areYouFreev2
 //
 //  Created by Matt Spadaro on 11/11/18.
@@ -26,8 +26,8 @@ class EventTableViewController: UITableViewController {
         let storageRef = Storage.storage().reference()
         let currentUserID = Singleton.shared.currentUserID
         let ref = Database.database().reference()
-        let databaseHandle = ref.child(currentUserID + "/Events").observe(.childAdded, with: { (snapshot) in
-            let name: String = (snapshot.key as? String)!
+        _ = ref.child(currentUserID + "/Events").observe(.childAdded, with: { (snapshot) in
+            let name: String = (snapshot.key)
             let addr: String = (snapshot.value as? String)!
             let pathToImage = storageRef.child(currentUserID + "/EventImages/" + name)
             pathToImage.getData(maxSize: 15 * 1024 * 1024) { data, error in

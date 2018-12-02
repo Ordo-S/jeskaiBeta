@@ -117,7 +117,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
         let address = eventAdressLabel.text ?? ""
         
         let currentUserID = Singleton.shared.currentUserID
-        // Set the event to be passed to EventTableViewController after the unwind segue.
+        // Set the Event to be passed to EventTableViewContoller after the unwind segue.
         Event = event(name: name, photo: photo!, address: address)
        
         let eventPhoto: UIImage = photo!
