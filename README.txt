@@ -1,5 +1,5 @@
 Name: Mark Casapao, Matt Spadaro, Luke Dillon, Michael Wang
-SID: 010239541, 009490780, ..., ...
+SID: 010239541, 009490780, 010455289, 009702797
 
 Instructions to build app: 
 1) Open up AreYouFree.xcworkspace (NOT .xcodeproj !!!) using Xcode.
