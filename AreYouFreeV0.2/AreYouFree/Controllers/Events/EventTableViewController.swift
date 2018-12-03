@@ -18,8 +18,6 @@ class EventTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //Load Sample Events, for testing 
-        // loadSampleEvent()
         // ### Luke Begin ###
         // the function below retrieves an the events from the database
         let newIndexPath = IndexPath(row: Events.count, section: 0)
@@ -111,7 +109,6 @@ class EventTableViewController: UITableViewController {
     }
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //From Apples docs on how to send to segue
         super.prepare(for: segue, sender: sender)
@@ -149,25 +146,16 @@ class EventTableViewController: UITableViewController {
         if let sourceViewController = sender.source as? ViewController, let Event = sourceViewController.Event {
             //Events is Local
             //Event is from EventView super confusing I know
-            
             //How to chouse how to segue to the event view
-            
-            if let selectedIndexPath = tableView.indexPathForSelectedRow {
+             if let selectedIndexPath = tableView.indexPathForSelectedRow {
                 // Update an existing event.
                 Events[selectedIndexPath.row] = Event
-                
-                // ### Luke begin ###
-                
-                
-                // ### Luke end ####
                 tableView.reloadRows(at: [selectedIndexPath], with: .none)
             }
             else {
                 // Add a new event.
                 let newIndexPath = IndexPath(row: Events.count, section: 0)
-                
                 Events.append(Event)
-                // tableView.insertRows(at: [newIndexPath], with: .automatic)
                 tableView.reloadData()
             }
         }
@@ -206,6 +194,7 @@ private func forwardGeocoding (address: String, completion: @escaping (CLLocatio
         if let placemark = placemarks?.first {
             let location = placemark.location
             completion(location?.coordinate)
+            //wait until async call is done
         }
     })
     

@@ -54,10 +54,8 @@ class InviteTableViewController: UITableViewController {
         
         cell.textLabel?.text = request.name
         cell.textLabel?.textColor = UIColor.white
-        
         // if user accepted an event, place a checkmark.
-        if (request.accepted)
-        {
+        if (request.accepted) {
             cell.accessoryType = UITableViewCell.AccessoryType.checkmark
         }
         return cell

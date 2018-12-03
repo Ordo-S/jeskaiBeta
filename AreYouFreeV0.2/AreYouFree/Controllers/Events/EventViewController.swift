@@ -45,7 +45,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
         }
         setUpUI()
     }
-    
+    //Mark: UI Setup and Colors
     private func setUpUI() {
         self.hideKeyboardWhenTappedAround()
         
@@ -95,6 +95,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
         photoImageView.image = selectedImage
         // Dismiss the picker.
         dismiss(animated: true, completion: nil)
+        //Had to add a value into the info.plist to allow app access to photos
     }
     
     //MARK: Navigation

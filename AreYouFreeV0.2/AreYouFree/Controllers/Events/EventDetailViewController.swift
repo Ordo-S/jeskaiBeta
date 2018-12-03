@@ -21,7 +21,6 @@ class EventDetailViewController: UIViewController, UINavigationControllerDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         //Set the View
-        //Set the View
         if let event = event {
             navigationItem.title = event.name
             eventNameLabel.text = event.name
@@ -47,9 +46,7 @@ class EventDetailViewController: UIViewController, UINavigationControllerDelegat
                 fatalError("Unexpected destination: \(segue.destination)")
             }
             ViewController.event = event
-            
-            
-            
+        
         default:
             fatalError("Unexpected Segue Identifier; \(String(describing: segue.identifier))")
         }
